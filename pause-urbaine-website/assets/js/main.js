@@ -45,4 +45,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+  
+  // Image lazy loading with IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.getAttribute('data-src');
+          
+          if (src) {
+            img.src = src;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+            observer.unobserve(img);
+          }
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    });
+    
+    // Observe all images with data-src attribute
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      const src = img.getAttribute('data-src');
+      if (src) {
+        img.src = src;
+        img.removeAttribute('data-src');
+        img.classList.add('loaded');
+      }
+    });
+  }
 });
