@@ -1,0 +1,85 @@
+baseURL: https://pauseurbaine.com/
+languageCode: fr-FR
+title: Pause Urbaine
+theme: ""
+
+# Multilingual configuration
+defaultContentLanguage: fr
+defaultContentLanguageInSubdir: true
+
+languages:
+  fr:
+    languageCode: fr-FR
+    languageName: Français
+    weight: 1
+    title: Pause Urbaine
+    params:
+      description: "Salon de coiffure à Genève - Deux emplacements: Plainpalais et Eaux-Vives"
+  
+  en:
+    languageCode: en-US
+    languageName: English
+    weight: 2
+    title: Pause Urbaine
+    params:
+      description: "Hair salon in Geneva - Two locations: Plainpalais and Eaux-Vives"
+
+# Build configuration
+build:
+  writeStats: true
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: monokai
+
+# Image processing
+imaging:
+  resampleFilter: lanczos
+  quality: 85
+  anchor: smart
+
+# Privacy configuration
+privacy:
+  googleAnalytics:
+    disable: true
+  instagram:
+    disable: false
+  twitter:
+    disable: true
+  vimeo:
+    disable: true
+  youtube:
+    disable: true
+
+# Output formats
+outputs:
+  home:
+    - HTML
+    - RSS
+  page:
+    - HTML
+  section:
+    - HTML
+    - RSS
+
+# Sitemap configuration
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: 0.5
+
+# Permalinks
+permalinks:
+  actualites: /actualites/:year/:month/:slug/
+  news: /news/:year/:month/:slug/
+
+# Taxonomies
+taxonomies:
+  tag: tags
+  category: categories
+
+# Menu configuration will be added per language in content files
