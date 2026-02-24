@@ -18,6 +18,24 @@ common:
   phone: Téléphone
   address: Adresse
   email: Email
+  menu: Menu
+  hours: Horaires
+  instagram: Instagram
+  
+homepage:
+  discoverServices: Découvrir nos services
+  viewPricing: Voir les tarifs
+  ourSalons: Nos salons
+  latestNews: Actualités
+
+error:
+  pageNotFound: Page non trouvée
+  pageNotFoundMessage: Désolé, la page que vous recherchez n'existe pas.
+  backToHome: Retour à l'accueil
+  quickLinks: Liens rapides
+
+footer_text:
+  allRightsReserved: Tous droits réservés
   
 locations:
   plainpalais: Plainpalais
