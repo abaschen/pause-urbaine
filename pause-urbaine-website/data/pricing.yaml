@@ -1,71 +1,252 @@
 # Pricing data for Pause Urbaine
-# TODO: Fill in actual prices from tarifs-2026.jpeg
+# Extracted from tarifs-2026.jpg – prices in CHF, durations unknown
 
 categories:
   - id: coupes
     name:
-      fr: "Coupes"
-      en: "Haircuts"
+      fr: "Coupes / Brushing"
+      en: "Haircuts / Blow‑dry"
     services:
       - name:
-          fr: "Coupe femme"
-          en: "Women's haircut"
-        price: "XX CHF"
+          fr: "Shampoing + Massage cranien + Coupe «garçon» (homme ou femme) + Séchage"
+          en: "Shampoo + head massage + short haircut (man or woman) + drying"
+        price: "38 CHF (court)"
         duration: "XX min"
       - name:
-          fr: "Coupe homme"
-          en: "Men's haircut"
-        price: "XX CHF"
+          fr: "Shampoing + Coupe + Brushing (cheveux courts)"
+          en: "Shampoo + cut + blow‑dry (short)"
+        price: "70 CHF"
         duration: "XX min"
-      # Add more services from tarifs-2026.jpeg
+      - name:
+          fr: "Shampoing + Coupe + Brushing (mi-longs)"
+          en: "Shampoo + cut + blow‑dry (medium)"
+        price: "80 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Coupe + Brushing (longs)"
+          en: "Shampoo + cut + blow‑dry (long)"
+        price: "90 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Brushing (cheveux courts, shampoing inclus)"
+          en: "Blow‑dry (short, incl. shampoo)"
+        price: "45 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Brushing (mi-longs, shampoing inclus)"
+          en: "Blow‑dry (medium, incl. shampoo)"
+        price: "50 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Brushing (longs, shampoing inclus)"
+          en: "Blow‑dry (long, incl. shampoo)"
+        price: "55 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Abonnement brushing – 4 brushings à utiliser pendant 5 semaines"
+          en: "Blow‑dry subscription – 4 blow‑dries to use within 5 weeks"
+        price: "140 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Coupe enfant jusqu’à 11 ans"
+          en: "Children’s haircut up to 11 years"
+        price: "25 CHF"
+        duration: "XX min"
 
   - id: colorations
     name:
-      fr: "Colorations"
-      en: "Hair coloring"
+      fr: "Colorations / Mèches"
+      en: "Hair coloring / Highlights"
     services:
       - name:
-          fr: "Coloration complète"
-          en: "Full color"
-        price: "XX CHF"
+          fr: "Shampoing + Soin + Couleur racine (avec ou sans brushing, courts)"
+          en: "Shampoo + treatment + root color (with or without blow‑dry, short)"
+        price: "70 CHF"
         duration: "XX min"
-      # Add more services from tarifs-2026.jpeg
+      - name:
+          fr: "Shampoing + Soin + Couleur racine (mi-longs)"
+          en: "Shampoo + treatment + root color (medium)"
+        price: "80 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Couleur racine (longs)"
+          en: "Shampoo + treatment + root color (long)"
+        price: "90 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Coloration complète (avec ou sans brushing, courts)"
+          en: "Shampoo + treatment + full color (with or without blow‑dry, short)"
+        price: "95 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Coloration complète (mi-longs)"
+          en: "Shampoo + treatment + full color (medium)"
+        price: "105 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Coloration complète (longs)"
+          en: "Shampoo + treatment + full color (long)"
+        price: "115 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Patine (avec ou sans brushing, courts)"
+          en: "Shampoo + treatment + toner (with or without blow‑dry, short)"
+        price: "95 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Patine (mi-longs)"
+          en: "Shampoo + treatment + toner (medium)"
+        price: "105 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Patine (longs)"
+          en: "Shampoo + treatment + toner (long)"
+        price: "115 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Mèches (avec ou sans brushing, courts)"
+          en: "Shampoo + treatment + highlights (with or without blow‑dry, short)"
+        price: "115 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Mèches (mi-longs)"
+          en: "Shampoo + treatment + highlights (medium)"
+        price: "125 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Mèches (longs)"
+          en: "Shampoo + treatment + highlights (long)"
+        price: "135 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Soin + Mèches demi-tête (avec ou sans brushing)"
+          en: "Shampoo + treatment + half‑head highlights (with or without blow‑dry)"
+        price: "95 CHF"
+        duration: "XX min"
 
   - id: soins
     name:
-      fr: "Soins"
-      en: "Treatments"
+      fr: "Lissages / Soins"
+      en: "Smoothing / Treatments"
     services:
       - name:
-          fr: "Soin capillaire"
-          en: "Hair treatment"
-        price: "XX CHF"
+          fr: "Shampoing + Botox capillaire + Coupe + Brushing (courts)"
+          en: "Shampoo + hair botox + cut + blow‑dry (short)"
+        price: "125 CHF"
         duration: "XX min"
-      # Add more services from tarifs-2026.jpeg
+      - name:
+          fr: "Shampoing + Botox capillaire + Coupe + Brushing (mi-longs)"
+          en: "Shampoo + hair botox + cut + blow‑dry (medium)"
+        price: "135 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Botox capillaire + Coupe + Brushing (longs)"
+          en: "Shampoo + hair botox + cut + blow‑dry (long)"
+        price: "145 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Shampoing + Coupe + Séchage rapide"
+          en: "Shampoo + cut + quick dry"
+        price: "60 CHF (courts) / 80 CHF (longs)"
+        duration: "XX min"
+      - name:
+          fr: "Lissage bio à la kératine (sans formol, courts)"
+          en: "Organic keratin smoothing (formaldehyde‑free, short)"
+        price: "190 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Lissage bio à la kératine (mi-longs)"
+          en: "Organic keratin smoothing (medium)"
+        price: "220 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Lissage bio à la kératine (longs)"
+          en: "Organic keratin smoothing (long)"
+        price: "250 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Hydratation à la kératine (brushing inclus, courts)"
+          en: "Keratin hydration treatment (incl. blow‑dry, short)"
+        price: "70 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Hydratation à la kératine (mi-longs)"
+          en: "Keratin hydration treatment (incl. blow‑dry, medium)"
+        price: "80 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Hydratation à la kératine (longs)"
+          en: "Keratin hydration treatment (incl. blow‑dry, long)"
+        price: "90 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Soin botox capillaire (brushing inclus, courts)"
+          en: "Hair botox treatment (incl. blow‑dry, short)"
+        price: "80 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Soin botox capillaire (mi-longs)"
+          en: "Hair botox treatment (incl. blow‑dry, medium)"
+        price: "90 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Soin botox capillaire (longs)"
+          en: "Hair botox treatment (incl. blow‑dry, long)"
+        price: "100 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Supplément Botox capillaire"
+          en: "Hair botox supplement"
+        price: "+55 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Supplément soin à la kératine"
+          en: "Keratin treatment supplement"
+        price: "+45 CHF"
+        duration: "XX min"
+
+  - id: options-coloration
+    name:
+      fr: "Suppléments coloration"
+      en: "Color extras"
+    services:
+      - name:
+          fr: "Racines (seulement en combinaison avec mèches)"
+          en: "Roots (only in combination with highlights)"
+        price: "70 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Coupe (supplément avec mèches ou coloration)"
+          en: "Haircut supplement with highlights or color"
+        price: "55 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Patine (supplément)"
+          en: "Toner supplement"
+        price: "55 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Soin à la kératine (supplément)"
+          en: "Keratin care supplement"
+        price: "45 CHF"
+        duration: "XX min"
+      - name:
+          fr: "Soin botox capillaire (supplément)"
+          en: "Hair botox supplement"
+        price: "55 CHF"
+        duration: "XX min"
 
   - id: esthetique
     name:
       fr: "Esthétique"
       en: "Beauty treatments"
-    services:
-      - name:
-          fr: "Épilation sourcils"
-          en: "Eyebrow waxing"
-        price: "XX CHF"
-        duration: "XX min"
-      # Add more services from tarifs-2026.jpeg
+    services: []
 
   - id: ongles
     name:
       fr: "Ongles"
       en: "Nails"
-    services:
-      - name:
-          fr: "Manucure"
-          en: "Manicure"
-        price: "XX CHF"
-        duration: "XX min"
-      # Add more services from tarifs-2026.jpeg
+    services: []
 
 # Notes about pricing
 notes:
