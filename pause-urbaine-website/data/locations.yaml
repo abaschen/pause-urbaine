@@ -1,0 +1,40 @@
+locations:
+  - id: plainpalais
+    name:
+      fr: Plainpalais
+      en: Plainpalais
+    address:
+      street: Rue de Carouge 42
+      city: Genève
+      postal: "1205"
+      country: Suisse
+    phone: "+41 22 XXX XX XX"
+    instagram: "@pauseurbaine_plainpalais"
+    hours:
+      monday: Fermé
+      tuesday: 9h00 - 19h00
+      wednesday: 9h00 - 19h00
+      thursday: 9h00 - 19h00
+      friday: 9h00 - 19h00
+      saturday: 9h00 - 18h00
+      sunday: Fermé
+    
+  - id: eauxvives
+    name:
+      fr: Eaux-Vives
+      en: Eaux-Vives
+    address:
+      street: Rue du Lac 15
+      city: Genève
+      postal: "1207"
+      country: Suisse
+    phone: "+41 22 YYY YY YY"
+    instagram: "@pauseurbaine_eauxvives"
+    hours:
+      monday: Fermé
+      tuesday: 9h00 - 19h00
+      wednesday: 9h00 - 19h00
+      thursday: 9h00 - 19h00
+      friday: 9h00 - 19h00
+      saturday: 9h00 - 18h00
+      sunday: Fermé
