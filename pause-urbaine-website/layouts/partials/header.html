@@ -43,7 +43,7 @@
           {{ $currentPage := . }}
           {{ range .Site.Menus.main }}
           <li>
-            <a href="{{ .URL }}" {{ if $currentPage.IsMenuCurrent "main" . }}class="active"{{ end }}>
+            <a href="{{ .URL | relLangURL }}" {{ if $currentPage.IsMenuCurrent "main" . }}class="active"{{ end }}>
               {{ .Name }}
             </a>
           </li>
