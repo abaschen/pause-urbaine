@@ -1,0 +1,36 @@
+{{- /* Location card partial - pass location data as context */ -}}
+<div class="location-card">
+  <h3 class="location-card-name">
+    <i class="fa-solid fa-location-dot"></i>
+    {{ index .name $.Site.Language.Lang }}
+  </h3>
+  
+  <div class="location-card-info">
+    <div class="location-card-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <span>{{ index .address $.Site.Language.Lang }}</span>
+    </div>
+    
+    <div class="location-card-item">
+      <i class="fa-solid fa-phone"></i>
+      <a href="tel:{{ .phone }}">{{ .phone }}</a>
+    </div>
+    
+    <div class="location-card-item">
+      <i class="fa-brands fa-instagram"></i>
+      <a href="{{ .instagram }}" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    
+    <div class="location-card-hours">
+      <div class="location-card-item">
+        <i class="fa-solid fa-clock"></i>
+        <div>
+          <strong>{{ i18n "hours" }}:</strong>
+          {{ range .hours }}
+          <div>{{ index .day $.Site.Language.Lang }}: {{ index .time $.Site.Language.Lang }}</div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
