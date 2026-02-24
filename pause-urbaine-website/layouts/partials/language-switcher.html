@@ -1,10 +1,9 @@
 <div class="language-switcher">
-  {{ range .Site.Languages }}
-  {{ $lang := .Lang }}
-  <a href="{{ if $.IsTranslated }}{{ (index $.Translations $lang).Permalink }}{{ else }}{{ $.Site.GetPage "/" | .Permalink }}{{ end }}" 
+  {{ range $.Site.Home.AllTranslations }}
+  <a href="{{ .Permalink }}" 
      lang="{{ .Lang }}"
      {{ if eq $.Lang .Lang }}class="active"{{ end }}>
-    {{ .LanguageName }}
+    {{ .Language.LanguageName }}
   </a>
   {{ end }}
 </div>

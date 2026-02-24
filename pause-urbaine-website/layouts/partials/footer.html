@@ -4,25 +4,33 @@
       {{- /* Location information */ -}}
       {{ range .Site.Data.locations }}
       <div class="footer-section">
-        <h3>{{ index .name $.Site.Language.Lang }}</h3>
+        <h3>{{ if .name }}{{ index .name $.Site.Language.Lang }}{{ end }}</h3>
+        {{ if .address }}
         <p>
           <i class="fa-solid fa-location-dot"></i>
           {{ index .address $.Site.Language.Lang }}
         </p>
+        {{ end }}
+        {{ if .phone }}
         <p>
           <i class="fa-solid fa-phone"></i>
           <a href="tel:{{ .phone }}">{{ .phone }}</a>
         </p>
+        {{ end }}
+        {{ if .instagram }}
         <p>
           <i class="fa-brands fa-instagram"></i>
           <a href="{{ .instagram }}" target="_blank" rel="noopener">Instagram</a>
         </p>
+        {{ end }}
+        {{ if .hours }}
         <div class="footer-hours">
-          <p><i class="fa-solid fa-clock"></i> {{ i18n "hours" }}:</p>
+          <p><i class="fa-solid fa-clock"></i> {{ i18n "common.hours" }}:</p>
           {{ range .hours }}
           <p>{{ index .day $.Site.Language.Lang }}: {{ index .time $.Site.Language.Lang }}</p>
           {{ end }}
         </div>
+        {{ end }}
       </div>
       {{ end }}
     </div>
