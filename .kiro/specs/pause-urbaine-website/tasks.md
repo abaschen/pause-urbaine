@@ -246,20 +246,20 @@
 - [ ] 29.5 Enable HTTPS
 
 ### 30. Create Root Redirect for GitHub Pages
-- [ ] 30.1 Create static/index.html with meta refresh
-- [ ] 30.2 Redirect to /fr/ by default
-- [ ] 30.3 Add JavaScript fallback redirect
-- [ ] 30.4 Test redirect functionality
+- [x] 30.1 Create static/index.html with meta refresh
+- [x] 30.2 Redirect to /fr/ by default
+- [x] 30.3 Add JavaScript fallback redirect
+- [x] 30.4 Test redirect functionality
 
 ## Phase 9: CI/CD Pipeline
 
 ### 31. Create GitHub Actions Workflow
-- [ ] 31.1 Create .github/workflows/deploy.yml
-- [ ] 31.2 Configure workflow triggers (push to main)
-- [ ] 31.3 Add Hugo setup step
-- [ ] 31.4 Add npm install step
-- [ ] 31.5 Add Hugo build step (hugo --minify)
-- [ ] 31.6 Add deploy to GitHub Pages step
+- [x] 31.1 Create .github/workflows/deploy.yml
+- [x] 31.2 Configure workflow triggers (push to main)
+- [x] 31.3 Add Hugo setup step
+- [x] 31.4 Add npm install step
+- [x] 31.5 Add Hugo build step (hugo --minify)
+- [x] 31.6 Add deploy to GitHub Pages step
 - [ ]* 31.7 Add deploy to S3 step
 - [ ]* 31.8 Add CloudFront invalidation step
 - [ ]* 31.9 Configure AWS credentials as secrets
@@ -273,20 +273,20 @@
 ## Phase 10: SEO and Performance
 
 ### 33. Implement SEO Best Practices
-- [ ] 33.1 Add robots.txt file
-- [ ] 33.2 Verify sitemap.xml generation
-- [ ] 33.3 Add structured data (Schema.org LocalBusiness)
-- [ ] 33.4 Verify hreflang tags on all pages
-- [ ] 33.5 Add canonical URLs
+- [x] 33.1 Add robots.txt file
+- [x] 33.2 Verify sitemap.xml generation
+- [x] 33.3 Add structured data (Schema.org LocalBusiness)
+- [x] 33.4 Verify hreflang tags on all pages
+- [x] 33.5 Add canonical URLs
 - [ ] 33.6 Optimize meta descriptions
 - [ ] 33.7 Add Open Graph images
 
 ### 34. Optimize Performance
-- [ ] 34.1 Enable Hugo minification (--minify flag)
-- [ ] 34.2 Fingerprint all assets
+- [x] 34.1 Enable Hugo minification (--minify flag)
+- [x] 34.2 Fingerprint all assets
 - [ ] 34.3 Implement critical CSS inlining (optional)
 - [ ] 34.4 Verify WebP image generation
-- [ ] 34.5 Test lazy loading functionality
+- [x] 34.5 Test lazy loading functionality
 - [ ] 34.6 Verify Font Awesome tree-shaking (check bundle size)
 - [ ]* 34.7 Configure CloudFront cache TTLs
 
@@ -346,8 +346,8 @@
 ## Phase 12: Documentation and Handoff
 
 ### 41. Create User Documentation
-- [ ] 41.1 Write README.md with project overview
-- [ ] 41.2 Document local development setup
+- [x] 41.1 Write README.md with project overview
+- [x] 41.2 Document local development setup
 - [ ] 41.3 Create content management guide (French)
 - [ ] 41.4 Document how to add new articles
 - [ ] 41.5 Document how to update pricing
