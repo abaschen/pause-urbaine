@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   
+  {{- /* Canonical URL */ -}}
+  <link rel="canonical" href="{{ .Permalink }}">
+  
   {{- /* Multilingual SEO tags */ -}}
   {{ range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
