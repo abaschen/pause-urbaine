@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="pricing-page">
+  <h1>{{ .Title }}</h1>
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  {{- /* Display pricing from data file */ -}}
+  {{ range .Site.Data.pricing.categories }}
+  {{ if .services }}
+  <section class="pricing-category">
+    <h2>{{ index .name $.Site.Language.Lang }}</h2>
+    
+    <div class="pricing-services">
+      {{ range .services }}
+      <div class="pricing-service">
+        <div class="pricing-service-name">
+          {{ index .name $.Site.Language.Lang }}
+        </div>
+        <div class="pricing-service-price">
+          {{ .price }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+  
+  {{- /* Pricing notes */ -}}
+  {{ with .Site.Data.pricing.notes }}
+  <div class="pricing-notes mt-4">
+    <p><em>{{ index . $.Site.Language.Lang }}</em></p>
+  </div>
+  {{ end }}
+</article>
+{{ end }}
