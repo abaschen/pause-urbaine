@@ -45,7 +45,7 @@ languages:
           weight: 2
         - identifier: pricing
           name: Pricing
-          pageRef: /pricing
+          pageRef: /tarifs
           weight: 3
         - identifier: contact
           name: Contact
