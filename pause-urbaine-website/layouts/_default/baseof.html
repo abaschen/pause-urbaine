@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  
+  {{- /* Multilingual SEO tags */ -}}
+  {{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{ end }}
+  
+  {{- /* Open Graph meta tags */ -}}
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  
+  {{- /* SCSS stylesheet with Hugo Pipes */ -}}
+  {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+  
+  {{- /* Font Awesome with js.Build */ -}}
+  {{ $fontawesome := resources.Get "js/fontawesome.js" | js.Build (dict "minify" true) | fingerprint }}
+  <script src="{{ $fontawesome.Permalink }}" integrity="{{ $fontawesome.Data.Integrity }}" defer></script>
+  
+  {{- /* Main JavaScript */ -}}
+  {{ $main := resources.Get "js/main.js" | js.Build (dict "minify" true) | fingerprint }}
+  <script src="{{ $main.Permalink }}" integrity="{{ $main.Data.Integrity }}" defer></script>
+</head>
+<body>
+  {{ partial "header.html" . }}
+  
+  <main class="main">
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+  
+  {{ partial "footer.html" . }}
+</body>
+</html>
