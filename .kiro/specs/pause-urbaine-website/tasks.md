@@ -348,7 +348,7 @@
 ### 41. Create User Documentation
 - [x] 41.1 Write README.md with project overview
 - [x] 41.2 Document local development setup
-- [ ] 41.3 Create content management guide (French)
+- [-] 41.3 Create content management guide (French)
 - [ ] 41.4 Document how to add new articles
 - [ ] 41.5 Document how to update pricing
 - [ ] 41.6 Document how to update location information
