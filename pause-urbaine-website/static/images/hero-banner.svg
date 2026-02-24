@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Gradient backgrounds -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B9D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#C44569;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4367;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Text gradients -->
+    <linearGradient id="textGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE5EC;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="textGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFD93D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Spray paint effect filter -->
+    <filter id="spray">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    
+    <!-- Drip effect -->
+    <filter id="drip">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.3"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Abstract shapes (street art style) -->
+  <circle cx="100" cy="80" r="60" fill="#FFD93D" opacity="0.3"/>
+  <circle cx="1100" cy="320" r="80" fill="#6BCB77" opacity="0.3"/>
+  <rect x="900" y="50" width="120" height="120" fill="#4D96FF" opacity="0.2" transform="rotate(45 960 110)"/>
+  
+  <!-- Spray paint splatters -->
+  <circle cx="200" cy="350" r="15" fill="#FFD93D" opacity="0.6" filter="url(#spray)"/>
+  <circle cx="230" cy="340" r="10" fill="#FFD93D" opacity="0.5" filter="url(#spray)"/>
+  <circle cx="1000" cy="100" r="12" fill="#6BCB77" opacity="0.6" filter="url(#spray)"/>
+  <circle cx="1020" cy="90" r="8" fill="#6BCB77" opacity="0.5" filter="url(#spray)"/>
+  
+  <!-- Decorative lines (graffiti style) -->
+  <path d="M 50 200 Q 150 180 250 200" stroke="#FFD93D" stroke-width="4" fill="none" opacity="0.4"/>
+  <path d="M 950 250 Q 1050 230 1150 250" stroke="#4D96FF" stroke-width="4" fill="none" opacity="0.4"/>
+  
+  <!-- Main text: "PAUSE" -->
+  <text x="600" y="160" font-family="'Arial Black', 'Impact', sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="url(#textGradient1)" filter="url(#drip)">
+    PAUSE
+  </text>
+  
+  <!-- Outline for PAUSE -->
+  <text x="600" y="160" font-family="'Arial Black', 'Impact', sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="none" stroke="#8B4367" stroke-width="3" opacity="0.8">
+    PAUSE
+  </text>
+  
+  <!-- Main text: "URBAINE" -->
+  <text x="600" y="270" font-family="'Arial Black', 'Impact', sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="url(#textGradient2)" filter="url(#drip)">
+    URBAINE
+  </text>
+  
+  <!-- Outline for URBAINE -->
+  <text x="600" y="270" font-family="'Arial Black', 'Impact', sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="none" stroke="#C44569" stroke-width="3" opacity="0.8">
+    URBAINE
+  </text>
+  
+  <!-- Accent marks (street art details) -->
+  <line x1="200" y1="165" x2="350" y2="165" stroke="#FFD93D" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <line x1="850" y1="165" x2="1000" y2="165" stroke="#6BCB77" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Small stars/sparkles -->
+  <circle cx="380" cy="120" r="4" fill="#FFD93D"/>
+  <circle cx="820" cy="120" r="4" fill="#6BCB77"/>
+  <circle cx="400" cy="300" r="3" fill="#4D96FF"/>
+  <circle cx="800" cy="300" r="3" fill="#FFD93D"/>
+  
+  <!-- Drip effects -->
+  <ellipse cx="520" cy="175" rx="3" ry="15" fill="#FFF" opacity="0.6"/>
+  <ellipse cx="680" cy="175" rx="3" ry="12" fill="#FFF" opacity="0.5"/>
+  <ellipse cx="540" cy="285" rx="3" ry="18" fill="#FFD93D" opacity="0.6"/>
+  <ellipse cx="660" cy="285" rx="3" ry="14" fill="#FFA500" opacity="0.5"/>
+</svg>
