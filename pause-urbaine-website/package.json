@@ -1,0 +1,16 @@
+{
+  "name": "pause-urbaine-website",
+  "version": "1.0.0",
+  "description": "Static website for Pause Urbaine hair salon",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server --buildDrafts --disableFastRender",
+    "build": "hugo --minify",
+    "clean": "rm -rf public resources"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.0",
+    "@fortawesome/free-solid-svg-icons": "^6.5.0",
+    "@fortawesome/free-brands-svg-icons": "^6.5.0"
+  }
+}
