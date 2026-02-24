@@ -177,9 +177,10 @@
 
 // Hero section
 .hero {
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 15%) 100%);
   background-size: cover;
   background-position: center;
-  padding: $spacing-xl * 2 0;
+  padding: $spacing-xl * 3 0;
   text-align: center;
   color: $background;
   position: relative;
@@ -191,45 +192,176 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
   }
 
   &-content {
     position: relative;
     z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
   }
 
-  h1 {
-    font-size: $font-size-h1 * 1.5;
+  &-title {
+    font-size: $font-size-h1 * 1.8;
     margin-bottom: $spacing-md;
+    font-weight: 700;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: $font-size-h1 * 1.2;
+    }
+  }
+
+  &-subtitle {
+    font-size: $font-size-h3;
+    margin-bottom: $spacing-xl;
+    opacity: 0.95;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: $font-size-base * 1.1;
+    }
+  }
+
+  &-cta {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .btn {
+      padding: $spacing-md $spacing-xl;
+      font-size: $font-size-base * 1.1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .btn-primary {
+      background: $background;
+      color: $primary-color;
+
+      &:hover {
+        background: darken($background, 5%);
+      }
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: $background;
+      border: 2px solid $background;
+
+      &:hover {
+        background: $background;
+        color: $primary-color;
+      }
+    }
   }
 }
 
 // Homepage specific styles
 .homepage {
-  .welcome {
-    margin-bottom: $spacing-xl;
+  .intro {
+    padding: $spacing-xl * 2 0;
+    text-align: center;
+
+    &-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: $font-size-base * 1.1;
+      line-height: 1.8;
+      color: $text-color;
+    }
   }
 
-  .cta {
-    display: flex;
-    gap: $spacing-md;
-    justify-content: center;
-    flex-wrap: wrap;
+  .blog-posts {
+    padding: $spacing-xl * 2 0;
+    background: lighten($border-color, 8%);
+
+    h2 {
+      text-align: center;
+      color: $primary-color;
+      margin-bottom: $spacing-xl;
+      font-size: $font-size-h2;
+    }
   }
 
-  .locations-grid {
+  .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: $spacing-lg;
-    margin-top: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: $spacing-lg;
-    margin-top: $spacing-lg;
+  .blog-card {
+    background: $background;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform $transition-speed, box-shadow $transition-speed;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    &-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-speed;
+      }
+    }
+
+    &:hover &-image img {
+      transform: scale(1.05);
+    }
+
+    &-content {
+      padding: $spacing-lg;
+    }
+
+    &-title {
+      margin-bottom: $spacing-sm;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-size: $font-size-h3;
+        font-weight: 600;
+        transition: color $transition-speed;
+
+        &:hover {
+          color: darken($primary-color, 10%);
+        }
+      }
+    }
+
+    &-excerpt {
+      color: $text-color;
+      margin-bottom: $spacing-md;
+      line-height: 1.6;
+    }
+
+    &-link {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color $transition-speed;
+
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
   }
 }
 

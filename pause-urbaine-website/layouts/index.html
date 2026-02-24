@@ -1,44 +1,54 @@
 {{ define "main" }}
 <div class="homepage">
-  {{- /* Welcome section */ -}}
-  <section class="welcome">
-    <h1>{{ .Title }}</h1>
-    <div class="content">
+  {{- /* Hero banner */ -}}
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ .Site.Title }}</h1>
+      <p class="hero-subtitle">{{ .Site.Params.description }}</p>
+      <div class="hero-cta">
+        <a href="{{ relLangURL "services" }}" class="btn btn-primary">{{ i18n "homepage.discoverServices" }}</a>
+        <a href="{{ relLangURL "tarifs" }}" class="btn btn-secondary">{{ i18n "homepage.viewPricing" }}</a>
+      </div>
+    </div>
+  </section>
+  
+  {{- /* Intro section */ -}}
+  <section class="intro">
+    <div class="intro-content">
       {{ .Content }}
     </div>
   </section>
   
-  {{- /* Call to action */ -}}
-  <section class="cta mt-4 text-center">
-    <a href="{{ relLangURL "services" }}" class="btn">{{ i18n "discoverServices" }}</a>
-    <a href="{{ relLangURL "tarifs" }}" class="btn btn-secondary">{{ i18n "viewPricing" }}</a>
-  </section>
-  
-  {{- /* Locations */ -}}
-  <section class="locations mt-4">
-    <h2>{{ i18n "ourSalons" }}</h2>
-    {{ range .Site.Data.locations }}
-      {{ partial "location-card.html" (dict "Site" $.Site "name" .name "address" .address "phone" .phone "instagram" .instagram "hours" .hours) }}
-    {{ end }}
-  </section>
-  
-  {{- /* Latest news/articles (if any) */ -}}
+  {{- /* Blog posts section */ -}}
   {{ $pages := where .Site.RegularPages "Section" "actualites" }}
   {{ if $pages }}
-  <section class="news mt-4">
-    <h2>{{ i18n "latestNews" }}</h2>
-    <div class="news-grid">
+  <section class="blog-posts">
+    <h2>{{ i18n "homepage.latestNews" }}</h2>
+    <div class="blog-grid">
       {{ range first 3 $pages }}
-      <article class="card">
-        <h3 class="card-title">
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </h3>
-        <div class="card-content">
-          <p>{{ .Summary }}</p>
-          <a href="{{ .Permalink }}">{{ i18n "readMore" }} →</a>
+      <article class="blog-card">
+        {{ with .Params.image }}
+        <div class="blog-card-image">
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+        </div>
+        {{ end }}
+        <div class="blog-card-content">
+          <h3 class="blog-card-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <p class="blog-card-excerpt">{{ .Summary }}</p>
+          <a href="{{ .Permalink }}" class="blog-card-link">{{ i18n "common.read_more" }} →</a>
         </div>
       </article>
       {{ end }}
+    </div>
+  </section>
+  {{ else }}
+  {{- /* Placeholder for blog posts */ -}}
+  <section class="blog-posts">
+    <h2>{{ i18n "homepage.latestNews" }}</h2>
+    <div class="blog-grid">
+      {{- /* Blog post cards will appear here when content is added */ -}}
     </div>
   </section>
   {{ end }}
