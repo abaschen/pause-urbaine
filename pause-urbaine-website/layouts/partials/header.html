@@ -5,13 +5,17 @@
       <div class="header-locations">
         {{ range .Site.Data.locations }}
         <div class="header-location">
-          <span>{{ index .name $.Site.Language.Lang }}</span>
+          <span>{{ if .name }}{{ index .name $.Site.Language.Lang }}{{ end }}</span>
+          {{ if .phone }}
           <a href="tel:{{ .phone }}">
             <i class="fa-solid fa-phone"></i> {{ .phone }}
           </a>
+          {{ end }}
+          {{ if .instagram }}
           <a href="{{ .instagram }}" target="_blank" rel="noopener">
             <i class="fa-brands fa-instagram"></i>
           </a>
+          {{ end }}
         </div>
         {{ end }}
       </div>

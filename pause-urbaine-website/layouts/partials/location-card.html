@@ -1,36 +1,46 @@
 {{- /* Location card partial - pass location data as context */ -}}
 <div class="location-card">
+  {{ if .name }}
   <h3 class="location-card-name">
     <i class="fa-solid fa-location-dot"></i>
-    {{ index .name $.Site.Language.Lang }}
+    {{ index .name .Site.Language.Lang }}
   </h3>
+  {{ end }}
   
   <div class="location-card-info">
+    {{ if .address }}
     <div class="location-card-item">
       <i class="fa-solid fa-location-dot"></i>
-      <span>{{ index .address $.Site.Language.Lang }}</span>
+      <span>{{ index .address .Site.Language.Lang }}</span>
     </div>
+    {{ end }}
     
+    {{ if .phone }}
     <div class="location-card-item">
       <i class="fa-solid fa-phone"></i>
       <a href="tel:{{ .phone }}">{{ .phone }}</a>
     </div>
+    {{ end }}
     
+    {{ if .instagram }}
     <div class="location-card-item">
       <i class="fa-brands fa-instagram"></i>
       <a href="{{ .instagram }}" target="_blank" rel="noopener">Instagram</a>
     </div>
+    {{ end }}
     
+    {{ if .hours }}
     <div class="location-card-hours">
       <div class="location-card-item">
         <i class="fa-solid fa-clock"></i>
         <div>
-          <strong>{{ i18n "hours" }}:</strong>
+          <strong>{{ i18n "common.hours" }}:</strong>
           {{ range .hours }}
           <div>{{ index .day $.Site.Language.Lang }}: {{ index .time $.Site.Language.Lang }}</div>
           {{ end }}
         </div>
       </div>
     </div>
+    {{ end }}
   </div>
 </div>

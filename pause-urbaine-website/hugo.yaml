@@ -48,7 +48,7 @@ privacy:
     disable: true
   instagram:
     disable: false
-  twitter:
+  x:
     disable: true
   vimeo:
     disable: true
