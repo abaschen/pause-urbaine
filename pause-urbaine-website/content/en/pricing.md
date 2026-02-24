@@ -1,9 +1,6 @@
 ---
 title: "Pricing"
 description: "Our prices for hair services in Geneva"
-menu:
-  main:
-    weight: 3
 ---
 
 Discover our prices for all our hair and hair care services.

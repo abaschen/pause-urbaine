@@ -1,9 +1,6 @@
 ---
 title: "Services"
 description: "Découvrez nos services de coiffure professionnels à Genève"
-menu:
-  main:
-    weight: 2
 ---
 
 Rien d'autre que vous offrir un « moment magique » personnalisé et adapté à vos exigences, dans une ambiance agréable avec une équipe talentueuse, c'est l'esprit de l'Institut Pause Urbaine.
