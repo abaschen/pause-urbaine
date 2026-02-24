@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="contact-page">
+  <h1>{{ .Title }}</h1>
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  {{- /* Display both locations using location-card partial */ -}}
+  <div class="locations-grid mt-4">
+    {{ range .Site.Data.locations }}
+      {{ partial "location-card.html" (dict "Site" $.Site "name" .name "address" .address "phone" .phone "instagram" .instagram "hours" .hours) }}
+    {{ end }}
+  </div>
+</article>
+{{ end }}
