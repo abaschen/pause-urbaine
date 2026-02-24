@@ -1,0 +1,36 @@
+nav:
+  home: Accueil
+  services: Services
+  pricing: Tarifs
+  contact: Contact
+  news: Actualités
+  main: Navigation principale
+
+footer:
+  follow_us: Suivez-nous
+  opening_hours: Horaires d'ouverture
+  locations: Nos salons
+  copyright: © 2026 Pause Urbaine. Tous droits réservés.
+
+common:
+  read_more: Lire la suite
+  book_now: Prendre rendez-vous
+  phone: Téléphone
+  address: Adresse
+  email: Email
+  
+locations:
+  plainpalais: Plainpalais
+  eauxvives: Eaux-Vives
+
+days:
+  monday: Lundi
+  tuesday: Mardi
+  wednesday: Mercredi
+  thursday: Jeudi
+  friday: Vendredi
+  saturday: Samedi
+  sunday: Dimanche
+  
+status:
+  closed: Fermé

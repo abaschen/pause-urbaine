@@ -1,0 +1,36 @@
+nav:
+  home: Home
+  services: Services
+  pricing: Pricing
+  contact: Contact
+  news: News
+  main: Main navigation
+
+footer:
+  follow_us: Follow us
+  opening_hours: Opening hours
+  locations: Our salons
+  copyright: © 2026 Pause Urbaine. All rights reserved.
+
+common:
+  read_more: Read more
+  book_now: Book now
+  phone: Phone
+  address: Address
+  email: Email
+  
+locations:
+  plainpalais: Plainpalais
+  eauxvives: Eaux-Vives
+
+days:
+  monday: Monday
+  tuesday: Tuesday
+  wednesday: Wednesday
+  thursday: Thursday
+  friday: Friday
+  saturday: Saturday
+  sunday: Sunday
+  
+status:
+  closed: Closed
