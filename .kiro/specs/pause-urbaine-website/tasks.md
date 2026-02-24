@@ -198,43 +198,43 @@
 ## Phase 7: AWS Infrastructure
 
 ### 24. Set Up S3 Bucket
-- [ ] 24.1 Create S3 bucket named "pauseurbaine.com"
-- [ ] 24.2 Enable static website hosting
-- [ ] 24.3 Set index document to index.html
-- [ ] 24.4 Set error document to 404.html
-- [ ] 24.5 Configure bucket policy for public read access
-- [ ] 24.6 Enable versioning (optional)
+- [ ]* 24.1 Create S3 bucket named "pauseurbaine.com"
+- [ ]* 24.2 Enable static website hosting
+- [ ]* 24.3 Set index document to index.html
+- [ ]* 24.4 Set error document to 404.html
+- [ ]* 24.5 Configure bucket policy for public read access
+- [ ]* 24.6 Enable versioning (optional)
 
 ### 25. Configure CloudFront Distribution
-- [ ] 25.1 Create CloudFront distribution
-- [ ] 25.2 Set S3 bucket as origin
-- [ ] 25.3 Configure Origin Access Control (OAC)
-- [ ] 25.4 Set default root object to index.html
-- [ ] 25.5 Enable compression (gzip, brotli)
-- [ ] 25.6 Configure custom error responses (404 → /404.html)
-- [ ] 25.7 Set cache behaviors
-- [ ] 25.8 Configure cache policy (vary on Accept-Language)
+- [ ]* 25.1 Create CloudFront distribution
+- [ ]* 25.2 Set S3 bucket as origin
+- [ ]* 25.3 Configure Origin Access Control (OAC)
+- [ ]* 25.4 Set default root object to index.html
+- [ ]* 25.5 Enable compression (gzip, brotli)
+- [ ]* 25.6 Configure custom error responses (404 → /404.html)
+- [ ]* 25.7 Set cache behaviors
+- [ ]* 25.8 Configure cache policy (vary on Accept-Language)
 
 ### 26. Set Up SSL Certificate
-- [ ] 26.1 Request SSL certificate in AWS Certificate Manager (ACM)
-- [ ] 26.2 Validate domain ownership (DNS or email)
-- [ ] 26.3 Attach certificate to CloudFront distribution
-- [ ] 26.4 Configure HTTPS redirect
+- [ ]* 26.1 Request SSL certificate in AWS Certificate Manager (ACM)
+- [ ]* 26.2 Validate domain ownership (DNS or email)
+- [ ]* 26.3 Attach certificate to CloudFront distribution
+- [ ]* 26.4 Configure HTTPS redirect
 
 ### 27. Deploy CloudFront Function
-- [ ] 27.1 Create CloudFront Function in AWS Console
-- [ ] 27.2 Copy language-redirect.js code
-- [ ] 27.3 Test function in CloudFront console
-- [ ] 27.4 Publish function
-- [ ] 27.5 Associate function with distribution (viewer request)
-- [ ] 27.6 Test language detection with different Accept-Language headers
+- [ ]* 27.1 Create CloudFront Function in AWS Console
+- [ ]* 27.2 Copy language-redirect.js code
+- [ ]* 27.3 Test function in CloudFront console
+- [ ]* 27.4 Publish function
+- [ ]* 27.5 Associate function with distribution (viewer request)
+- [ ]* 27.6 Test language detection with different Accept-Language headers
 
 ### 28. Configure DNS
-- [ ] 28.1 Create/update DNS records for pauseurbaine.com
-- [ ] 28.2 Point A record to CloudFront distribution
-- [ ] 28.3 Add AAAA record for IPv6 (optional)
-- [ ] 28.4 Verify DNS propagation
-- [ ] 28.5 Test site access via custom domain
+- [ ]* 28.1 Create/update DNS records for pauseurbaine.com
+- [ ]* 28.2 Point A record to CloudFront distribution
+- [ ]* 28.3 Add AAAA record for IPv6 (optional)
+- [ ]* 28.4 Verify DNS propagation
+- [ ]* 28.5 Test site access via custom domain
 
 ## Phase 8: GitHub Pages Setup
 
@@ -260,14 +260,14 @@
 - [ ] 31.4 Add npm install step
 - [ ] 31.5 Add Hugo build step (hugo --minify)
 - [ ] 31.6 Add deploy to GitHub Pages step
-- [ ] 31.7 Add deploy to S3 step
-- [ ] 31.8 Add CloudFront invalidation step
-- [ ] 31.9 Configure AWS credentials as secrets
+- [ ]* 31.7 Add deploy to S3 step
+- [ ]* 31.8 Add CloudFront invalidation step
+- [ ]* 31.9 Configure AWS credentials as secrets
 
 ### 32. Configure GitHub Secrets
-- [ ] 32.1 Add AWS_ACCESS_KEY_ID secret
-- [ ] 32.2 Add AWS_SECRET_ACCESS_KEY secret
-- [ ] 32.3 Add CLOUDFRONT_DISTRIBUTION_ID secret
+- [ ]* 32.1 Add AWS_ACCESS_KEY_ID secret
+- [ ]* 32.2 Add AWS_SECRET_ACCESS_KEY secret
+- [ ]* 32.3 Add CLOUDFRONT_DISTRIBUTION_ID secret
 - [ ] 32.4 Test workflow with a commit
 
 ## Phase 10: SEO and Performance
@@ -288,7 +288,7 @@
 - [ ] 34.4 Verify WebP image generation
 - [ ] 34.5 Test lazy loading functionality
 - [ ] 34.6 Verify Font Awesome tree-shaking (check bundle size)
-- [ ] 34.7 Configure CloudFront cache TTLs
+- [ ]* 34.7 Configure CloudFront cache TTLs
 
 ### 35. Implement Accessibility Features
 - [ ] 35.1 Add skip-to-content link
