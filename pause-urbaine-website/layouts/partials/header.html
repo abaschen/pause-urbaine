@@ -1,0 +1,51 @@
+<header class="header">
+  {{- /* Header top with locations */ -}}
+  <div class="header-top">
+    <div class="container">
+      <div class="header-locations">
+        {{ range .Site.Data.locations }}
+        <div class="header-location">
+          <span>{{ index .name $.Site.Language.Lang }}</span>
+          <a href="tel:{{ .phone }}">
+            <i class="fa-solid fa-phone"></i> {{ .phone }}
+          </a>
+          <a href="{{ .instagram }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+        {{ end }}
+      </div>
+      
+      {{ partial "language-switcher.html" . }}
+    </div>
+  </div>
+  
+  {{- /* Header main with logo and navigation */ -}}
+  <div class="header-main">
+    <div class="container">
+      <div class="header-logo">
+        <a href="{{ .Site.Home.Permalink }}">
+          {{- /* TODO: Add logo image when available */ -}}
+          <span style="font-size: 1.5rem; font-weight: bold; color: #8b7355;">Pause Urbaine</span>
+        </a>
+      </div>
+      
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="{{ i18n "menu" }}">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu">
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+          <li>
+            <a href="{{ .URL }}" {{ if $currentPage.IsMenuCurrent "main" . }}class="active"{{ end }}>
+              {{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
