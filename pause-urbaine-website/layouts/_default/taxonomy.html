@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  
+  {{ .Content }}
+  
+  {{ if .Pages }}
+  <section class="page-list">
+    {{ range .Pages }}
+    <article class="card">
+      <h2 class="card-title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ if .Date }}
+      <p class="meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+      </p>
+      {{ end }}
+      <div class="card-content">
+        <p>{{ .Summary }}</p>
+        <a href="{{ .Permalink }}">{{ i18n "common.read_more" }} →</a>
+      </div>
+    </article>
+    {{ end }}
+  </section>
+  {{ end }}
+</article>
+{{ end }}

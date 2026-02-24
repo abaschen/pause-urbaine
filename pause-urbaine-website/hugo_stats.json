@@ -31,6 +31,9 @@
       "active",
       "btn",
       "btn-secondary",
+      "card",
+      "card-content",
+      "card-title",
       "container",
       "content",
       "cta",
@@ -66,6 +69,7 @@
       "nav",
       "nav-menu",
       "nav-toggle",
+      "page-list",
       "text-center",
       "welcome"
     ],
