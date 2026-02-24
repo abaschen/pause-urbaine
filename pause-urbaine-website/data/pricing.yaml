@@ -10,7 +10,7 @@ categories:
       - name:
           fr: "Shampoing + Massage cranien + Coupe «garçon» (homme ou femme) + Séchage"
           en: "Shampoo + head massage + short haircut (man or woman) + drying"
-        price: "38 CHF (court)"
+        price: "38 CHF (short)"
         duration: "XX min"
       - name:
           fr: "Shampoing + Coupe + Brushing (cheveux courts)"
@@ -147,7 +147,7 @@ categories:
       - name:
           fr: "Shampoing + Coupe + Séchage rapide"
           en: "Shampoo + cut + quick dry"
-        price: "60 CHF (courts) / 80 CHF (longs)"
+        price: "60 CHF (short) / 80 CHF (long)"
         duration: "XX min"
       - name:
           fr: "Lissage bio à la kératine (sans formol, courts)"
