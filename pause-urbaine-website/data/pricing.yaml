@@ -1,0 +1,73 @@
+# Pricing data for Pause Urbaine
+# TODO: Fill in actual prices from tarifs-2026.jpeg
+
+categories:
+  - id: coupes
+    name:
+      fr: "Coupes"
+      en: "Haircuts"
+    services:
+      - name:
+          fr: "Coupe femme"
+          en: "Women's haircut"
+        price: "XX CHF"
+        duration: "XX min"
+      - name:
+          fr: "Coupe homme"
+          en: "Men's haircut"
+        price: "XX CHF"
+        duration: "XX min"
+      # Add more services from tarifs-2026.jpeg
+
+  - id: colorations
+    name:
+      fr: "Colorations"
+      en: "Hair coloring"
+    services:
+      - name:
+          fr: "Coloration complète"
+          en: "Full color"
+        price: "XX CHF"
+        duration: "XX min"
+      # Add more services from tarifs-2026.jpeg
+
+  - id: soins
+    name:
+      fr: "Soins"
+      en: "Treatments"
+    services:
+      - name:
+          fr: "Soin capillaire"
+          en: "Hair treatment"
+        price: "XX CHF"
+        duration: "XX min"
+      # Add more services from tarifs-2026.jpeg
+
+  - id: esthetique
+    name:
+      fr: "Esthétique"
+      en: "Beauty treatments"
+    services:
+      - name:
+          fr: "Épilation sourcils"
+          en: "Eyebrow waxing"
+        price: "XX CHF"
+        duration: "XX min"
+      # Add more services from tarifs-2026.jpeg
+
+  - id: ongles
+    name:
+      fr: "Ongles"
+      en: "Nails"
+    services:
+      - name:
+          fr: "Manucure"
+          en: "Manicure"
+        price: "XX CHF"
+        duration: "XX min"
+      # Add more services from tarifs-2026.jpeg
+
+# Notes about pricing
+notes:
+  fr: "Les prix peuvent varier selon la longueur et l'épaisseur des cheveux."
+  en: "Prices may vary depending on hair length and thickness."
