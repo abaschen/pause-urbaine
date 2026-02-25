@@ -12,13 +12,34 @@ locations:
     instagram: "pauseurbaine"
     maps_url: "https://www.google.com/maps/search/?api=1&query=Quai+des+Moulins+12A,+1204+Genève"
     hours:
-      monday: "Fermé"
-      tuesday: "10h - 18h"
-      wednesday: "10h - 18h"
-      thursday: "10h - 18h"
-      friday: "10h - 18h"
-      saturday: "10h - 17h"
-      sunday: "Fermé"
+      - day:
+          fr: "Lundi"
+          en: "Monday"
+        time: "Fermé"
+      - day:
+          fr: "Mardi"
+          en: "Tuesday"
+        time: "10h - 18h"
+      - day:
+          fr: "Mercredi"
+          en: "Wednesday"
+        time: "10h - 18h"
+      - day:
+          fr: "Jeudi"
+          en: "Thursday"
+        time: "10h - 18h"
+      - day:
+          fr: "Vendredi"
+          en: "Friday"
+        time: "10h - 18h"
+      - day:
+          fr: "Samedi"
+          en: "Saturday"
+        time: "10h - 17h"
+      - day:
+          fr: "Dimanche"
+          en: "Sunday"
+        time: "Fermé"
     
   - id: eauxvives
     name:
@@ -33,10 +54,31 @@ locations:
     instagram: "pauseurbaine_eauxvives"
     maps_url: "https://www.google.com/maps/search/?api=1&query=Rue+de+Montchoisy+40,+1207+Genève"
     hours:
-      monday: "Fermé"
-      tuesday: "10h - 18h"
-      wednesday: "10h - 18h"
-      thursday: "10h - 18h"
-      friday: "10h - 18h"
-      saturday: "10h - 17h"
-      sunday: "Fermé"
+      - day:
+          fr: "Lundi"
+          en: "Monday"
+        time: "Fermé"
+      - day:
+          fr: "Mardi"
+          en: "Tuesday"
+        time: "10h - 18h"
+      - day:
+          fr: "Mercredi"
+          en: "Wednesday"
+        time: "10h - 18h"
+      - day:
+          fr: "Jeudi"
+          en: "Thursday"
+        time: "10h - 18h"
+      - day:
+          fr: "Vendredi"
+          en: "Friday"
+        time: "10h - 18h"
+      - day:
+          fr: "Samedi"
+          en: "Saturday"
+        time: "10h - 17h"
+      - day:
+          fr: "Dimanche"
+          en: "Sunday"
+        time: "Fermé"

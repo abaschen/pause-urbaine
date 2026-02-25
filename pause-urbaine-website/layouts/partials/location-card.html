@@ -48,10 +48,10 @@
       </p>
       <table class="location-card__hours-table">
         <tbody>
-          {{ range $day, $hours := $location.hours }}
+          {{ range $location.hours }}
           <tr>
-            <td class="location-card__day">{{ i18n (printf "days.%s" $day) }}:</td>
-            <td class="location-card__time">{{ $hours }}</td>
+            <td class="location-card__day">{{ index .day $lang }}:</td>
+            <td class="location-card__time">{{ .time }}</td>
           </tr>
           {{ end }}
         </tbody>
