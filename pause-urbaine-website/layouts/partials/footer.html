@@ -1,44 +1,99 @@
-<footer class="footer">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-content">
-      {{- /* Location information */ -}}
-      {{ range .Site.Data.locations.locations }}
-      <div class="footer-section">
-        <h3>{{ if .name }}{{ index .name $.Site.Language.Lang }}{{ end }}</h3>
-        {{ if .address }}
-        <p>
-          <i class="fa-solid fa-location-dot"></i>
-          {{ .address.street }}, {{ .address.postal }} {{ .address.city }}
-        </p>
-        {{ end }}
-        {{ if .phone }}
-        <p>
-          <i class="fa-solid fa-phone"></i>
-          <a href="tel:{{ .phone }}">{{ .phone }}</a>
-        </p>
-        {{ end }}
-        {{ if .instagram }}
-        <p>
-          <i class="fa-brands fa-instagram"></i>
-          <a href="{{ .instagram }}" target="_blank" rel="noopener">Instagram</a>
-        </p>
-        {{ end }}
-        {{ if .hours }}
-        <div class="footer-hours">
-          <p><i class="fa-solid fa-clock"></i> {{ i18n "common.hours" }}:</p>
-          <ul>
-            {{ range $day, $time := .hours }}
-            <li>{{ $day | humanize }}: {{ $time }}</li>
-            {{ end }}
-          </ul>
+      {{- /* Locations section */ -}}
+      <div class="footer-locations">
+        <h3>{{ i18n "footer.locations" }}</h3>
+        <div class="locations-grid">
+          {{ range .Site.Data.locations.locations }}
+          <div class="footer-location">
+            <h4>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              {{ index .name $.Site.Language.Lang }}
+            </h4>
+            
+            <div class="location-details">
+              <p class="address">
+                <i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i>
+                {{ .address.street }}<br>
+                {{ .address.postal }} {{ .address.city }}<br>
+                {{ .address.country }}
+              </p>
+              
+              <p class="contact-info">
+                <a href="tel:{{ .phone }}" aria-label="{{ i18n "common.phone" }} {{ index .name $.Site.Language.Lang }}">
+                  <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                  {{ .phone }}
+                </a>
+              </p>
+              
+              <p class="social-link">
+                <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
+                   target="_blank" 
+                   rel="noopener"
+                   aria-label="Instagram {{ index .name $.Site.Language.Lang }}">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                  {{ .instagram }}
+                </a>
+              </p>
+              
+              <div class="hours-summary">
+                <p class="hours-title">
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                  <strong>{{ i18n "footer.opening_hours" }}</strong>
+                </p>
+                <ul class="hours-list">
+                  {{ range $day, $hours := .hours }}
+                  <li>
+                    <span class="day">{{ i18n (printf "days.%s" $day) }}:</span>
+                    <span class="time">{{ $hours }}</span>
+                  </li>
+                  {{ end }}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {{ end }}
         </div>
-        {{ end }}
       </div>
-      {{ end }}
+      
+      {{- /* Quick links section */ -}}
+      <div class="footer-links">
+        <h3>{{ i18n "nav.main" }}</h3>
+        <nav aria-label="{{ i18n "nav.main" }}">
+          <ul>
+            <li><a href="{{ .Site.Home.Permalink }}">{{ i18n "nav.home" }}</a></li>
+            <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
+            <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
+            <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
+            <li><a href="{{ "actualites" | relLangURL }}">{{ i18n "nav.news" }}</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      {{- /* Social media section */ -}}
+      <div class="footer-social">
+        <h3>{{ i18n "footer.follow_us" }}</h3>
+        <div class="social-links">
+          {{ range .Site.Data.locations.locations }}
+          <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
+             class="social-link-item"
+             target="_blank" 
+             rel="noopener"
+             aria-label="Instagram {{ index .name $.Site.Language.Lang }}">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <span>{{ index .name $.Site.Language.Lang }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </div>
     </div>
     
-    <div class="footer-copyright">
-      <p>&copy; {{ now.Year }} Pause Urbaine. {{ i18n "footer.copyright" }}</p>
+    {{- /* Copyright section */ -}}
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ now.Year }} {{ .Site.Title }}. {{ i18n "footer.copyright" }}
+      </p>
     </div>
   </div>
 </footer>
