@@ -10,7 +10,7 @@
     {{- /* Display pricing from data file */ -}}
     {{ range site.Data.pricing.categories }}
     {{ if .services }}
-    <section class="pricing-category">
+    <section class="pricing-category" id="{{ .id }}">
       <h2>{{ index .name site.Language.Lang }}</h2>
       
       <div class="pricing-services">
