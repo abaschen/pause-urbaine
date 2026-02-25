@@ -126,7 +126,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Ensure responsive layout (stack on mobile)
   - _Requirements: 3.7_
 
-- [~] 13. Create location card partial
+- [x] 13. Create location card partial
   - Create layouts/partials/location-card.html
   - Accept location data as parameter
   - Display location name with fa-location-dot icon

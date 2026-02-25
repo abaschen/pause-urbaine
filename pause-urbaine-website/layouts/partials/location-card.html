@@ -1,50 +1,59 @@
-{{- /* Location card partial - pass location data as context */ -}}
+{{- /* Location card partial - displays detailed location information */ -}}
+{{- $location := . -}}
+{{- $lang := $.Site.Language.Lang -}}
+
 <div class="location-card">
-  {{ if .name }}
-  <h3 class="location-card-name">
-    <i class="fa-solid fa-location-dot"></i>
-    {{ index .name .Site.Language.Lang }}
+  <h3 class="location-card__title">
+    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+    {{ index $location.name $lang }}
   </h3>
-  {{ end }}
   
-  <div class="location-card-info">
-    {{ if .address }}
-    <div class="location-card-item">
-      <i class="fa-solid fa-location-dot"></i>
-      <span>
-        {{ .address.street }}<br>
-        {{ .address.postal }} {{ .address.city }}<br>
-        {{ .address.country }}
-      </span>
+  <div class="location-card__info">
+    {{- /* Address section */ -}}
+    <div class="location-card__address">
+      <p>
+        <i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i>
+        <span class="sr-only">{{ i18n "common.address" }}:</span>
+        {{ $location.address.street }}<br>
+        {{ $location.address.postal }} {{ $location.address.city }}<br>
+        {{ $location.address.country }}
+      </p>
     </div>
-    {{ end }}
     
-    {{ if .phone }}
-    <div class="location-card-item">
-      <i class="fa-solid fa-phone"></i>
-      <a href="tel:{{ .phone }}">{{ .phone }}</a>
+    {{- /* Contact section */ -}}
+    <div class="location-card__contact">
+      <p>
+        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        <span class="sr-only">{{ i18n "common.phone" }}:</span>
+        <a href="tel:{{ $location.phone }}">{{ $location.phone }}</a>
+      </p>
+      <p>
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        <span class="sr-only">{{ i18n "common.instagram" }}:</span>
+        <a href="https://instagram.com/{{ strings.TrimPrefix "@" $location.instagram }}" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          {{ $location.instagram }}
+        </a>
+      </p>
     </div>
-    {{ end }}
     
-    {{ if .instagram }}
-    <div class="location-card-item">
-      <i class="fa-brands fa-instagram"></i>
-      <a href="{{ .instagram }}" target="_blank" rel="noopener">Instagram</a>
-    </div>
-    {{ end }}
-    
-    {{ if .hours }}
-    <div class="location-card-hours">
-      <div class="location-card-item">
-        <i class="fa-solid fa-clock"></i>
-        <div>
-          <strong>{{ i18n "common.hours" }}:</strong>
-          {{ range $day, $time := .hours }}
-          <div>{{ $day | humanize }}: {{ $time }}</div>
+    {{- /* Opening hours section */ -}}
+    <div class="location-card__hours">
+      <p class="location-card__hours-title">
+        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        <strong>{{ i18n "footer.opening_hours" }}</strong>
+      </p>
+      <table class="location-card__hours-table">
+        <tbody>
+          {{ range $day, $hours := $location.hours }}
+          <tr>
+            <td class="location-card__day">{{ i18n (printf "days.%s" $day) }}:</td>
+            <td class="location-card__time">{{ $hours }}</td>
+          </tr>
           {{ end }}
-        </div>
-      </div>
+        </tbody>
+      </table>
     </div>
-    {{ end }}
   </div>
 </div>
