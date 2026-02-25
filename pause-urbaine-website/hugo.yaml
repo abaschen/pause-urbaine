@@ -1,7 +1,6 @@
 baseURL: https://pauseurbaine.com/
 languageCode: fr-FR
 title: Pause Urbaine
-theme: ""
 
 # Multilingual configuration
 defaultContentLanguage: fr
