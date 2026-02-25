@@ -142,23 +142,37 @@
 // Language switcher
 .language-switcher {
   display: flex;
+  align-items: center;
   gap: $spacing-xs;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
   a {
     padding: $spacing-xs $spacing-sm;
     color: $text-color;
     text-decoration: none;
     border-radius: 4px;
-    transition: background $transition-speed;
+    transition: all $transition-speed;
+    font-weight: 500;
 
     &:hover {
       background: rgba($primary-color, 0.1);
+      color: $primary-color;
     }
+  }
 
-    &.active {
-      background: $primary-color;
-      color: $background;
-    }
+  .lang-active {
+    padding: $spacing-xs $spacing-sm;
+    font-weight: 700;
+    color: $primary-color;
+    background: rgba($primary-color, 0.15);
+    border-radius: 4px;
+  }
+
+  .lang-separator {
+    color: $text-light;
+    user-select: none;
   }
 }
 

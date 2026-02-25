@@ -106,7 +106,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Implement sticky header with box-shadow
   - _Requirements: 3.5, 3.7_
 
-- [~] 11. Create language switcher partial
+- [x] 11. Create language switcher partial
   - Create layouts/partials/language-switcher.html
   - Loop through .Site.Languages
   - Highlight active language with .lang-active class

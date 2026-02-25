@@ -1,9 +1,31 @@
+{{- /* Language switcher partial */ -}}
 <div class="language-switcher">
-  {{ range $.Site.Home.AllTranslations }}
-  <a href="{{ .Permalink }}" 
-     lang="{{ .Lang }}"
-     {{ if eq $.Lang .Lang }}class="active"{{ end }}>
-    {{ .Language.LanguageName }}
-  </a>
-  {{ end }}
+  {{- $lastIndex := sub (len .Site.Languages) 1 -}}
+  {{- range $index, $lang := .Site.Languages -}}
+    {{- if eq $lang $.Language -}}
+      {{- /* Active language - display as span with .lang-active class */ -}}
+      <span class="lang-active" aria-current="page">{{ $lang.LanguageName }}</span>
+    {{- else -}}
+      {{- /* Check if current page is translated */ -}}
+      {{- if $.IsTranslated -}}
+        {{- /* Link to translated version of current page */ -}}
+        {{- range $.Translations -}}
+          {{- if eq .Language $lang -}}
+            <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">
+              {{ .Language.LanguageName }}
+            </a>
+          {{- end -}}
+        {{- end -}}
+      {{- else -}}
+        {{- /* Page not translated - link to language home */ -}}
+        <a href="{{ $lang.Lang | relLangURL }}" lang="{{ $lang.Lang }}" hreflang="{{ $lang.Lang }}">
+          {{ $lang.LanguageName }}
+        </a>
+      {{- end -}}
+    {{- end -}}
+    {{- /* Add separator between languages (not after last one) */ -}}
+    {{- if ne $index $lastIndex -}}
+      <span class="lang-separator" aria-hidden="true">|</span>
+    {{- end -}}
+  {{- end -}}
 </div>
