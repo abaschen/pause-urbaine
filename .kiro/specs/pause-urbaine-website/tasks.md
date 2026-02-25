@@ -116,7 +116,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Style as inline list with separator
   - _Requirements: 3.6_
 
-- [~] 12. Create footer partial
+- [x] 12. Create footer partial
   - Create layouts/partials/footer.html
   - Display both locations with contact information
   - Add social media links (Instagram for each location)
