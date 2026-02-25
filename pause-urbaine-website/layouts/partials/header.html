@@ -35,13 +35,13 @@
             <i class="fa-solid fa-phone" aria-hidden="true"></i>
             {{ .phone }}
           </a>
-          <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
+          <a href="{{ .instagram }}" 
              class="instagram-link" 
              target="_blank" 
              rel="noopener"
              aria-label="Instagram {{ index .name site.Language.Lang }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            {{ strings.TrimPrefix "@" .instagram }}
+            Instagram
           </a>
         </div>
         {{ end }}
