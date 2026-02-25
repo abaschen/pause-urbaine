@@ -151,7 +151,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Ensure responsive layout (stack sections on mobile)
   - _Requirements: 3.1_
 
-- [~] 15. Create services page template
+- [x] 15. Create services page template
   - Create content/fr/services/_index.md and content/en/services/_index.md
   - Use layouts/_default/single.html or create layouts/services/single.html
   - Display page title and description
@@ -161,7 +161,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include call-to-action for booking
   - _Requirements: 3.3_
 
-- [~] 16. Create pricing page template
+- [x] 16. Create pricing page template
   - Create content/fr/tarifs/_index.md and content/en/pricing/_index.md
   - Create layouts/pricing/single.html or use _default/single.html
   - Loop through .Site.Data.pricing.categories
@@ -172,7 +172,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include contact information for bookings
   - _Requirements: 3.4_
 
-- [~] 17. Create contact page template
+- [x] 17. Create contact page template
   - Create content/fr/contact/_index.md and content/en/contact/_index.md
   - Create layouts/contact/single.html or use _default/single.html
   - Display both locations using location-card partial
