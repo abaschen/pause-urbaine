@@ -28,12 +28,12 @@
               </p>
               
               <p class="social-link">
-                <a href="{{ .instagram }}" 
+                <a href="https://www.instagram.com/{{ .instagram }}" 
                    target="_blank" 
                    rel="noopener"
                    aria-label="Instagram {{ index .name site.Language.Lang }}">
                   <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                  Instagram
+                  {{ .instagram }}
                 </a>
               </p>
               
@@ -43,10 +43,10 @@
                   <strong>{{ i18n "footer.opening_hours" }}</strong>
                 </p>
                 <ul class="hours-list">
-                  {{ range $day, $hours := .hours }}
+                  {{ range .hours }}
                   <li>
-                    <span class="day">{{ i18n (printf "days.%s" $day) }}:</span>
-                    <span class="time">{{ $hours }}</span>
+                    <span class="day">{{ index .day site.Language.Lang }}:</span>
+                    <span class="time">{{ .time }}</span>
                   </li>
                   {{ end }}
                 </ul>
