@@ -29,11 +29,10 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Ensure consistency between language files
   - _Requirements: 3.6, 4.1_
 
-
 - [x] 4. Create location data structure
   - Create data/locations.yaml with array of location objects
-  - Add Plainpalais location: address, phone (+41 22 XXX XX XX), Instagram handle, opening hours
-  - Add Eaux-Vives location: address, phone (+41 22 YYY YY YY), Instagram handle, opening hours
+  - Add Plainpalais location: address, phone, Instagram handle, opening hours
+  - Add Eaux-Vives location: address, phone, Instagram handle, opening hours
   - Include bilingual name fields (fr/en) for each location
   - Structure hours as key-value pairs (monday: "Fermé", tuesday: "9h00 - 19h00", etc.)
   - _Requirements: 3.5_
@@ -56,7 +55,6 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Create English translations for homepage, services, pricing, and contact pages
   - _Requirements: 5.1, 3.2_
 
-
 - [x] 7. Create SCSS architecture and styling
   - Create assets/scss/_variables.scss (colors, typography, breakpoints, spacing)
   - Define color palette (primary: #2c3e50, secondary: #e8b4b8, accent: #d4a5a5)
@@ -77,7 +75,6 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Generate WebP versions of all images using Hugo image processing
   - Create responsive image srcsets for different screen sizes
   - _Requirements: 4.3, 5.1_
-
 
 - [x] 9. Create base template with SEO and multilingual support
   - Create layouts/_default/baseof.html
@@ -138,7 +135,6 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Style as card with border and padding
   - _Requirements: 3.5_
 
-
 - [x] 14. Create homepage template
   - Create layouts/index.html extending baseof.html
   - Add hero section with background image and welcome text
@@ -153,7 +149,7 @@ This implementation plan covers the development of a bilingual (French/English) 
 
 - [x] 15. Create services page template
   - Create content/fr/services/_index.md and content/en/services/_index.md
-  - Use layouts/_default/single.html or create layouts/services/single.html
+  - Create layouts/services/single.html
   - Display page title and description
   - Render markdown content with service descriptions
   - Organize services by categories if needed
@@ -163,7 +159,7 @@ This implementation plan covers the development of a bilingual (French/English) 
 
 - [x] 16. Create pricing page template
   - Create content/fr/tarifs/_index.md and content/en/pricing/_index.md
-  - Create layouts/pricing/single.html or use _default/single.html
+  - Create layouts/tarifs/single.html
   - Loop through .Site.Data.pricing.categories
   - Display category name (index .name $.Site.Language.Lang)
   - For each service in category: display name, price, duration
@@ -174,25 +170,25 @@ This implementation plan covers the development of a bilingual (French/English) 
 
 - [x] 17. Create contact page template
   - Create content/fr/contact/_index.md and content/en/contact/_index.md
-  - Create layouts/contact/single.html or use _default/single.html
+  - Create layouts/contact/single.html
   - Display both locations using location-card partial
   - Add Google Maps embed for each location (optional)
   - Include contact form or link to external booking system (optional)
   - Display opening hours prominently
   - _Requirements: 3.5_
 
-- [~] 18. Create news/blog templates
-  - Create layouts/actualites/list.html for blog listing page
+- [x] 18. Create news/blog templates
+  - Create layouts/_default/list.html for blog listing page
   - Display list of articles with title, date, excerpt
   - Add pagination if more than 10 articles
-  - Create layouts/actualites/single.html for individual posts
+  - Create layouts/_default/single.html for individual posts
   - Display post title, publication date, featured image
   - Render full markdown content
   - Add "Back to news" link
   - Include social sharing buttons (optional)
   - _Requirements: 3.1, 3.2_
 
-- [~] 19. Create 404 error page
+- [x] 19. Create 404 error page
   - Create layouts/404.html
   - Add friendly error message in both languages
   - Detect current language from URL path
@@ -201,8 +197,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Style consistently with site design
   - _Requirements: 4.2_
 
-
-- [~] 20. Implement mobile menu functionality
+- [x] 20. Implement mobile menu functionality
   - Create assets/js/main.js
   - Add DOMContentLoaded event listener
   - Select mobile menu toggle button and main nav elements
@@ -214,7 +209,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Add click-outside-to-close functionality
   - _Requirements: 3.7_
 
-- [~] 21. Implement lazy loading for images
+- [x] 21. Implement lazy loading for images
   - In assets/js/main.js, add IntersectionObserver
   - Select all images with data-src attribute
   - Observe each image for viewport intersection
@@ -224,8 +219,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Update image templates to use data-src for below-fold images
   - _Requirements: 4.3_
 
-
-- [~] 22. Create CloudFront Function for language detection
+- [x] 22. Create CloudFront Function for language detection
   - Create functions/language-redirect.js
   - Implement handler function that receives event with request object
   - Check if request.uri is root path ('/' or '')
@@ -238,8 +232,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test function logic with sample Accept-Language values
   - _Requirements: 3.6, 4.2_
 
-
-- [ ]* 23. Configure AWS S3 bucket for static hosting
+- [ ] 23. Configure AWS S3 bucket for static hosting
   - Create S3 bucket named "pauseurbaine.com"
   - Enable static website hosting in bucket properties
   - Set index document to "index.html"
@@ -249,7 +242,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Configure CORS if needed for fonts/assets
   - _Requirements: 4.2_
 
-- [ ]* 24. Set up CloudFront distribution
+- [ ] 24. Set up CloudFront distribution
   - Create new CloudFront distribution in AWS Console
   - Set S3 bucket as origin
   - Configure Origin Access Control (OAC) for secure S3 access
@@ -261,7 +254,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Enable HTTP/2 and HTTP/3 support
   - _Requirements: 4.2, 4.3_
 
-- [ ]* 25. Configure SSL certificate and custom domain
+- [ ] 25. Configure SSL certificate and custom domain
   - Request SSL certificate in AWS Certificate Manager (ACM) in us-east-1 region
   - Add domain validation records to DNS
   - Wait for certificate validation to complete
@@ -270,7 +263,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Enable "Redirect HTTP to HTTPS" in CloudFront
   - _Requirements: 4.2_
 
-- [ ]* 26. Deploy CloudFront Function for language detection
+- [ ] 26. Deploy CloudFront Function for language detection
   - Open CloudFront Functions in AWS Console
   - Create new function named "language-redirect"
   - Copy code from functions/language-redirect.js
@@ -280,7 +273,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test language detection with curl commands using different Accept-Language headers
   - _Requirements: 3.6, 4.2_
 
-- [ ]* 27. Configure DNS for custom domain
+- [ ] 27. Configure DNS for custom domain
   - Access DNS provider for pauseurbaine.com
   - Create A record (or ALIAS if Route 53) pointing to CloudFront distribution
   - Create AAAA record for IPv6 support (optional)
@@ -288,7 +281,6 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Verify site is accessible via custom domain
   - Test HTTPS certificate is working correctly
   - _Requirements: 4.2_
-
 
 - [x] 28. Configure GitHub Pages for development environment
   - Create gh-pages branch in repository
@@ -306,19 +298,18 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test redirect works on GitHub Pages
   - _Requirements: 3.6, 4.2_
 
-
 - [x] 30. Create GitHub Actions workflow for automated deployment
   - Create .github/workflows/deploy.yml
   - Configure workflow to trigger on push to main branch
   - Add manual workflow_dispatch trigger
   - Add checkout step with submodules and full fetch-depth
-  - Add Hugo setup step using peaceiris/actions-hugo@v2 (extended: true)
-  - Add npm install step for Font Awesome dependencies
+  - Add Hugo setup step (extended: true)
+  - Add pnpm setup and install step for Font Awesome dependencies
   - Add Hugo build step with --minify flag
-  - Add deploy to GitHub Pages step using peaceiris/actions-gh-pages@v3
+  - Add deploy to GitHub Pages step using actions/deploy-pages@v4
   - _Requirements: 4.2_
 
-- [ ]* 31. Add AWS deployment to GitHub Actions workflow
+- [ ] 31. Add AWS deployment to GitHub Actions workflow
   - Add AWS S3 sync step to deploy.yml
   - Sync ./public directory to s3://pauseurbaine.com with --delete flag
   - Add CloudFront cache invalidation step
@@ -327,14 +318,13 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Set AWS_REGION environment variable (eu-west-1 or appropriate region)
   - _Requirements: 4.2_
 
-- [ ]* 32. Configure GitHub repository secrets for AWS
+- [ ] 32. Configure GitHub repository secrets for AWS
   - Add AWS_ACCESS_KEY_ID secret in repository settings
   - Add AWS_SECRET_ACCESS_KEY secret
   - Add CLOUDFRONT_DISTRIBUTION_ID secret
   - Test workflow by pushing a commit
   - Verify deployment to both GitHub Pages and S3
   - _Requirements: 4.2_
-
 
 - [x] 33. Implement SEO best practices
   - Create static/robots.txt allowing all user-agents
@@ -347,7 +337,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Add Open Graph images for social sharing
   - _Requirements: 4.4_
 
-- [~] 34. Optimize site performance
+- [x] 34. Optimize site performance
   - Enable Hugo minification with --minify flag in build
   - Fingerprint all assets for cache busting
   - Implement critical CSS inlining for above-the-fold content (optional)
@@ -356,7 +346,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Verify Font Awesome bundle size is ~20KB (tree-shaking working)
   - _Requirements: 4.3_
 
-- [ ]* 35. Configure CloudFront cache policies
+- [ ] 35. Configure CloudFront cache policies
   - Set HTML files cache TTL to 1 hour with revalidation
   - Set fingerprinted assets (CSS/JS) cache TTL to 1 year
   - Set images cache TTL to 1 month
@@ -365,7 +355,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Monitor cache hit ratio in CloudWatch
   - _Requirements: 4.3_
 
-- [~] 36. Implement accessibility features
+- [x] 36. Implement accessibility features
   - Add skip-to-content link at top of page
   - Verify all images have descriptive alt text
   - Ensure proper heading hierarchy (h1 → h2 → h3)
@@ -375,8 +365,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test with screen reader (NVDA, JAWS, or VoiceOver)
   - _Requirements: 4.5_
 
-
-- [ ]* 37. Perform cross-browser testing
+- [ ] 37. Perform cross-browser testing
   - Test on Chrome (latest version) - desktop and mobile
   - Test on Firefox (latest version) - desktop and mobile
   - Test on Safari (latest version) - desktop and iOS
@@ -385,7 +374,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Document any browser-specific issues
   - _Requirements: 3.1, 4.3_
 
-- [ ]* 38. Perform responsive design testing
+- [ ] 38. Perform responsive design testing
   - Test on mobile devices (320px - 480px width)
   - Test on tablets (768px - 1024px width)
   - Test on desktop (1024px - 1920px width)
@@ -395,7 +384,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Verify location info is accessible on all screen sizes
   - _Requirements: 3.1, 3.5_
 
-- [ ]* 39. Test multilingual functionality
+- [ ] 39. Test multilingual functionality
   - Test language switching on all pages
   - Verify language preference is maintained during navigation
   - Test CloudFront language detection with different Accept-Language headers
@@ -407,7 +396,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test 404 page in both languages
   - _Requirements: 3.6, 3.7_
 
-- [ ]* 40. Perform performance testing
+- [ ] 40. Perform performance testing
   - Run Lighthouse audit on multiple pages (target score > 90 all categories)
   - Test with WebPageTest from multiple locations
   - Verify Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
@@ -417,7 +406,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test CloudFront cache hit ratio in CloudWatch
   - _Requirements: 4.3_
 
-- [ ]* 41. Validate SEO implementation
+- [ ] 41. Validate SEO implementation
   - Verify sitemap.xml is accessible at /sitemap.xml
   - Test robots.txt at /robots.txt
   - Verify hreflang tags with Google Search Console
@@ -428,11 +417,10 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Test that both language versions are indexed separately
   - _Requirements: 4.4_
 
-
 - [x] 42. Create user documentation for content management
   - Write README.md with project overview and purpose
   - Document local development setup (Hugo installation, npm install, hugo server)
-  - Create CONTENT_GUIDE.md in French for site owner
+  - Create GESTION-CONTENU.md in French for site owner
   - Document how to add new articles (create .md file, add frontmatter, write content)
   - Document how to update pricing (edit data/pricing.yaml)
   - Document how to update location information (edit data/locations.yaml)
@@ -450,7 +438,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Add code examples and best practices
   - _Requirements: 4.1_
 
-- [ ]* 44. Document deployment and AWS infrastructure
+- [ ] 44. Document deployment and AWS infrastructure
   - Document GitHub Actions workflow configuration
   - Document AWS S3 bucket setup steps
   - Document CloudFront distribution configuration
@@ -461,7 +449,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include estimated monthly costs breakdown
   - _Requirements: 4.2_
 
-- [ ]* 45. Final review and launch preparation
+- [ ] 45. Final review and launch preparation
   - Review all content for accuracy and completeness
   - Verify all French and English translations are complete
   - Test all functionality one final time (checklist)
@@ -471,7 +459,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Prepare rollback plan in case of issues
   - _Requirements: All_
 
-- [ ]* 46. Launch and post-launch monitoring
+- [ ] 46. Launch and post-launch monitoring
   - Update DNS records to point to CloudFront distribution
   - Monitor site for first 24 hours after launch
   - Check CloudWatch metrics for errors
@@ -484,10 +472,13 @@ This implementation plan covers the development of a bilingual (French/English) 
 
 ## Notes
 
-- Tasks marked with `*` are optional or require AWS/production access
-- Tasks marked with `[x]` are already completed
+- Tasks marked with `[x]` are completed
+- Tasks marked with `[~]` are in progress
+- Tasks marked with `[ ]` are not yet started
 - Each task references specific requirements for traceability
 - Focus on completing core functionality before optional enhancements
 - Test thoroughly on GitHub Pages before deploying to AWS production
 - CloudFront Functions are included in CloudFront pricing (no additional Lambda costs)
 - Estimated AWS costs: $1.50-2.00/month for typical traffic
+- Video files are excluded from GitHub Pages deployment to save space
+- Videos should be hosted on S3 for production environment

@@ -5,11 +5,11 @@
       <div class="footer-locations">
         <h3>{{ i18n "footer.locations" }}</h3>
         <div class="locations-grid">
-          {{ range .Site.Data.locations.locations }}
+          {{ range site.Data.locations.locations }}
           <div class="footer-location">
             <h4>
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              {{ index .name $.Site.Language.Lang }}
+              {{ index .name site.Language.Lang }}
             </h4>
             
             <div class="location-details">
@@ -21,7 +21,7 @@
               </p>
               
               <p class="contact-info">
-                <a href="tel:{{ .phone }}" aria-label="{{ i18n "common.phone" }} {{ index .name $.Site.Language.Lang }}">
+                <a href="tel:{{ .phone }}" aria-label="{{ i18n "common.phone" }} {{ index .name site.Language.Lang }}">
                   <i class="fa-solid fa-phone" aria-hidden="true"></i>
                   {{ .phone }}
                 </a>
@@ -31,7 +31,7 @@
                 <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
                    target="_blank" 
                    rel="noopener"
-                   aria-label="Instagram {{ index .name $.Site.Language.Lang }}">
+                   aria-label="Instagram {{ index .name site.Language.Lang }}">
                   <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                   {{ .instagram }}
                 </a>
@@ -62,7 +62,7 @@
         <h3>{{ i18n "nav.main" }}</h3>
         <nav aria-label="{{ i18n "nav.main" }}">
           <ul>
-            <li><a href="{{ .Site.Home.Permalink }}">{{ i18n "nav.home" }}</a></li>
+            <li><a href="{{ site.Home.Permalink }}">{{ i18n "nav.home" }}</a></li>
             <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
             <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
             <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
@@ -75,14 +75,14 @@
       <div class="footer-social">
         <h3>{{ i18n "footer.follow_us" }}</h3>
         <div class="social-links">
-          {{ range .Site.Data.locations.locations }}
+          {{ range site.Data.locations.locations }}
           <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
              class="social-link-item"
              target="_blank" 
              rel="noopener"
-             aria-label="Instagram {{ index .name $.Site.Language.Lang }}">
+             aria-label="Instagram {{ index .name site.Language.Lang }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            <span>{{ index .name $.Site.Language.Lang }}</span>
+            <span>{{ index .name site.Language.Lang }}</span>
           </a>
           {{ end }}
         </div>
@@ -92,7 +92,7 @@
     {{- /* Copyright section */ -}}
     <div class="footer-bottom">
       <p class="copyright">
-        &copy; {{ now.Year }} {{ .Site.Title }}. {{ i18n "footer.copyright" }}
+        &copy; {{ now.Year }} {{ site.Title }}. {{ i18n "footer.copyright" }}
       </p>
     </div>
   </div>

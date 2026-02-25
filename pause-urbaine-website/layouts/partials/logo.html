@@ -13,7 +13,7 @@
     <source type="image/webp" srcset="{{ $logoResized.RelPermalink }}">
     <img 
       src="{{ $logoFallback.RelPermalink }}" 
-      alt="{{ .Site.Title }}"
+      alt="{{ site.Title }}"
       width="{{ $logoFallback.Width }}"
       height="{{ $logoFallback.Height }}"
       class="site-logo">
@@ -22,6 +22,6 @@
   {{/* Fallback to static logo */}}
   <img 
     src="{{ "images/logo.jpg" | relURL }}" 
-    alt="{{ .Site.Title }}"
+    alt="{{ site.Title }}"
     class="site-logo">
 {{ end }}

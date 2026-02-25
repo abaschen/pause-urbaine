@@ -1,7 +1,7 @@
 {{- /* Language switcher partial */ -}}
 <div class="language-switcher">
-  {{- $lastIndex := sub (len .Site.Languages) 1 -}}
-  {{- range $index, $lang := .Site.Languages -}}
+  {{- $lastIndex := sub (len site.Languages) 1 -}}
+  {{- range $index, $lang := site.Languages -}}
     {{- if eq $lang $.Language -}}
       {{- /* Active language - display as span with .lang-active class */ -}}
       <span class="lang-active" aria-current="page">{{ $lang.LanguageName }}</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   
   {{- /* Canonical URL */ -}}
   <link rel="canonical" href="{{ .Permalink }}">
@@ -12,17 +12,17 @@
   {{ range .Translations }}
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
   {{ end }}
-  <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.BaseURL }}">
   
   {{- /* Open Graph meta tags */ -}}
   <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:site_name" content="{{ site.Title }}">
   <meta property="og:locale" content="{{ .Language.Lang }}">
   
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <title>{{ .Title }} | {{ site.Title }}</title>
   
   {{- /* Structured Data - LocalBusiness */ -}}
   {{ if .IsHome }}
@@ -31,13 +31,13 @@
     "@context": "https://schema.org",
     "@type": "HairSalon",
     "name": "Pause Urbaine",
-    "url": "{{ .Site.BaseURL }}",
-    "logo": "{{ .Site.BaseURL }}images/logo.png",
-    "description": "{{ .Site.Params.description }}",
+    "url": "{{ site.BaseURL }}",
+    "logo": "{{ site.BaseURL }}images/logo.png",
+    "description": "{{ site.Params.description }}",
     "telephone": "022 310 4081",
     "priceRange": "$$",
     "location": [
-      {{ range $index, $location := .Site.Data.locations.locations }}
+      {{ range $index, $location := site.Data.locations.locations }}
       {{ if $index }},{{ end }}
       {
         "@type": "Place",

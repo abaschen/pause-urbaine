@@ -1,7 +1,6 @@
 ---
 title: "Contact"
 description: "Contactez Pause Urbaine pour prendre rendez-vous. Deux salons à Genève: Plainpalais et Eaux-Vives."
-menu: main
 weight: 4
 ---
 

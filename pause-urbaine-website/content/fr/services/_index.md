@@ -1,7 +1,6 @@
 ---
 title: "Services"
 description: "Découvrez nos services de coiffure professionnels: coupes, colorations, mèches, soins capillaires et coiffures pour occasions spéciales."
-menu: main
 weight: 2
 ---
 

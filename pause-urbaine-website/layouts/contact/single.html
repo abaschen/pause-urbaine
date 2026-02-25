@@ -13,8 +13,8 @@
   
   {{- /* Display both locations using location-card partial */ -}}
   <div class="locations-grid">
-    {{ range .Site.Data.locations.locations }}
-      {{ partial "location-card.html" (dict "Site" $.Site "location" .) }}
+    {{ range site.Data.locations.locations }}
+      {{ partial "location-card.html" (dict "Site" site "location" .) }}
     {{ end }}
   </div>
 </article>

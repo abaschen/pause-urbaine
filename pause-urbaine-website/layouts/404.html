@@ -5,13 +5,13 @@
   <p>{{ i18n "error.pageNotFoundMessage" }}</p>
   
   <div class="mt-4">
-    <a href="{{ .Site.Home.Permalink }}" class="btn">{{ i18n "error.backToHome" }}</a>
+    <a href="{{ site.Home.Permalink }}" class="btn">{{ i18n "error.backToHome" }}</a>
   </div>
   
   <div class="mt-4">
     <h3>{{ i18n "error.quickLinks" }}</h3>
     <ul style="list-style: none; padding: 0;">
-      {{ range .Site.Menus.main }}
+      {{ range site.Menus.main }}
       <li style="margin: 0.5rem 0;">
         <a href="{{ .URL }}">{{ .Name }}</a>
       </li>

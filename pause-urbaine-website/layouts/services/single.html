@@ -16,10 +16,10 @@
       <div class="services-cta">
         <div class="cta-card">
           <h2>{{ i18n "common.book_now" }}</h2>
-          <p>{{ if eq .Site.Language.Lang "fr" }}Contactez-nous pour prendre rendez-vous dans l'un de nos salons.{{ else }}Contact us to book an appointment at one of our salons.{{ end }}</p>
+          <p>{{ if eq site.Language.Lang "fr" }}Contactez-nous pour prendre rendez-vous dans l'un de nos salons.{{ else }}Contact us to book an appointment at one of our salons.{{ end }}</p>
           <div class="cta-buttons">
             <a href="{{ "contact" | relLangURL }}" class="btn btn-primary">{{ i18n "nav.contact" }}</a>
-            <a href="{{ if eq .Site.Language.Lang "fr" }}tarifs{{ else }}pricing{{ end }}" class="btn btn-secondary">{{ i18n "nav.pricing" }}</a>
+            <a href="{{ if eq site.Language.Lang "fr" }}tarifs{{ else }}pricing{{ end }}" class="btn btn-secondary">{{ i18n "nav.pricing" }}</a>
           </div>
         </div>
       </div>

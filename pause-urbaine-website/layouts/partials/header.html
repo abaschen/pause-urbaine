@@ -3,13 +3,13 @@
   <div class="header-top">
     <div class="container">
       <div class="locations-bar">
-        {{ range .Site.Data.locations.locations }}
+        {{ range site.Data.locations.locations }}
         <div class="location-quick-info">
           <span class="location-name">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            {{ index .name $.Site.Language.Lang }}
+            {{ index .name site.Language.Lang }}
           </span>
-          <a href="tel:{{ .phone }}" class="phone-link" aria-label="{{ i18n "common.phone" }} {{ index .name $.Site.Language.Lang }}">
+          <a href="tel:{{ .phone }}" class="phone-link" aria-label="{{ i18n "common.phone" }} {{ index .name site.Language.Lang }}">
             <i class="fa-solid fa-phone" aria-hidden="true"></i>
             {{ .phone }}
           </a>
@@ -17,7 +17,7 @@
              class="instagram-link" 
              target="_blank" 
              rel="noopener"
-             aria-label="Instagram {{ index .name $.Site.Language.Lang }}">
+             aria-label="Instagram {{ index .name site.Language.Lang }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             {{ .instagram }}
           </a>
@@ -32,7 +32,7 @@
   {{- /* Header main with logo and navigation */ -}}
   <div class="header-main">
     <div class="container">
-      <a href="{{ .Site.Home.Permalink }}" class="logo">
+      <a href="{{ site.Home.Permalink }}" class="logo">
         {{ partial "logo.html" . }}
       </a>
       
