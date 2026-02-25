@@ -38,7 +38,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Structure hours as key-value pairs (monday: "Fermé", tuesday: "9h00 - 19h00", etc.)
   - _Requirements: 3.5_
 
-- [~] 5. Extract and structure pricing data
+- [x] 5. Extract and structure pricing data
   - Process tarifs-2026.jpeg (OCR or manual extraction)
   - Create data/pricing.yaml with categories array
   - Organize by service categories (Coupes, Colorations, Soins, etc.)
