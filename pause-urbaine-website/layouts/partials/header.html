@@ -1,11 +1,7 @@
 <header class="site-header">
-  {{- /* Single navigation bar with logo, menu, and language switcher */ -}}
+  {{- /* Single navigation bar with menu and language switcher */ -}}
   <div class="header-main">
     <div class="container">
-      <a href="{{ site.Home.Permalink }}" class="logo">
-        {{ partial "logo.html" . }}
-      </a>
-      
       <nav class="main-nav" aria-label="{{ i18n "nav.main" }}">
         <ul>
           <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>

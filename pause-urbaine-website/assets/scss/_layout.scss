@@ -66,21 +66,10 @@
       @media (max-width: $breakpoint-mobile) {
         gap: $spacing-sm;
       }
-    }
-  }
-
-  .logo {
-    display: block;
-    height: 50px;
-    flex-shrink: 0;
-
-    @media (max-width: $breakpoint-mobile) {
-      height: 40px; // Smaller logo on small phones
-    }
-
-    img, svg {
-      height: 100%;
-      width: auto;
+      
+      @media (max-width: $breakpoint-tablet) {
+        justify-content: flex-end; // Push actions to the right on mobile
+      }
     }
   }
 
@@ -189,15 +178,14 @@
   justify-content: center;
 
   @media (max-width: $breakpoint-tablet) {
-    position: absolute;
-    top: 100%;
+    position: fixed; // Changed to fixed for better mobile UX
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background: $background;
-    border-bottom: 1px solid $border-color;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: none;
-    max-height: calc(100vh - 100px); // Prevent overflow on small screens
+    z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
   }
@@ -211,9 +199,10 @@
 
     @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
-      padding: $spacing-md;
+      padding: $spacing-xl $spacing-md;
       width: 100%;
       gap: 0; // Remove gap, use padding on links instead
+      margin-top: 60px; // Space for close button
     }
 
     li {
@@ -234,8 +223,8 @@
 
       @media (max-width: $breakpoint-tablet) {
         display: block;
-        padding: 0.875rem 0.5rem; // Minimum 44px touch target
-        font-size: 1rem; // Readable size
+        padding: 1rem 0.5rem; // Minimum 44px touch target
+        font-size: 1.125rem; // Larger for mobile menu
       }
 
       &:hover,
@@ -267,9 +256,10 @@
   transition: color $transition-speed;
   min-width: 44px; // Minimum touch target
   min-height: 44px;
-  display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1001; // Above the mobile menu
 
   &:hover {
     color: $primary-color;
