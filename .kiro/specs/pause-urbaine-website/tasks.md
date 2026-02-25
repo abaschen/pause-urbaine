@@ -5,7 +5,7 @@
 ### 1. Initialize Hugo Project
 - [x] 1.1 Install Hugo extended version (v0.120+)
 - [x] 1.2 Create new Hugo site structure
-- [~] 1.3 Initialize Git repository
+- [x] 1.3 Initialize Git repository
 - [~] 1.4 Create .gitignore file
 - [~] 1.5 Set up package.json for Font Awesome dependencies
 - [~] 1.6 Install npm dependencies (@fortawesome packages)
