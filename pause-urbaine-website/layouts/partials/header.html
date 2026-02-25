@@ -1,6 +1,32 @@
 <header class="site-header">
-  {{- /* Header top with locations bar */ -}}
-  <div class="header-top">
+  {{- /* Single navigation bar with logo, menu, and language switcher */ -}}
+  <div class="header-main">
+    <div class="container">
+      <a href="{{ site.Home.Permalink }}" class="logo">
+        {{ partial "logo.html" . }}
+      </a>
+      
+      <nav class="main-nav" aria-label="{{ i18n "nav.main" }}">
+        <ul>
+          <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
+          <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
+          <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
+          <li><a href="{{ "actualites" | relLangURL }}">{{ i18n "nav.news" }}</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        {{ partial "language-switcher.html" . }}
+        
+        <button class="mobile-menu-toggle" aria-label="{{ i18n "common.menu" }}">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  {{- /* Locations info bar - moved below main nav */ -}}
+  <div class="header-locations">
     <div class="container">
       <div class="locations-bar">
         {{ range site.Data.locations.locations }}
@@ -24,30 +50,6 @@
         </div>
         {{ end }}
       </div>
-      
-      {{ partial "language-switcher.html" . }}
-    </div>
-  </div>
-  
-  {{- /* Header main with logo and navigation */ -}}
-  <div class="header-main">
-    <div class="container">
-      <a href="{{ site.Home.Permalink }}" class="logo">
-        {{ partial "logo.html" . }}
-      </a>
-      
-      <nav class="main-nav" aria-label="{{ i18n "nav.main" }}">
-        <ul>
-          <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
-          <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
-          <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
-          <li><a href="{{ "actualites" | relLangURL }}">{{ i18n "nav.news" }}</a></li>
-        </ul>
-      </nav>
-      
-      <button class="mobile-menu-toggle" aria-label="{{ i18n "common.menu" }}">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-      </button>
     </div>
   </div>
 </header>

@@ -218,31 +218,33 @@
   margin: 0;
   padding: 0;
 
-  a {
-    padding: $spacing-xs $spacing-sm;
-    color: $text-color;
+  a,
+  span {
+    padding: $spacing-xs;
+    font-size: 1.5rem;
+    line-height: 1;
     text-decoration: none;
     border-radius: 4px;
     transition: all $transition-speed;
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a {
+    color: $text-color;
+    opacity: 0.7;
 
     &:hover {
       background: rgba($primary-color, 0.1);
-      color: $primary-color;
+      opacity: 1;
+      transform: scale(1.1);
     }
   }
 
   .lang-active {
-    padding: $spacing-xs $spacing-sm;
-    font-weight: 700;
-    color: $primary-color;
+    opacity: 1;
     background: rgba($primary-color, 0.15);
-    border-radius: 4px;
-  }
-
-  .lang-separator {
-    color: $text-light;
-    user-select: none;
   }
 }
 

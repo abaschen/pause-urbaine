@@ -46,25 +46,47 @@
   top: 0;
   z-index: 100;
 
-  .header-top {
-    background: $background-light;
-    padding: $spacing-xs 0;
-    font-size: 0.875rem;
-    border-bottom: 1px solid $border-color;
+  .header-main {
+    padding: $spacing-sm 0;
 
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: $spacing-sm;
+      gap: $spacing-lg;
     }
+  }
+
+  .logo {
+    display: block;
+    height: 50px;
+    flex-shrink: 0;
+
+    img, svg {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-shrink: 0;
+  }
+
+  .header-locations {
+    background: $background-light;
+    padding: $spacing-xs 0;
+    font-size: 0.875rem;
+    border-top: 1px solid $border-color;
   }
 
   .locations-bar {
     display: flex;
     gap: $spacing-lg;
     flex-wrap: wrap;
+    justify-content: center;
 
     @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
@@ -110,30 +132,25 @@
       height: 1em;
     }
   }
-
-  .header-main {
-    padding: $spacing-sm 0;
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .logo {
-    display: block;
-    height: 50px;
-
-    img, svg {
-      height: 100%;
-      width: auto;
-    }
-  }
 }
 
 // Navigation
 .main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-tablet) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $background;
+    border-bottom: 1px solid $border-color;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
   ul {
     display: flex;
     gap: $spacing-lg;
@@ -142,16 +159,9 @@
     padding: 0;
 
     @media (max-width: $breakpoint-tablet) {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: $background;
       flex-direction: column;
       padding: $spacing-md;
-      border-bottom: 1px solid $border-color;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
     }
 
     a {
@@ -167,7 +177,7 @@
     }
   }
 
-  &.is-open ul {
+  &.is-open {
     @media (max-width: $breakpoint-tablet) {
       display: flex;
     }
