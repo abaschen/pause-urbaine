@@ -27,10 +27,10 @@
       <div class="locations-bar">
         {{ range site.Data.locations.locations }}
         <div class="location-quick-info">
-          <span class="location-name">
+          <a href="{{ .maps_url }}" target="_blank" rel="noopener noreferrer" class="location-name" aria-label="{{ i18n "common.view_on_maps" }} {{ index .name site.Language.Lang }}">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
             {{ index .name site.Language.Lang }}
-          </span>
+          </a>
           <a href="tel:{{ .phone }}" class="phone-link" aria-label="{{ i18n "common.phone" }} {{ index .name site.Language.Lang }}">
             <i class="fa-solid fa-phone" aria-hidden="true"></i>
             {{ .phone }}

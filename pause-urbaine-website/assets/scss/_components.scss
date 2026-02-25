@@ -143,6 +143,14 @@
           text-decoration: underline;
         }
       }
+      
+      .address-link {
+        display: inline-block;
+        
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
   }
 

@@ -10,6 +10,7 @@ locations:
       country: "Suisse"
     phone: "022 310 4081"
     instagram: "pauseurbaine"
+    maps_url: "https://www.google.com/maps/search/?api=1&query=Quai+des+Moulins+12A,+1204+Genève"
     hours:
       monday: "Fermé"
       tuesday: "10h - 18h"
@@ -30,6 +31,7 @@ locations:
       country: "Suisse"
     phone: "022 736 2030"
     instagram: "pauseurbaine_eauxvives"
+    maps_url: "https://www.google.com/maps/search/?api=1&query=Rue+de+Montchoisy+40,+1207+Genève"
     hours:
       monday: "Fermé"
       tuesday: "10h - 18h"

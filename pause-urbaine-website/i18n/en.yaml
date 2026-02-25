@@ -21,6 +21,7 @@ common:
   menu: Menu
   hours: Hours
   instagram: Instagram
+  view_on_maps: View on Google Maps
   
 homepage:
   discoverServices: Discover our services
