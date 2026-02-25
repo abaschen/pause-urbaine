@@ -39,14 +39,14 @@
 }
 
 // Header
-.header {
+.site-header {
   background: $background;
-  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 
-  &-top {
+  .header-top {
     background: $background-light;
     padding: $spacing-xs 0;
     font-size: 0.875rem;
@@ -61,25 +61,43 @@
     }
   }
 
-  &-locations {
+  .locations-bar {
     display: flex;
     gap: $spacing-lg;
     flex-wrap: wrap;
 
     @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
       gap: $spacing-sm;
-      font-size: 0.8rem;
+      width: 100%;
     }
   }
 
-  &-location {
+  .location-quick-info {
     display: flex;
     align-items: center;
-    gap: $spacing-xs;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
 
-    a {
-      color: $text-color;
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 0.8rem;
+    }
+
+    .location-name {
+      font-weight: 600;
+      color: $primary-color;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .phone-link,
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
       text-decoration: none;
+      color: $text-color;
       transition: color $transition-speed;
 
       &:hover {
@@ -93,7 +111,7 @@
     }
   }
 
-  &-main {
+  .header-main {
     padding: $spacing-sm 0;
 
     .container {
@@ -103,10 +121,11 @@
     }
   }
 
-  &-logo {
+  .logo {
+    display: block;
     height: 50px;
 
-    img {
+    img, svg {
       height: 100%;
       width: auto;
     }
@@ -114,8 +133,8 @@
 }
 
 // Navigation
-.nav {
-  &-menu {
+.main-nav {
+  ul {
     display: flex;
     gap: $spacing-lg;
     list-style: none;
@@ -133,10 +152,6 @@
       padding: $spacing-md;
       border-bottom: 1px solid $border-color;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-      &.is-open {
-        display: flex;
-      }
     }
 
     a {
@@ -152,18 +167,38 @@
     }
   }
 
-  &-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: $spacing-xs;
-    color: $text-color;
-
+  &.is-open ul {
     @media (max-width: $breakpoint-tablet) {
-      display: block;
+      display: flex;
     }
+  }
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: $spacing-xs;
+  color: $text-color;
+  transition: color $transition-speed;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &.is-active {
+    color: $primary-color;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    display: block;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 

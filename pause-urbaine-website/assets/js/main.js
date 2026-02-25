@@ -1,17 +1,18 @@
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.nav-menu');
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.querySelector('.main-nav');
   
-  if (toggle && menu) {
+  if (toggle && nav) {
     // Toggle menu on button click
     toggle.addEventListener('click', () => {
-      menu.classList.toggle('is-open');
+      nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-active');
       
       // Toggle icon between bars and times
       const icon = toggle.querySelector('i');
       if (icon) {
-        if (menu.classList.contains('is-open')) {
+        if (nav.classList.contains('is-open')) {
           icon.classList.remove('fa-bars');
           icon.classList.add('fa-times');
         } else {
@@ -23,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('is-open');
+      if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
         const icon = toggle.querySelector('i');
         if (icon) {
           icon.classList.remove('fa-times');
@@ -35,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Close menu on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
-        menu.classList.remove('is-open');
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
         const icon = toggle.querySelector('i');
         if (icon) {
           icon.classList.remove('fa-times');

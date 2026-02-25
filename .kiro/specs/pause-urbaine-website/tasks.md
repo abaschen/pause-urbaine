@@ -92,7 +92,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include header and footer partials
   - _Requirements: 3.6, 4.4_
 
-- [~] 10. Create header partial with location info and navigation
+- [x] 10. Create header partial with location info and navigation
   - Create layouts/partials/header.html
   - Add header-top section with locations bar
   - Loop through .Site.Data.locations.locations
