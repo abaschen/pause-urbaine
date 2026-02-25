@@ -9,8 +9,8 @@
       <h1 class="hero-title">{{ site.Title }}</h1>
       <p class="hero-subtitle">{{ site.Params.description }}</p>
       <div class="hero-cta">
-        <a href="{{ relLangURL "services" }}" class="btn btn-primary">{{ i18n "homepage.discoverServices" }}</a>
-        <a href="{{ relLangURL "tarifs" }}" class="btn btn-secondary">{{ i18n "homepage.viewPricing" }}</a>
+        <a href="{{ "services" | relLangURL }}" class="btn btn-primary">{{ i18n "homepage.discoverServices" }}</a>
+        <a href="{{ "tarifs" | relLangURL }}" class="btn btn-secondary">{{ i18n "homepage.viewPricing" }}</a>
       </div>
     </div>
   </section>

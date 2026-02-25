@@ -1,8 +1,6 @@
 baseURL: /
 languageCode: fr-FR
 title: Pause Urbaine
-relativeURLs: true
-canonifyURLs: false
 
 # Multilingual configuration
 defaultContentLanguage: fr
