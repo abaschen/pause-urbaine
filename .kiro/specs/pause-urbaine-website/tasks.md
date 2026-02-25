@@ -68,7 +68,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Implement mobile-first responsive design
   - _Requirements: 3.1, 4.3_
 
-- [~] 8. Optimize and prepare images
+- [x] 8. Optimize and prepare images
   - Download Logo-Pause-Urbaine-2022 from WordPress
   - Convert logo to SVG format if needed, optimize for web
   - Save logo to static/images/logo.svg
@@ -79,7 +79,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 4.3, 5.1_
 
 
-- [~] 9. Create base template with SEO and multilingual support
+- [x] 9. Create base template with SEO and multilingual support
   - Create layouts/_default/baseof.html
   - Add HTML5 doctype with dynamic lang attribute ({{ .Language.Lang }})
   - Add meta tags: charset UTF-8, viewport, description
