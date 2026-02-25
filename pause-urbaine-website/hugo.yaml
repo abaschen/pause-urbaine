@@ -1,6 +1,8 @@
-baseURL: https://anthony.baschen.is/pause-urbaine/
+baseURL: /
 languageCode: fr-FR
 title: Pause Urbaine
+relativeURLs: true
+canonifyURLs: false
 
 # Multilingual configuration
 defaultContentLanguage: fr

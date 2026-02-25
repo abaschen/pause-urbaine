@@ -1,10 +1,19 @@
-name: Deploy Hugo Site to GitHub Pages
+name: Deploy Hugo Site
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'gh'
+        type: choice
+        options:
+          - gh
+          - aws
 
 permissions:
   contents: read
@@ -12,7 +21,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.event.inputs.environment || 'gh' }}"
   cancel-in-progress: false
 
 defaults:
@@ -64,11 +73,22 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: ./pause-urbaine-website
 
-      - name: Setup Pages
+      - name: Determine environment
+        id: env
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "target=${{ github.event.inputs.environment }}" >> $GITHUB_OUTPUT
+          else
+            echo "target=gh" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Pages (GitHub Pages)
+        if: steps.env.outputs.target == 'gh'
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Hugo
+      - name: Build with Hugo (GitHub Pages)
+        if: steps.env.outputs.target == 'gh'
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
@@ -78,14 +98,36 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Upload artifact
+      - name: Build with Hugo (AWS)
+        if: steps.env.outputs.target == 'aws'
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+          BASE_URL: ${{ vars.AWS_BASE_URL }}
+        run: |
+          cd pause-urbaine-website
+          hugo \
+            --minify \
+            --baseURL "${BASE_URL:-https://pauseurbaine.com/}"
+
+      - name: Upload artifact (GitHub Pages)
+        if: steps.env.outputs.target == 'gh'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./pause-urbaine-website/public
 
-  deploy:
+      - name: Upload artifact (AWS)
+        if: steps.env.outputs.target == 'aws'
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-site-aws
+          path: ./pause-urbaine-website/public
+          retention-days: 7
+
+  deploy-gh:
+    if: github.event.inputs.environment == 'gh' || (github.event_name == 'push' && github.event.inputs.environment != 'aws')
     environment:
-      name: github-pages
+      name: gh
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
@@ -93,3 +135,25 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-aws:
+    if: github.event.inputs.environment == 'aws'
+    environment:
+      name: aws
+      url: ${{ vars.AWS_SITE_URL }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: hugo-site-aws
+          path: ./public
+
+      - name: Deploy to AWS
+        run: |
+          echo "AWS deployment would happen here"
+          echo "Site URL: ${{ vars.AWS_SITE_URL }}"
+          echo "Base URL: ${{ vars.AWS_BASE_URL }}"
+          # Add your AWS deployment commands here
+          # Example: aws s3 sync ./public s3://${{ vars.AWS_S3_BUCKET }} --delete
