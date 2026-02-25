@@ -39,6 +39,7 @@
     ],
     "classes": [
       "address",
+      "address-link",
       "btn",
       "btn-primary",
       "btn-secondary",
