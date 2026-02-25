@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Static website for Pause Urbaine hair salon",
   "private": true,
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
     "dev": "hugo server --buildDrafts --disableFastRender",
     "build": "hugo --minify",
