@@ -1,402 +1,493 @@
-# Pause Urbaine - Implementation Tasks
+# Implementation Plan: Pause Urbaine Website
 
-## Phase 1: Project Setup and Infrastructure
+## Overview
 
-### 1. Initialize Hugo Project
-- [x] 1.1 Install Hugo extended version (v0.120+)
-- [x] 1.2 Create new Hugo site structure
-- [x] 1.3 Initialize Git repository
-- [~] 1.4 Create .gitignore file
-- [~] 1.5 Set up package.json for Font Awesome dependencies
-- [~] 1.6 Install npm dependencies (@fortawesome packages)
+This implementation plan covers the development of a bilingual (French/English) static website for Pause Urbaine hair salon using Hugo. The site will be hosted on AWS S3 + CloudFront (production) and GitHub Pages (development), with automated deployment via GitHub Actions.
 
-### 2. Configure Hugo for Multilingual Support
-- [~] 2.1 Create hugo.yaml with language configuration (fr, en)
-- [~] 2.2 Set defaultContentLanguage to "fr"
-- [~] 2.3 Enable defaultContentLanguageInSubdir
-- [~] 2.4 Configure language-specific parameters
-- [~] 2.5 Set up content directory structure (content/fr/, content/en/)
+## Tasks
 
-### 3. Create Translation Files
-- [~] 3.1 Create i18n/fr.yaml with French translations
-- [~] 3.2 Create i18n/en.yaml with English translations
-- [~] 3.3 Add navigation labels
-- [~] 3.4 Add common UI strings
-- [~] 3.5 Add location-specific labels
+- [x] 1. Initialize Hugo project and configure multilingual support
+  - Install Hugo extended v0.120+
+  - Create hugo.yaml with French (default) and English language configuration
+  - Enable defaultContentLanguageInSubdir for /fr/ and /en/ URL structure
+  - Set up content directory structure (content/fr/, content/en/)
+  - Create .gitignore for Hugo, Node.js, and system files
+  - _Requirements: 4.1, 3.6_
 
-## Phase 2: Data Structure and Content
+- [x] 2. Set up Font Awesome with tree-shaking
+  - Create package.json with @fortawesome dependencies
+  - Install npm packages (@fortawesome/fontawesome-svg-core, free-solid-svg-icons, free-brands-svg-icons)
+  - Create assets/js/fontawesome.js with selective icon imports
+  - Import only used icons (phone, location-dot, clock, bars, times, instagram, etc.)
+  - Configure library and dom.watch() for SVG replacement
+  - _Requirements: 4.1, 4.3_
 
-### 4. Set Up Data Files
-- [~] 4.1 Create data/locations.yaml with both salon locations
-- [~] 4.2 Add Plainpalais location details (address, phone, Instagram, hours)
-- [~] 4.3 Add Eaux-Vives location details (address, phone, Instagram, hours)
-- [~] 4.4 Ensure bilingual location names
+- [x] 3. Create translation files for UI strings
+  - Create i18n/fr.yaml with French translations (navigation, footer, common strings)
+  - Create i18n/en.yaml with English translations
+  - Add labels for: navigation menu, footer sections, common actions, location names
+  - Ensure consistency between language files
+  - _Requirements: 3.6, 4.1_
 
-### 5. Extract and Structure Pricing Data
-- [~] 5.1 Process tarifs-2026.jpeg (OCR or manual extraction)
-- [~] 5.2 Create data/pricing.yaml structure
-- [~] 5.3 Organize services by categories (Coupes, Colorations, Soins, etc.)
-- [~] 5.4 Add bilingual service names and descriptions
-- [~] 5.5 Include prices and durations
 
-### 6. Migrate WordPress Content
-- [~] 6.1 Parse WordPress.2026-02-20.xml export file
-- [~] 6.2 Extract pages and posts
-- [~] 6.3 Convert HTML content to Markdown
-- [~] 6.4 Download and optimize images from WordPress
-- [~] 6.5 Create content files in content/fr/ directory
-- [~] 6.6 Add frontmatter metadata (title, date, description)
-- [~] 6.7 Create English translations for key pages
+- [ ] 4. Create location data structure
+  - Create data/locations.yaml with array of location objects
+  - Add Plainpalais location: address, phone (+41 22 XXX XX XX), Instagram handle, opening hours
+  - Add Eaux-Vives location: address, phone (+41 22 YYY YY YY), Instagram handle, opening hours
+  - Include bilingual name fields (fr/en) for each location
+  - Structure hours as key-value pairs (monday: "Fermé", tuesday: "9h00 - 19h00", etc.)
+  - _Requirements: 3.5_
 
-## Phase 3: Styling and Assets
+- [ ] 5. Extract and structure pricing data
+  - Process tarifs-2026.jpeg (OCR or manual extraction)
+  - Create data/pricing.yaml with categories array
+  - Organize by service categories (Coupes, Colorations, Soins, etc.)
+  - For each service: add bilingual name (fr/en), price (CHF), duration
+  - Validate all pricing data for accuracy
+  - _Requirements: 3.4, 5.2_
 
-### 7. Set Up SCSS Architecture
-- [~] 7.1 Create assets/scss/_variables.scss (colors, fonts, breakpoints)
-- [~] 7.2 Create assets/scss/_layout.scss (container, header, footer)
-- [~] 7.3 Create assets/scss/_components.scss (buttons, cards, forms)
-- [~] 7.4 Create assets/scss/main.scss (import all partials)
-- [~] 7.5 Configure responsive breakpoints
+- [ ] 6. Migrate WordPress content to Markdown
+  - Parse WordPress.2026-02-20.xml export file
+  - Extract posts and pages with metadata (title, date, author)
+  - Convert HTML content to Markdown format
+  - Download referenced images from WordPress
+  - Optimize images (resize, compress, generate WebP versions)
+  - Create content files in content/fr/actualites/ with proper frontmatter
+  - Create English translations for homepage, services, pricing, and contact pages
+  - _Requirements: 5.1, 3.2_
 
-### 8. Implement Font Awesome Integration
-- [~] 8.1 Create assets/js/fontawesome.js
-- [~] 8.2 Import required solid icons (phone, location-dot, clock, etc.)
-- [~] 8.3 Import required brand icons (instagram, facebook)
-- [~] 8.4 Configure Font Awesome library
-- [~] 8.5 Set up dom.watch() for icon replacement
-- [~] 8.6 Test tree-shaking (verify bundle size ~20KB)
 
-### 9. Add Logo and Images
-- [~] 9.1 Download logo from WordPress (Logo-Pause-Urbaine-2022)
-- [~] 9.2 Convert logo to SVG if needed
-- [~] 9.3 Optimize logo for web
-- [~] 9.4 Add logo to static/images/
-- [~] 9.5 Download and optimize hero images
-- [~] 9.6 Create WebP versions of all images
+- [ ] 7. Create SCSS architecture and styling
+  - Create assets/scss/_variables.scss (colors, typography, breakpoints, spacing)
+  - Define color palette (primary: #2c3e50, secondary: #e8b4b8, accent: #d4a5a5)
+  - Set font families (base: Inter, heading: Playfair Display)
+  - Define responsive breakpoints (mobile: 480px, tablet: 768px, desktop: 1024px, wide: 1280px)
+  - Create assets/scss/_layout.scss (container, header, footer, grid system)
+  - Create assets/scss/_components.scss (buttons, cards, forms, navigation)
+  - Create assets/scss/main.scss to import all partials
+  - Implement mobile-first responsive design
+  - _Requirements: 3.1, 4.3_
 
-## Phase 4: Templates and Layouts
+- [ ] 8. Optimize and prepare images
+  - Download Logo-Pause-Urbaine-2022 from WordPress
+  - Convert logo to SVG format if needed, optimize for web
+  - Save logo to static/images/logo.svg
+  - Download hero images and service photos from WordPress
+  - Resize images to appropriate dimensions (max 1920px width)
+  - Generate WebP versions of all images using Hugo image processing
+  - Create responsive image srcsets for different screen sizes
+  - _Requirements: 4.3, 5.1_
 
-### 10. Create Base Template
-- [~] 10.1 Create layouts/_default/baseof.html
-- [~] 10.2 Add HTML5 doctype and lang attribute
-- [~] 10.3 Add meta tags (charset, viewport, description)
-- [~] 10.4 Add multilingual SEO tags (hreflang)
-- [~] 10.5 Add Open Graph meta tags
-- [~] 10.6 Link SCSS stylesheet with Hugo Pipes
-- [~] 10.7 Add Font Awesome script with js.Build
-- [~] 10.8 Add main.js script
-- [~] 10.9 Add defer attributes to scripts
 
-### 11. Create Header Partial
-- [~] 11.1 Create layouts/partials/header.html
-- [~] 11.2 Add header-top section with locations bar
-- [~] 11.3 Loop through locations data
-- [~] 11.4 Display location names with icons
-- [~] 11.5 Add clickable phone links with icons
-- [~] 11.6 Add Instagram links with icons
-- [~] 11.7 Add language switcher
-- [~] 11.8 Add header-main section with logo
-- [~] 11.9 Add main navigation menu
-- [~] 11.10 Add mobile menu toggle button
+- [ ] 9. Create base template with SEO and multilingual support
+  - Create layouts/_default/baseof.html
+  - Add HTML5 doctype with dynamic lang attribute ({{ .Language.Lang }})
+  - Add meta tags: charset UTF-8, viewport, description
+  - Add hreflang links for all translations ({{ range .Translations }})
+  - Add x-default hreflang pointing to site root
+  - Add Open Graph meta tags (og:title, og:description, og:locale)
+  - Link SCSS stylesheet using Hugo Pipes (resources.Get | toCSS | minify | fingerprint)
+  - Add Font Awesome script using js.Build with minify and fingerprint
+  - Add main.js script with defer attribute
+  - Include header and footer partials
+  - _Requirements: 3.6, 4.4_
 
-### 12. Create Language Switcher Partial
-- [~] 12.1 Create layouts/partials/language-switcher.html
-- [~] 12.2 Loop through available languages
-- [~] 12.3 Highlight active language
-- [~] 12.4 Link to translated pages if available
-- [~] 12.5 Fallback to language home if translation missing
-- [~] 12.6 Add proper lang attributes
+- [ ] 10. Create header partial with location info and navigation
+  - Create layouts/partials/header.html
+  - Add header-top section with locations bar
+  - Loop through .Site.Data.locations.locations
+  - Display each location with: name, phone (tel: link), Instagram link
+  - Add Font Awesome icons: fa-location-dot, fa-phone, fa-instagram
+  - Include language switcher partial
+  - Add header-main section with logo linked to homepage
+  - Create main navigation with links: Services, Tarifs, Contact, Actualités
+  - Use relLangURL for language-aware links
+  - Add mobile menu toggle button with fa-bars icon
+  - Implement sticky header with box-shadow
+  - _Requirements: 3.5, 3.7_
 
-### 13. Create Footer Partial
-- [~] 13.1 Create layouts/partials/footer.html
-- [~] 13.2 Add location information
-- [~] 13.3 Add social media links
-- [~] 13.4 Add opening hours summary
-- [~] 13.5 Add copyright notice
-- [~] 13.6 Ensure responsive layout
+- [ ] 11. Create language switcher partial
+  - Create layouts/partials/language-switcher.html
+  - Loop through .Site.Languages
+  - Highlight active language with .lang-active class
+  - Check if current page is translated ({{ if $.IsTranslated }})
+  - Link to translated version if available, otherwise link to language home
+  - Add proper lang attributes to links
+  - Style as inline list with separator
+  - _Requirements: 3.6_
 
-### 14. Create Location Card Partial
-- [~] 14.1 Create layouts/partials/location-card.html
-- [~] 14.2 Display location name with icon
-- [~] 14.3 Display address with map marker icon
-- [~] 14.4 Display phone with phone icon
-- [~] 14.5 Display Instagram with Instagram icon
-- [~] 14.6 Display opening hours with clock icon
-- [~] 14.7 Make phone and Instagram links clickable
+- [ ] 12. Create footer partial
+  - Create layouts/partials/footer.html
+  - Display both locations with contact information
+  - Add social media links (Instagram for each location)
+  - Display opening hours summary
+  - Add copyright notice with current year
+  - Include links to main pages
+  - Ensure responsive layout (stack on mobile)
+  - _Requirements: 3.7_
 
-### 15. Create Homepage Template
-- [~] 15.1 Create layouts/index.html
-- [~] 15.2 Add hero section with image
-- [~] 15.3 Add welcome text
-- [~] 15.4 Display latest news/articles (3 most recent)
-- [~] 15.5 Add call-to-action buttons
-- [~] 15.6 Display both locations using location-card partial
+- [ ] 13. Create location card partial
+  - Create layouts/partials/location-card.html
+  - Accept location data as parameter
+  - Display location name with fa-location-dot icon
+  - Display full address with fa-map-marker-alt icon
+  - Display clickable phone link with fa-phone icon
+  - Display Instagram link with fa-instagram icon
+  - Display opening hours table with fa-clock icon
+  - Use i18n for "Opening hours" label
+  - Style as card with border and padding
+  - _Requirements: 3.5_
 
-### 16. Create Services Page Template
-- [~] 16.1 Create layouts/services/single.html or use _default/single.html
-- [~] 16.2 Display page title
-- [~] 16.3 Render markdown content
-- [~] 16.4 Add service categories if needed
-- [~] 16.5 Link to pricing page
 
-### 17. Create Pricing Page Template
-- [~] 17.1 Create layouts/pricing/single.html or use _default/single.html
-- [~] 17.2 Loop through pricing data categories
-- [~] 17.3 Display category names
-- [~] 17.4 Display services with prices and durations
-- [~] 17.5 Make layout responsive (table or cards)
-- [~] 17.6 Add note about price variations if applicable
+- [ ] 14. Create homepage template
+  - Create layouts/index.html extending baseof.html
+  - Add hero section with background image and welcome text
+  - Display site title and tagline
+  - Add section displaying 3 most recent articles from actualites
+  - Use .Site.RegularPages.ByDate.Reverse to get latest posts
+  - Display article title, date, excerpt with "Read more" link
+  - Add call-to-action buttons (View Services, See Pricing)
+  - Display both locations using location-card partial
+  - Ensure responsive layout (stack sections on mobile)
+  - _Requirements: 3.1_
 
-### 18. Create Contact Page Template
-- [~] 18.1 Create layouts/contact/single.html or use _default/single.html
-- [~] 18.2 Display both locations using location-card partial
-- [~] 18.3 Add Google Maps embed (optional)
-- [~] 18.4 Add contact form (optional, or link to external booking)
+- [ ] 15. Create services page template
+  - Create content/fr/services/_index.md and content/en/services/_index.md
+  - Use layouts/_default/single.html or create layouts/services/single.html
+  - Display page title and description
+  - Render markdown content with service descriptions
+  - Organize services by categories if needed
+  - Add link to pricing page at bottom
+  - Include call-to-action for booking
+  - _Requirements: 3.3_
 
-### 19. Create News/Blog Templates
-- [~] 19.1 Create layouts/actualites/list.html (blog list)
-- [~] 19.2 Display list of articles with excerpts
-- [~] 19.3 Add pagination if needed
-- [~] 19.4 Create layouts/actualites/single.html (single post)
-- [~] 19.5 Display post title, date, content
-- [~] 19.6 Add "read more" links
+- [ ] 16. Create pricing page template
+  - Create content/fr/tarifs/_index.md and content/en/pricing/_index.md
+  - Create layouts/pricing/single.html or use _default/single.html
+  - Loop through .Site.Data.pricing.categories
+  - Display category name (index .name $.Site.Language.Lang)
+  - For each service in category: display name, price, duration
+  - Use responsive table or card layout
+  - Add note about price variations if applicable
+  - Include contact information for bookings
+  - _Requirements: 3.4_
 
-### 20. Create 404 Page
-- [~] 20.1 Create layouts/404.html
-- [~] 20.2 Add friendly error message
-- [~] 20.3 Add links to homepage and main sections
-- [~] 20.4 Ensure bilingual support
+- [ ] 17. Create contact page template
+  - Create content/fr/contact/_index.md and content/en/contact/_index.md
+  - Create layouts/contact/single.html or use _default/single.html
+  - Display both locations using location-card partial
+  - Add Google Maps embed for each location (optional)
+  - Include contact form or link to external booking system (optional)
+  - Display opening hours prominently
+  - _Requirements: 3.5_
 
-## Phase 5: JavaScript Functionality
+- [ ] 18. Create news/blog templates
+  - Create layouts/actualites/list.html for blog listing page
+  - Display list of articles with title, date, excerpt
+  - Add pagination if more than 10 articles
+  - Create layouts/actualites/single.html for individual posts
+  - Display post title, publication date, featured image
+  - Render full markdown content
+  - Add "Back to news" link
+  - Include social sharing buttons (optional)
+  - _Requirements: 3.1, 3.2_
 
-### 21. Implement Mobile Menu
-- [~] 21.1 Create assets/js/main.js
-- [~] 21.2 Add mobile menu toggle functionality
-- [~] 21.3 Toggle .is-open class on nav
-- [~] 21.4 Toggle icon between bars and times
-- [~] 21.5 Add keyboard support (Escape to close)
-- [~] 21.6 Close menu when clicking outside
+- [ ] 19. Create 404 error page
+  - Create layouts/404.html
+  - Add friendly error message in both languages
+  - Detect current language from URL path
+  - Display links to homepage and main sections
+  - Use same header/footer as other pages
+  - Style consistently with site design
+  - _Requirements: 4.2_
 
-### 22. Implement Image Lazy Loading
-- [~] 22.1 Add IntersectionObserver for lazy loading
-- [~] 22.2 Add data-src attributes to images
-- [~] 22.3 Load images when they enter viewport
-- [~] 22.4 Add loaded class for fade-in effect
-- [~] 22.5 Add fallback for browsers without IntersectionObserver
 
-## Phase 6: CloudFront Function
+- [ ] 20. Implement mobile menu functionality
+  - Create assets/js/main.js
+  - Add DOMContentLoaded event listener
+  - Select mobile menu toggle button and main nav elements
+  - Add click event listener to toggle button
+  - Toggle .is-open class on nav element
+  - Toggle .is-active class on button
+  - Switch icon between fa-bars and fa-times
+  - Add keyboard support: Escape key closes menu
+  - Add click-outside-to-close functionality
+  - _Requirements: 3.7_
 
-### 23. Create Language Detection Function
-- [~] 23.1 Create functions/language-redirect.js
-- [~] 23.2 Check if request URI is root path
-- [~] 23.3 Parse Accept-Language header
-- [~] 23.4 Detect if English is preferred
-- [~] 23.5 Return 302 redirect to /en/ or /fr/
-- [~] 23.6 Default to French for unsupported languages
-- [~] 23.7 Test function locally
-- [~] 23.8 Ensure function size < 10KB
+- [ ] 21. Implement lazy loading for images
+  - In assets/js/main.js, add IntersectionObserver
+  - Select all images with data-src attribute
+  - Observe each image for viewport intersection
+  - When image enters viewport: set src from data-src, add .loaded class
+  - Add CSS transition for fade-in effect on .loaded class
+  - Provide fallback for browsers without IntersectionObserver support
+  - Update image templates to use data-src for below-fold images
+  - _Requirements: 4.3_
 
-## Phase 7: AWS Infrastructure
 
-### 24. Set Up S3 Bucket
-- [ ]* 24.1 Create S3 bucket named "pauseurbaine.com"
-- [ ]* 24.2 Enable static website hosting
-- [ ]* 24.3 Set index document to index.html
-- [ ]* 24.4 Set error document to 404.html
-- [ ]* 24.5 Configure bucket policy for public read access
-- [ ]* 24.6 Enable versioning (optional)
+- [ ] 22. Create CloudFront Function for language detection
+  - Create functions/language-redirect.js
+  - Implement handler function that receives event with request object
+  - Check if request.uri is root path ('/' or '')
+  - Parse Accept-Language header from request.headers
+  - Detect if English is preferred (check if 'en' appears before 'fr')
+  - Return 302 redirect response to /en/ if English preferred
+  - Return 302 redirect response to /fr/ as default
+  - Pass through all other requests unchanged
+  - Ensure function size < 10KB (CloudFront Function limit)
+  - Test function logic with sample Accept-Language values
+  - _Requirements: 3.6, 4.2_
 
-### 25. Configure CloudFront Distribution
-- [ ]* 25.1 Create CloudFront distribution
-- [ ]* 25.2 Set S3 bucket as origin
-- [ ]* 25.3 Configure Origin Access Control (OAC)
-- [ ]* 25.4 Set default root object to index.html
-- [ ]* 25.5 Enable compression (gzip, brotli)
-- [ ]* 25.6 Configure custom error responses (404 → /404.html)
-- [ ]* 25.7 Set cache behaviors
-- [ ]* 25.8 Configure cache policy (vary on Accept-Language)
 
-### 26. Set Up SSL Certificate
-- [ ]* 26.1 Request SSL certificate in AWS Certificate Manager (ACM)
-- [ ]* 26.2 Validate domain ownership (DNS or email)
-- [ ]* 26.3 Attach certificate to CloudFront distribution
-- [ ]* 26.4 Configure HTTPS redirect
+- [ ]* 23. Configure AWS S3 bucket for static hosting
+  - Create S3 bucket named "pauseurbaine.com"
+  - Enable static website hosting in bucket properties
+  - Set index document to "index.html"
+  - Set error document to "404.html"
+  - Create bucket policy for public read access to all objects
+  - Enable versioning for rollback capability (optional)
+  - Configure CORS if needed for fonts/assets
+  - _Requirements: 4.2_
 
-### 27. Deploy CloudFront Function
-- [ ]* 27.1 Create CloudFront Function in AWS Console
-- [ ]* 27.2 Copy language-redirect.js code
-- [ ]* 27.3 Test function in CloudFront console
-- [ ]* 27.4 Publish function
-- [ ]* 27.5 Associate function with distribution (viewer request)
-- [ ]* 27.6 Test language detection with different Accept-Language headers
+- [ ]* 24. Set up CloudFront distribution
+  - Create new CloudFront distribution in AWS Console
+  - Set S3 bucket as origin
+  - Configure Origin Access Control (OAC) for secure S3 access
+  - Set default root object to "index.html"
+  - Enable compression (gzip and brotli)
+  - Configure custom error response: 404 → /404.html
+  - Set cache behavior to vary on Accept-Language header
+  - Create cache policy with appropriate TTLs (HTML: 1h, assets: 1y)
+  - Enable HTTP/2 and HTTP/3 support
+  - _Requirements: 4.2, 4.3_
 
-### 28. Configure DNS
-- [ ]* 28.1 Create/update DNS records for pauseurbaine.com
-- [ ]* 28.2 Point A record to CloudFront distribution
-- [ ]* 28.3 Add AAAA record for IPv6 (optional)
-- [ ]* 28.4 Verify DNS propagation
-- [ ]* 28.5 Test site access via custom domain
+- [ ]* 25. Configure SSL certificate and custom domain
+  - Request SSL certificate in AWS Certificate Manager (ACM) in us-east-1 region
+  - Add domain validation records to DNS
+  - Wait for certificate validation to complete
+  - Attach validated certificate to CloudFront distribution
+  - Configure alternate domain names (CNAMEs): pauseurbaine.com, www.pauseurbaine.com
+  - Enable "Redirect HTTP to HTTPS" in CloudFront
+  - _Requirements: 4.2_
 
-## Phase 8: GitHub Pages Setup
+- [ ]* 26. Deploy CloudFront Function for language detection
+  - Open CloudFront Functions in AWS Console
+  - Create new function named "language-redirect"
+  - Copy code from functions/language-redirect.js
+  - Test function with sample events (different Accept-Language headers)
+  - Publish function to LIVE stage
+  - Associate function with CloudFront distribution (viewer request event)
+  - Test language detection with curl commands using different Accept-Language headers
+  - _Requirements: 3.6, 4.2_
 
-### 29. Configure GitHub Pages
-- [~] 29.1 Create gh-pages branch
-- [~] 29.2 Enable GitHub Pages in repository settings
-- [~] 29.3 Set source to gh-pages branch
-- [~] 29.4 Configure custom domain (optional)
-- [~] 29.5 Enable HTTPS
+- [ ]* 27. Configure DNS for custom domain
+  - Access DNS provider for pauseurbaine.com
+  - Create A record (or ALIAS if Route 53) pointing to CloudFront distribution
+  - Create AAAA record for IPv6 support (optional)
+  - Wait for DNS propagation (can take up to 48 hours)
+  - Verify site is accessible via custom domain
+  - Test HTTPS certificate is working correctly
+  - _Requirements: 4.2_
 
-### 30. Create Root Redirect for GitHub Pages
-- [x] 30.1 Create static/index.html with meta refresh
-- [x] 30.2 Redirect to /fr/ by default
-- [x] 30.3 Add JavaScript fallback redirect
-- [x] 30.4 Test redirect functionality
 
-## Phase 9: CI/CD Pipeline
+- [x] 28. Configure GitHub Pages for development environment
+  - Create gh-pages branch in repository
+  - Enable GitHub Pages in repository settings
+  - Set source to gh-pages branch
+  - Configure custom domain if desired (optional)
+  - Enable HTTPS enforcement
+  - _Requirements: 4.2_
 
-### 31. Create GitHub Actions Workflow
-- [x] 31.1 Create .github/workflows/deploy.yml
-- [x] 31.2 Configure workflow triggers (push to main)
-- [x] 31.3 Add Hugo setup step
-- [x] 31.4 Add npm install step
-- [x] 31.5 Add Hugo build step (hugo --minify)
-- [x] 31.6 Add deploy to GitHub Pages step
-- [ ]* 31.7 Add deploy to S3 step
-- [ ]* 31.8 Add CloudFront invalidation step
-- [ ]* 31.9 Configure AWS credentials as secrets
+- [x] 29. Create root redirect for GitHub Pages
+  - Create static/index.html with meta refresh tag
+  - Set refresh to redirect to /fr/ after 0 seconds
+  - Add JavaScript fallback: window.location.href = '/fr/'
+  - Add noscript message for users without JavaScript
+  - Test redirect works on GitHub Pages
+  - _Requirements: 3.6, 4.2_
 
-### 32. Configure GitHub Secrets
-- [ ]* 32.1 Add AWS_ACCESS_KEY_ID secret
-- [ ]* 32.2 Add AWS_SECRET_ACCESS_KEY secret
-- [ ]* 32.3 Add CLOUDFRONT_DISTRIBUTION_ID secret
-- [~] 32.4 Test workflow with a commit
 
-## Phase 10: SEO and Performance
+- [x] 30. Create GitHub Actions workflow for automated deployment
+  - Create .github/workflows/deploy.yml
+  - Configure workflow to trigger on push to main branch
+  - Add manual workflow_dispatch trigger
+  - Add checkout step with submodules and full fetch-depth
+  - Add Hugo setup step using peaceiris/actions-hugo@v2 (extended: true)
+  - Add npm install step for Font Awesome dependencies
+  - Add Hugo build step with --minify flag
+  - Add deploy to GitHub Pages step using peaceiris/actions-gh-pages@v3
+  - _Requirements: 4.2_
 
-### 33. Implement SEO Best Practices
-- [x] 33.1 Add robots.txt file
-- [x] 33.2 Verify sitemap.xml generation
-- [x] 33.3 Add structured data (Schema.org LocalBusiness)
-- [x] 33.4 Verify hreflang tags on all pages
-- [x] 33.5 Add canonical URLs
-- [~] 33.6 Optimize meta descriptions
-- [~] 33.7 Add Open Graph images
+- [ ]* 31. Add AWS deployment to GitHub Actions workflow
+  - Add AWS S3 sync step to deploy.yml
+  - Sync ./public directory to s3://pauseurbaine.com with --delete flag
+  - Add CloudFront cache invalidation step
+  - Invalidate all paths (/*) after S3 sync
+  - Configure AWS credentials using GitHub secrets
+  - Set AWS_REGION environment variable (eu-west-1 or appropriate region)
+  - _Requirements: 4.2_
 
-### 34. Optimize Performance
-- [x] 34.1 Enable Hugo minification (--minify flag)
-- [x] 34.2 Fingerprint all assets
-- [~] 34.3 Implement critical CSS inlining (optional)
-- [~] 34.4 Verify WebP image generation
-- [x] 34.5 Test lazy loading functionality
-- [~] 34.6 Verify Font Awesome tree-shaking (check bundle size)
-- [ ]* 34.7 Configure CloudFront cache TTLs
+- [ ]* 32. Configure GitHub repository secrets for AWS
+  - Add AWS_ACCESS_KEY_ID secret in repository settings
+  - Add AWS_SECRET_ACCESS_KEY secret
+  - Add CLOUDFRONT_DISTRIBUTION_ID secret
+  - Test workflow by pushing a commit
+  - Verify deployment to both GitHub Pages and S3
+  - _Requirements: 4.2_
 
-### 35. Implement Accessibility Features
-- [~] 35.1 Add skip-to-content link
-- [~] 35.2 Verify all images have alt text
-- [~] 35.3 Ensure proper heading hierarchy
-- [~] 35.4 Test keyboard navigation
-- [~] 35.5 Verify color contrast ratios
-- [~] 35.6 Add ARIA labels where needed
-- [~] 35.7 Test with screen reader
 
-## Phase 11: Testing and Quality Assurance
+- [x] 33. Implement SEO best practices
+  - Create static/robots.txt allowing all user-agents
+  - Verify Hugo generates sitemap.xml automatically
+  - Add Schema.org structured data (LocalBusiness) to base template
+  - Include both salon locations in structured data
+  - Verify hreflang tags are present on all pages
+  - Add canonical URL tags to prevent duplicate content
+  - Optimize meta descriptions for all pages (50-160 characters)
+  - Add Open Graph images for social sharing
+  - _Requirements: 4.4_
 
-### 36. Cross-Browser Testing
-- [~] 36.1 Test on Chrome (latest)
-- [~] 36.2 Test on Firefox (latest)
-- [~] 36.3 Test on Safari (latest)
-- [~] 36.4 Test on Edge (latest)
-- [~] 36.5 Test on mobile Safari (iOS)
-- [~] 36.6 Test on mobile Chrome (Android)
+- [ ] 34. Optimize site performance
+  - Enable Hugo minification with --minify flag in build
+  - Fingerprint all assets for cache busting
+  - Implement critical CSS inlining for above-the-fold content (optional)
+  - Verify WebP image generation with Hugo image processing
+  - Test lazy loading functionality on various devices
+  - Verify Font Awesome bundle size is ~20KB (tree-shaking working)
+  - _Requirements: 4.3_
 
-### 37. Responsive Design Testing
-- [~] 37.1 Test on mobile (320px - 480px)
-- [~] 37.2 Test on tablet (768px - 1024px)
-- [~] 37.3 Test on desktop (1024px+)
-- [~] 37.4 Test on wide screens (1920px+)
-- [~] 37.5 Verify mobile menu functionality
-- [~] 37.6 Test touch interactions
+- [ ]* 35. Configure CloudFront cache policies
+  - Set HTML files cache TTL to 1 hour with revalidation
+  - Set fingerprinted assets (CSS/JS) cache TTL to 1 year
+  - Set images cache TTL to 1 month
+  - Set fonts cache TTL to 1 year
+  - Enable query string forwarding for dynamic content if needed
+  - Monitor cache hit ratio in CloudWatch
+  - _Requirements: 4.3_
 
-### 38. Functionality Testing
-- [~] 38.1 Test language switching on all pages
-- [~] 38.2 Verify phone links work (tel: protocol)
-- [~] 38.3 Verify Instagram links open correctly
-- [~] 38.4 Test navigation between pages
-- [~] 38.5 Verify CloudFront language detection
-- [~] 38.6 Test GitHub Pages fallback (French default)
-- [~] 38.7 Test 404 page
+- [ ] 36. Implement accessibility features
+  - Add skip-to-content link at top of page
+  - Verify all images have descriptive alt text
+  - Ensure proper heading hierarchy (h1 → h2 → h3)
+  - Test keyboard navigation (Tab, Enter, Escape)
+  - Verify color contrast ratios meet WCAG 2.1 AA (4.5:1 minimum)
+  - Add ARIA labels to icon-only buttons and links
+  - Test with screen reader (NVDA, JAWS, or VoiceOver)
+  - _Requirements: 4.5_
 
-### 39. Performance Testing
-- [~] 39.1 Run Lighthouse audit (target score > 90)
-- [~] 39.2 Test with WebPageTest
-- [~] 39.3 Verify Core Web Vitals (LCP, FID, CLS)
-- [~] 39.4 Check page load times (target < 2s)
-- [~] 39.5 Verify image optimization
-- [~] 39.6 Check JavaScript bundle size
-- [~] 39.7 Test CloudFront cache hit ratio
 
-### 40. SEO Testing
-- [~] 40.1 Verify sitemap.xml is accessible
-- [~] 40.2 Test robots.txt
-- [~] 40.3 Verify hreflang tags with Google Search Console
-- [~] 40.4 Check structured data with Google Rich Results Test
-- [~] 40.5 Verify Open Graph tags with Facebook Debugger
-- [~] 40.6 Test meta descriptions on all pages
+- [ ]* 37. Perform cross-browser testing
+  - Test on Chrome (latest version) - desktop and mobile
+  - Test on Firefox (latest version) - desktop and mobile
+  - Test on Safari (latest version) - desktop and iOS
+  - Test on Edge (latest version) - desktop
+  - Verify all features work consistently across browsers
+  - Document any browser-specific issues
+  - _Requirements: 3.1, 4.3_
 
-## Phase 12: Documentation and Handoff
+- [ ]* 38. Perform responsive design testing
+  - Test on mobile devices (320px - 480px width)
+  - Test on tablets (768px - 1024px width)
+  - Test on desktop (1024px - 1920px width)
+  - Test on wide screens (1920px+ width)
+  - Verify mobile menu functionality on touch devices
+  - Test touch interactions (tap, swipe)
+  - Verify location info is accessible on all screen sizes
+  - _Requirements: 3.1, 3.5_
 
-### 41. Create User Documentation
-- [x] 41.1 Write README.md with project overview
-- [x] 41.2 Document local development setup
-- [x] 41.3 Create content management guide (French)
-- [x] 41.4 Document how to add new articles
-- [x] 41.5 Document how to update pricing
-- [x] 41.6 Document how to update location information
-- [x] 41.7 Add troubleshooting section
+- [ ]* 39. Test multilingual functionality
+  - Test language switching on all pages
+  - Verify language preference is maintained during navigation
+  - Test CloudFront language detection with different Accept-Language headers
+  - Test GitHub Pages fallback (should default to French)
+  - Verify hreflang tags are correct
+  - Test that untranslated pages fallback to language home
+  - Verify phone links work correctly (tel: protocol)
+  - Verify Instagram links open in new tab with rel="noopener"
+  - Test 404 page in both languages
+  - _Requirements: 3.6, 3.7_
 
-### 42. Create Developer Documentation
-- [x] 42.1 Document Hugo configuration
-- [x] 42.2 Document SCSS architecture
-- [x] 42.3 Document JavaScript modules
-- [x] 42.4 Document template structure
-- [~] 42.5 Document deployment process
-- [~] 42.6 Document AWS infrastructure
-- [~] 42.7 Add architecture diagrams
+- [ ]* 40. Perform performance testing
+  - Run Lighthouse audit on multiple pages (target score > 90 all categories)
+  - Test with WebPageTest from multiple locations
+  - Verify Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
+  - Check page load times (target < 2 seconds)
+  - Verify image optimization (WebP format, appropriate sizes)
+  - Check JavaScript bundle size (Font Awesome should be ~20KB)
+  - Test CloudFront cache hit ratio in CloudWatch
+  - _Requirements: 4.3_
 
-### 43. Create Deployment Guide
-- [~] 43.1 Document GitHub Actions workflow
-- [~] 43.2 Document AWS setup steps
-- [~] 43.3 Document CloudFront Function deployment
-- [~] 43.4 Document DNS configuration
-- [~] 43.5 Document rollback procedures
-- [~] 43.6 Add cost monitoring instructions
+- [ ]* 41. Validate SEO implementation
+  - Verify sitemap.xml is accessible at /sitemap.xml
+  - Test robots.txt at /robots.txt
+  - Verify hreflang tags with Google Search Console
+  - Test structured data with Google Rich Results Test
+  - Verify Open Graph tags with Facebook Sharing Debugger
+  - Check meta descriptions on all pages (50-160 characters)
+  - Verify canonical URLs are correct
+  - Test that both language versions are indexed separately
+  - _Requirements: 4.4_
 
-### 44. Final Review and Launch
-- [~] 44.1 Review all content for accuracy
-- [~] 44.2 Verify all translations are complete
-- [~] 44.3 Test all functionality one final time
-- [~] 44.4 Verify analytics setup (if applicable)
-- [~] 44.5 Set up uptime monitoring
-- [~] 44.6 Configure AWS billing alerts
-- [~] 44.7 Create backup of WordPress site
-- [~] 44.8 Update DNS to point to new site
-- [~] 44.9 Monitor for issues post-launch
-- [~] 44.10 Celebrate! 🎉
 
-## Phase 13: Post-Launch (Optional)
+- [x] 42. Create user documentation for content management
+  - Write README.md with project overview and purpose
+  - Document local development setup (Hugo installation, npm install, hugo server)
+  - Create CONTENT_GUIDE.md in French for site owner
+  - Document how to add new articles (create .md file, add frontmatter, write content)
+  - Document how to update pricing (edit data/pricing.yaml)
+  - Document how to update location information (edit data/locations.yaml)
+  - Add troubleshooting section for common issues
+  - Include examples of frontmatter and markdown formatting
+  - _Requirements: 3.2_
 
-### 45. Monitor and Optimize
-- [~] 45.1 Monitor CloudWatch metrics
-- [~] 45.2 Review CloudFront access logs
-- [~] 45.3 Analyze user behavior (if analytics enabled)
-- [~] 45.4 Optimize based on real-world performance data
-- [~] 45.5 Review and optimize AWS costs monthly
+- [x] 43. Create developer documentation
+  - Create DEVELOPER.md with technical documentation
+  - Document Hugo configuration (hugo.yaml structure)
+  - Document SCSS architecture (_variables, _layout, _components)
+  - Document JavaScript modules (fontawesome.js, main.js)
+  - Document template structure and partials
+  - Document data file formats (locations.yaml, pricing.yaml)
+  - Add code examples and best practices
+  - _Requirements: 4.1_
 
-### 46. Future Enhancements (Phase 2)
-- [~] 46.1 Add online booking system integration
-- [~] 46.2 Add customer testimonials section
-- [~] 46.3 Create photo gallery
-- [~] 46.4 Add blog categories and tags
-- [~] 46.5 Implement newsletter subscription
-- [~] 46.6 Add more languages (German, Italian)
-- [~] 46.7 Implement PWA features
+- [ ]* 44. Document deployment and AWS infrastructure
+  - Document GitHub Actions workflow configuration
+  - Document AWS S3 bucket setup steps
+  - Document CloudFront distribution configuration
+  - Document CloudFront Function deployment process
+  - Document DNS configuration steps
+  - Add rollback procedures for failed deployments
+  - Document cost monitoring setup (billing alerts, Cost Explorer)
+  - Include estimated monthly costs breakdown
+  - _Requirements: 4.2_
+
+- [ ]* 45. Final review and launch preparation
+  - Review all content for accuracy and completeness
+  - Verify all French and English translations are complete
+  - Test all functionality one final time (checklist)
+  - Set up uptime monitoring (UptimeRobot, Pingdom, or similar)
+  - Configure AWS billing alerts at $5/month threshold
+  - Create backup of current WordPress site before DNS switch
+  - Prepare rollback plan in case of issues
+  - _Requirements: All_
+
+- [ ]* 46. Launch and post-launch monitoring
+  - Update DNS records to point to CloudFront distribution
+  - Monitor site for first 24 hours after launch
+  - Check CloudWatch metrics for errors
+  - Review CloudFront access logs
+  - Verify both language versions are working correctly
+  - Test from multiple locations and devices
+  - Monitor AWS costs daily for first week
+  - Celebrate successful launch! 🎉
+  - _Requirements: All_
+
+## Notes
+
+- Tasks marked with `*` are optional or require AWS/production access
+- Tasks marked with `[x]` are already completed
+- Each task references specific requirements for traceability
+- Focus on completing core functionality before optional enhancements
+- Test thoroughly on GitHub Pages before deploying to AWS production
+- CloudFront Functions are included in CloudFront pricing (no additional Lambda costs)
+- Estimated AWS costs: $1.50-2.00/month for typical traffic
