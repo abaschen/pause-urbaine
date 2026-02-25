@@ -1,7 +1,8 @@
 ---
 title: "Nos Services"
 description: "Découvrez nos services de coiffure professionnels à Genève"
-layout: "services"
+layout: "single"
+type: "services"
 ---
 
 ## Votre Destination Beauté à Genève

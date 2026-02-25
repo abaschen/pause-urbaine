@@ -1,7 +1,8 @@
 ---
 title: "Our Services"
 description: "Discover our professional hair services in Geneva"
-layout: "services"
+layout: "single"
+type: "services"
 ---
 
 ## Your Beauty Destination in Geneva
