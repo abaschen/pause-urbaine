@@ -8,7 +8,7 @@
   
   {{- /* Display both locations using location-card partial */ -}}
   <div class="locations-grid mt-4">
-    {{ range .Site.Data.locations }}
+    {{ range .Site.Data.locations.locations }}
       {{ partial "location-card.html" (dict "Site" $.Site "name" .name "address" .address "phone" .phone "instagram" .instagram "hours" .hours) }}
     {{ end }}
   </div>

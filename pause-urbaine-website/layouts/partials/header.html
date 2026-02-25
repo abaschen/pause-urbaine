@@ -3,7 +3,7 @@
   <div class="header-top">
     <div class="container">
       <div class="header-locations">
-        {{ range .Site.Data.locations }}
+        {{ range .Site.Data.locations.locations }}
         <div class="header-location">
           <span>{{ if .name }}{{ index .name $.Site.Language.Lang }}{{ end }}</span>
           {{ if .phone }}
@@ -29,8 +29,7 @@
     <div class="container">
       <div class="header-logo">
         <a href="{{ .Site.Home.Permalink }}">
-          {{- /* TODO: Add logo image when available */ -}}
-          <span style="font-size: 1.5rem; font-weight: bold; color: #8b7355;">Pause Urbaine</span>
+          {{ partial "logo.html" . }}
         </a>
       </div>
       

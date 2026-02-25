@@ -11,7 +11,11 @@
     {{ if .address }}
     <div class="location-card-item">
       <i class="fa-solid fa-location-dot"></i>
-      <span>{{ index .address .Site.Language.Lang }}</span>
+      <span>
+        {{ .address.street }}<br>
+        {{ .address.postal }} {{ .address.city }}<br>
+        {{ .address.country }}
+      </span>
     </div>
     {{ end }}
     
@@ -35,8 +39,8 @@
         <i class="fa-solid fa-clock"></i>
         <div>
           <strong>{{ i18n "common.hours" }}:</strong>
-          {{ range .hours }}
-          <div>{{ index .day $.Site.Language.Lang }}: {{ index .time $.Site.Language.Lang }}</div>
+          {{ range $day, $time := .hours }}
+          <div>{{ $day | humanize }}: {{ $time }}</div>
           {{ end }}
         </div>
       </div>

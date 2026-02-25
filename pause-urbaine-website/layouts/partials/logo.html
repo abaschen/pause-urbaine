@@ -1,0 +1,27 @@
+{{/*
+  Logo partial with optimization
+  Processes logo from assets and outputs optimized WebP + fallback
+*/}}
+
+{{ $logo := resources.Get "images/logo.jpg" }}
+
+{{ if $logo }}
+  {{ $logoResized := $logo.Resize "400x webp q90" }}
+  {{ $logoFallback := $logo.Resize "400x q90" }}
+  
+  <picture>
+    <source type="image/webp" srcset="{{ $logoResized.RelPermalink }}">
+    <img 
+      src="{{ $logoFallback.RelPermalink }}" 
+      alt="{{ .Site.Title }}"
+      width="{{ $logoFallback.Width }}"
+      height="{{ $logoFallback.Height }}"
+      class="site-logo">
+  </picture>
+{{ else }}
+  {{/* Fallback to static logo */}}
+  <img 
+    src="{{ "images/logo.jpg" | relURL }}" 
+    alt="{{ .Site.Title }}"
+    class="site-logo">
+{{ end }}

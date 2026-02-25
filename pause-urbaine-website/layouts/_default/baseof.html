@@ -35,15 +35,16 @@
     "telephone": "022 310 4081",
     "priceRange": "$$",
     "location": [
-      {{ range $index, $location := .Site.Data.locations }}
+      {{ range $index, $location := .Site.Data.locations.locations }}
       {{ if $index }},{{ end }}
       {
         "@type": "Place",
         "name": "{{ index $location.name "fr" }}",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "{{ index $location.address "fr" }}",
-          "addressLocality": "Genève",
+          "streetAddress": "{{ $location.address.street }}",
+          "addressLocality": "{{ $location.address.city }}",
+          "postalCode": "{{ $location.address.postal }}",
           "addressCountry": "CH"
         },
         "telephone": "{{ $location.phone }}"

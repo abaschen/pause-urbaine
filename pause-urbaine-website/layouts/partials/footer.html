@@ -2,13 +2,13 @@
   <div class="container">
     <div class="footer-content">
       {{- /* Location information */ -}}
-      {{ range .Site.Data.locations }}
+      {{ range .Site.Data.locations.locations }}
       <div class="footer-section">
         <h3>{{ if .name }}{{ index .name $.Site.Language.Lang }}{{ end }}</h3>
         {{ if .address }}
         <p>
           <i class="fa-solid fa-location-dot"></i>
-          {{ index .address $.Site.Language.Lang }}
+          {{ .address.street }}, {{ .address.postal }} {{ .address.city }}
         </p>
         {{ end }}
         {{ if .phone }}
@@ -26,9 +26,11 @@
         {{ if .hours }}
         <div class="footer-hours">
           <p><i class="fa-solid fa-clock"></i> {{ i18n "common.hours" }}:</p>
-          {{ range .hours }}
-          <p>{{ index .day $.Site.Language.Lang }}: {{ index .time $.Site.Language.Lang }}</p>
-          {{ end }}
+          <ul>
+            {{ range $day, $time := .hours }}
+            <li>{{ $day | humanize }}: {{ $time }}</li>
+            {{ end }}
+          </ul>
         </div>
         {{ end }}
       </div>

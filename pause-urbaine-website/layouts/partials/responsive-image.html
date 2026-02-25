@@ -1,0 +1,63 @@
+{{/*
+  Responsive image partial with WebP support and lazy loading
+  
+  Usage:
+  {{ partial "responsive-image.html" (dict 
+    "src" "images/hero.jpg" 
+    "alt" "Hero image" 
+    "sizes" "(min-width: 1024px) 1200px, (min-width: 768px) 800px, 100vw"
+    "loading" "lazy"
+  ) }}
+*/}}
+
+{{ $src := .src }}
+{{ $alt := .alt | default "" }}
+{{ $sizes := .sizes | default "100vw" }}
+{{ $loading := .loading | default "lazy" }}
+{{ $class := .class | default "" }}
+
+{{ $image := resources.Get $src }}
+
+{{ if $image }}
+  {{ $widths := slice 400 800 1200 1600 }}
+  
+  <picture>
+    {{/* WebP sources */}}
+    {{ $webpSrcset := slice }}
+    {{ range $widths }}
+      {{ $resized := $image.Resize (printf "%dx webp q85" .) }}
+      {{ $webpSrcset = $webpSrcset | append (printf "%s %dw" $resized.RelPermalink .) }}
+    {{ end }}
+    <source 
+      type="image/webp" 
+      srcset="{{ delimit $webpSrcset ", " }}"
+      sizes="{{ $sizes }}">
+    
+    {{/* JPEG/PNG fallback sources */}}
+    {{ $jpegSrcset := slice }}
+    {{ range $widths }}
+      {{ $resized := $image.Resize (printf "%dx q85" .) }}
+      {{ $jpegSrcset = $jpegSrcset | append (printf "%s %dw" $resized.RelPermalink .) }}
+    {{ end }}
+    <source 
+      srcset="{{ delimit $jpegSrcset ", " }}"
+      sizes="{{ $sizes }}">
+    
+    {{/* Fallback img tag */}}
+    {{ $fallback := $image.Resize "800x q85" }}
+    <img 
+      src="{{ $fallback.RelPermalink }}" 
+      alt="{{ $alt }}"
+      width="{{ $fallback.Width }}"
+      height="{{ $fallback.Height }}"
+      loading="{{ $loading }}"
+      {{ with $class }}class="{{ . }}"{{ end }}>
+  </picture>
+{{ else }}
+  {{/* Fallback for static images */}}
+  <img 
+    src="{{ $src | relURL }}" 
+    alt="{{ $alt }}"
+    loading="{{ $loading }}"
+    {{ with $class }}class="{{ . }}"{{ end }}>
+{{ end }}
