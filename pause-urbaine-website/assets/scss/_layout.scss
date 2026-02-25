@@ -3,6 +3,39 @@
   max-width: $container-max-width;
   margin: 0 auto;
   padding: 0 $container-padding;
+  width: 100%;
+}
+
+// Grid system - Mobile-first
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+  
+  // 1 column on mobile by default
+  grid-template-columns: 1fr;
+  
+  // 2 columns on tablet
+  @media (min-width: $breakpoint-tablet) {
+    &-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  // 3 columns on desktop
+  @media (min-width: $breakpoint-desktop) {
+    &-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    &-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  // Auto-fit responsive grid
+  &-auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
 // Header
