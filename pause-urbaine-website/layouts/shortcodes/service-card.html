@@ -1,6 +1,6 @@
 <div class="service-card">
   <div class="service-card-image">
-    <img src="{{ .Get "image" }}" alt="{{ .Get "title" }}" loading="lazy">
+    <img src="{{ .Get "image" | relURL }}" alt="{{ .Get "title" }}" loading="lazy">
   </div>
   <div class="service-card-content">
     <h3>{{ .Get "title" }}</h3>
