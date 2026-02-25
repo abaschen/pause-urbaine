@@ -29,7 +29,7 @@ At Pause Urbaine, we offer a complete range of professional hair services tailor
 
 {{< service-card 
   title="Smoothing & Treatments" 
-  image="/images/services/treatments.png"
+  image="/images/services/brushing.png"
   description="Organic keratin smoothing, hair botox, and deep hydration treatments for healthy, shiny hair."
   link="/tarifs/#soins"
 >}}
