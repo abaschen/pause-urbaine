@@ -139,7 +139,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 3.5_
 
 
-- [~] 14. Create homepage template
+- [x] 14. Create homepage template
   - Create layouts/index.html extending baseof.html
   - Add hero section with background image and welcome text
   - Display site title and tagline

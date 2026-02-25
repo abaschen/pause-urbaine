@@ -1,11 +1,12 @@
 {{ define "main" }}
 <div class="homepage">
-  {{- /* Hero banner */ -}}
+  {{- /* Hero section with background image and welcome text */ -}}
   <section class="hero">
     <div class="hero-banner">
       <img src="/images/hero-banner.svg" alt="Pause Urbaine" class="hero-banner-image">
     </div>
     <div class="hero-content">
+      <h1 class="hero-title">{{ .Site.Title }}</h1>
       <p class="hero-subtitle">{{ .Site.Params.description }}</p>
       <div class="hero-cta">
         <a href="{{ relLangURL "services" }}" class="btn btn-primary">{{ i18n "homepage.discoverServices" }}</a>
@@ -14,20 +15,20 @@
     </div>
   </section>
   
-  {{- /* Intro section */ -}}
+  {{- /* Intro section with page content */ -}}
   <section class="intro">
     <div class="intro-content">
       {{ .Content }}
     </div>
   </section>
   
-  {{- /* Blog posts section */ -}}
-  {{ $pages := where .Site.RegularPages "Section" "actualites" }}
-  {{ if $pages }}
+  {{- /* Latest news section - display 3 most recent articles */ -}}
+  {{ $actualites := where .Site.RegularPages "Section" "actualites" }}
+  {{ if $actualites }}
   <section class="blog-posts">
     <h2>{{ i18n "homepage.latestNews" }}</h2>
     <div class="blog-grid">
-      {{ range first 3 $pages }}
+      {{ range first 3 ($actualites.ByDate.Reverse) }}
       <article class="blog-card">
         {{ with .Params.image }}
         <div class="blog-card-image">
@@ -35,6 +36,9 @@
         </div>
         {{ end }}
         <div class="blog-card-content">
+          <time class="blog-card-date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2 January 2006" }}
+          </time>
           <h3 class="blog-card-title">
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h3>
@@ -45,14 +49,16 @@
       {{ end }}
     </div>
   </section>
-  {{ else }}
-  {{- /* Placeholder for blog posts */ -}}
-  <section class="blog-posts">
-    <h2>{{ i18n "homepage.latestNews" }}</h2>
-    <div class="blog-grid">
-      {{- /* Blog post cards will appear here when content is added */ -}}
+  {{ end }}
+  
+  {{- /* Locations section - display both salon locations */ -}}
+  <section class="locations">
+    <h2>{{ i18n "homepage.ourSalons" }}</h2>
+    <div class="locations-grid">
+      {{ range .Site.Data.locations.locations }}
+        {{ partial "location-card.html" (dict "Site" $.Site "location" .) }}
+      {{ end }}
     </div>
   </section>
-  {{ end }}
 </div>
 {{ end }}
