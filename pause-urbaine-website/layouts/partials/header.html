@@ -5,9 +5,9 @@
       <nav class="main-nav" aria-label="{{ i18n "nav.main" }}">
         <ul>
           <li><a href="{{ site.Home.Permalink }}">{{ i18n "nav.home" }}</a></li>
-          <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
-          <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
-          <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
+          <li><a href="{{ "services" | absLangURL }}">{{ i18n "nav.services" }}</a></li>
+          <li><a href="{{ "tarifs" | absLangURL }}">{{ i18n "nav.pricing" }}</a></li>
+          <li><a href="{{ "contact" | absLangURL }}">{{ i18n "nav.contact" }}</a></li>
         </ul>
       </nav>
       
@@ -35,13 +35,13 @@
             <i class="fa-solid fa-phone" aria-hidden="true"></i>
             {{ .phone }}
           </a>
-          <a href="{{ .instagram }}" 
+          <a href="https://instagram.com/{{ .instagram }}" 
              class="instagram-link" 
              target="_blank" 
              rel="noopener"
              aria-label="Instagram {{ index .name site.Language.Lang }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            Instagram
+            {{ .instagram }}
           </a>
         </div>
         {{ end }}
