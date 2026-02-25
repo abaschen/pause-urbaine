@@ -64,6 +64,12 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      - name: Remove video files from GitHub Pages build
+        run: |
+          echo "Removing video files from public directory for GitHub Pages..."
+          find pause-urbaine-website/public -type f \( -name "*.mp4" -o -name "*.webm" -o -name "*.mov" -o -name "*.avi" -o -name "*.mkv" -o -name "*.flv" -o -name "*.wmv" \) -delete
+          echo "Video files removed. Videos will be served from S3 in production."
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

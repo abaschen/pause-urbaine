@@ -3,6 +3,15 @@
 /resources/_gen/
 /.hugo_build.lock
 
+# Video files (stored in S3, not in Git)
+*.mp4
+*.webm
+*.mov
+*.avi
+*.mkv
+*.flv
+*.wmv
+
 # Dependencies
 node_modules/
 pnpm-lock.yaml
