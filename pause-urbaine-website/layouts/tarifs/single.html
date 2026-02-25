@@ -1,38 +1,100 @@
 {{ define "main" }}
 <article class="pricing-page">
-  <h1>{{ .Title }}</h1>
-  
-  <div class="content">
-    {{ .Content }}
-  </div>
-  
-  {{- /* Display pricing from data file */ -}}
-  {{ range .Site.Data.pricing.categories }}
-  {{ if .services }}
-  <section class="pricing-category">
-    <h2>{{ index .name $.Site.Language.Lang }}</h2>
+  <div class="container">
+    <h1>{{ .Title }}</h1>
     
-    <div class="pricing-services">
-      {{ range .services }}
-      <div class="pricing-service">
-        <div class="pricing-service-name">
-          {{ index .name $.Site.Language.Lang }}
-        </div>
-        <div class="pricing-service-price">
-          {{ .price }}
-        </div>
-      </div>
-      {{ end }}
+    <div class="content">
+      {{ .Content }}
     </div>
-  </section>
-  {{ end }}
-  {{ end }}
-  
-  {{- /* Pricing notes */ -}}
-  {{ with .Site.Data.pricing.notes }}
-  <div class="pricing-notes mt-4">
-    <p><em>{{ index . $.Site.Language.Lang }}</em></p>
+    
+    {{- /* Display pricing from data file */ -}}
+    {{ range .Site.Data.pricing.categories }}
+    {{ if .services }}
+    <section class="pricing-category">
+      <h2>{{ index .name $.Site.Language.Lang }}</h2>
+      
+      <div class="pricing-services">
+        {{ range .services }}
+        <div class="pricing-service-card">
+          <div class="pricing-service-info">
+            <h3 class="pricing-service-name">
+              {{ index .name $.Site.Language.Lang }}
+            </h3>
+            {{ if ne .duration "XX min" }}
+            <span class="pricing-service-duration">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              {{ .duration }}
+            </span>
+            {{ end }}
+          </div>
+          <div class="pricing-service-price">
+            {{ .price }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+    {{ end }}
+    
+    {{- /* Pricing notes */ -}}
+    {{ with .Site.Data.pricing.notes }}
+    <div class="pricing-notes">
+      <p><em>{{ index . $.Site.Language.Lang }}</em></p>
+    </div>
+    {{ end }}
+    
+    {{- /* Contact information for bookings */ -}}
+    <section class="pricing-contact">
+      <h2>
+        {{ if eq $.Site.Language.Lang "fr" }}
+        Prendre rendez-vous
+        {{ else }}
+        Book an appointment
+        {{ end }}
+      </h2>
+      
+      <p>
+        {{ if eq $.Site.Language.Lang "fr" }}
+        Contactez-nous pour réserver votre rendez-vous dans l'un de nos deux salons:
+        {{ else }}
+        Contact us to book your appointment at one of our two salons:
+        {{ end }}
+      </p>
+      
+      <div class="pricing-locations">
+        {{ range .Site.Data.locations.locations }}
+        <div class="pricing-location-card">
+          <h3>
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            {{ index .name $.Site.Language.Lang }}
+          </h3>
+          <p class="location-phone">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:{{ .phone }}">{{ .phone }}</a>
+          </p>
+          <p class="location-instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <a href="https://instagram.com/{{ strings.TrimPrefix "@" .instagram }}" 
+               target="_blank" 
+               rel="noopener">
+              {{ .instagram }}
+            </a>
+          </p>
+        </div>
+        {{ end }}
+      </div>
+      
+      <p class="pricing-contact-link">
+        <a href="{{ "contact" | relLangURL }}" class="btn-primary">
+          {{ if eq $.Site.Language.Lang "fr" }}
+          Voir toutes les informations de contact
+          {{ else }}
+          View all contact information
+          {{ end }}
+        </a>
+      </p>
+    </section>
   </div>
-  {{ end }}
 </article>
 {{ end }}
