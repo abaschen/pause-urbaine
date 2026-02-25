@@ -17,42 +17,42 @@ At Pause Urbaine, we offer a complete range of professional hair services tailor
   title="Haircuts & Blow-dry" 
   image="/images/services/haircuts-placeholder.jpg"
   description="Professional cuts for all styles and lengths, with expert blow-drying for a perfect finish."
-  link="/en/tarifs/#coupes"
+  link="/tarifs/#coupes"
 >}}
 
 {{< service-card 
   title="Hair Coloring & Highlights" 
   image="/images/services/coloring-placeholder.jpg"
   description="Root touch-ups, full color, toners, highlights, and balayage to enhance your natural beauty."
-  link="/en/tarifs/#colorations"
+  link="/tarifs/#colorations"
 >}}
 
 {{< service-card 
   title="Smoothing & Treatments" 
   image="/images/services/treatments-placeholder.jpg"
   description="Organic keratin smoothing, hair botox, and deep hydration treatments for healthy, shiny hair."
-  link="/en/tarifs/#soins"
+  link="/tarifs/#soins"
 >}}
 
 {{< service-card 
   title="Beauty Treatments" 
   image="/images/services/beauty-placeholder.jpg"
   description="Complete beauty services to complement your hair care routine."
-  link="/en/contact/"
+  link="/contact/"
 >}}
 
 {{< service-card 
   title="Nail Services" 
   image="/images/services/nails-placeholder.jpg"
   description="Professional nail care and styling services."
-  link="/en/contact/"
+  link="/contact/"
 >}}
 
 {{< service-card 
   title="Special Occasions" 
   image="/images/services/special-placeholder.jpg"
   description="Wedding hairstyles, updos, and special event styling."
-  link="/en/contact/"
+  link="/contact/"
 >}}
 
 {{< /service-grid >}}
@@ -61,4 +61,4 @@ At Pause Urbaine, we offer a complete range of professional hair services tailor
 
 We offer many more services! Don't hesitate to ask our team at the salon about any specific needs or treatments you're interested in.
 
-[View our complete price list](/en/tarifs/) or [contact us](/en/contact/) for more information.
+[View our complete price list](/tarifs/) or [contact us](/contact/) for more information.

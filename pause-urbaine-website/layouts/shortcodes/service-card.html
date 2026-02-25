@@ -5,7 +5,7 @@
   <div class="service-card-content">
     <h3>{{ .Get "title" }}</h3>
     <p>{{ .Get "description" }}</p>
-    <a href="{{ .Get "link" }}" class="service-card-link">
+    <a href="{{ .Get "link" | relLangURL }}" class="service-card-link">
       {{ if eq $.Page.Language.Lang "fr" }}
         En savoir plus
       {{ else }}
