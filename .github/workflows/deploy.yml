@@ -26,7 +26,7 @@ jobs:
       HUGO_VERSION: 0.139.3
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
@@ -44,9 +44,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
-          cache-dependency-path: pause-urbaine-website/pnpm-lock.yaml
+          node-version: '24'
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -65,12 +77,6 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-
-      - name: Remove video files from GitHub Pages build
-        run: |
-          echo "Removing video files from public directory for GitHub Pages..."
-          find pause-urbaine-website/public -type f \( -name "*.mp4" -o -name "*.webm" -o -name "*.mov" -o -name "*.avi" -o -name "*.mkv" -o -name "*.flv" -o -name "*.wmv" \) -delete
-          echo "Video files removed. Videos will be served from S3 in production."
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
