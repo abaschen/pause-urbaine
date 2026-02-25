@@ -4,6 +4,10 @@
   margin: 0 auto;
   padding: 0 $container-padding;
   width: 100%;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 0.75rem; // Tighter padding on small phones
+  }
 }
 
 // Grid system - Mobile-first
@@ -49,11 +53,19 @@
   .header-main {
     padding: $spacing-sm 0;
 
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0.75rem 0; // Slightly tighter on small phones
+    }
+
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: $spacing-lg;
+      
+      @media (max-width: $breakpoint-mobile) {
+        gap: $spacing-sm;
+      }
     }
   }
 
@@ -61,6 +73,10 @@
     display: block;
     height: 50px;
     flex-shrink: 0;
+
+    @media (max-width: $breakpoint-mobile) {
+      height: 40px; // Smaller logo on small phones
+    }
 
     img, svg {
       height: 100%;
@@ -73,6 +89,10 @@
     align-items: center;
     gap: $spacing-md;
     flex-shrink: 0;
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: $spacing-sm;
+    }
   }
 
   .header-locations {
@@ -80,6 +100,11 @@
     padding: $spacing-xs 0;
     font-size: 0.875rem;
     border-top: 1px solid $border-color;
+    
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0.625rem 0;
+      font-size: 0.8125rem; // Slightly smaller on phones
+    }
   }
 
   .locations-bar {
@@ -93,6 +118,10 @@
       gap: $spacing-sm;
       width: 100%;
     }
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: 0.625rem;
+    }
   }
 
   .location-quick-info {
@@ -104,6 +133,12 @@
     @media (max-width: $breakpoint-tablet) {
       font-size: 0.8rem;
     }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 0.75rem;
+      gap: 0.375rem;
+      justify-content: center;
+    }
 
     .location-name {
       font-weight: 600;
@@ -111,6 +146,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
+      
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%; // Full width on small phones
+        justify-content: center;
+        margin-bottom: 0.25rem;
+      }
     }
 
     .phone-link,
@@ -121,9 +162,16 @@
       text-decoration: none;
       color: $text-color;
       transition: color $transition-speed;
+      padding: 0.25rem 0.5rem; // Better touch target
+      margin: -0.25rem -0.5rem;
 
       &:hover {
         color: $primary-color;
+      }
+      
+      @media (max-width: $breakpoint-mobile) {
+        padding: 0.375rem 0.625rem; // Larger touch target on mobile
+        margin: -0.375rem -0.625rem;
       }
     }
 
@@ -149,6 +197,9 @@
     border-bottom: 1px solid $border-color;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: none;
+    max-height: calc(100vh - 100px); // Prevent overflow on small screens
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
   }
 
   ul {
@@ -162,6 +213,17 @@
       flex-direction: column;
       padding: $spacing-md;
       width: 100%;
+      gap: 0; // Remove gap, use padding on links instead
+    }
+
+    li {
+      @media (max-width: $breakpoint-tablet) {
+        border-bottom: 1px solid $border-color;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
     }
 
     a {
@@ -170,9 +232,19 @@
       font-weight: 500;
       transition: color $transition-speed;
 
+      @media (max-width: $breakpoint-tablet) {
+        display: block;
+        padding: 0.875rem 0.5rem; // Minimum 44px touch target
+        font-size: 1rem; // Readable size
+      }
+
       &:hover,
       &.active {
         color: $primary-color;
+        
+        @media (max-width: $breakpoint-tablet) {
+          background: $background-light;
+        }
       }
     }
   }
@@ -193,6 +265,11 @@
   padding: $spacing-xs;
   color: $text-color;
   transition: color $transition-speed;
+  min-width: 44px; // Minimum touch target
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     color: $primary-color;
@@ -203,7 +280,7 @@
   }
 
   @media (max-width: $breakpoint-tablet) {
-    display: block;
+    display: flex;
   }
 
   svg {
@@ -218,11 +295,21 @@
   border-top: 1px solid $border-color;
   padding: $spacing-xl 0 $spacing-md;
   margin-top: $spacing-xl;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-lg 0 $spacing-sm;
+    margin-top: $spacing-lg;
+  }
 
   h3 {
     margin-bottom: $spacing-md;
     color: $primary-color;
     font-size: 1.25rem;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.125rem;
+      margin-bottom: $spacing-sm;
+    }
   }
 
   h4 {
@@ -232,6 +319,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1rem;
+    }
   }
 
   .footer-content {
@@ -244,6 +335,11 @@
       grid-template-columns: 1fr;
       gap: $spacing-lg;
     }
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: $spacing-md;
+      margin-bottom: $spacing-md;
+    }
   }
 
   .footer-locations {
@@ -254,6 +350,7 @@
 
       @media (max-width: $breakpoint-tablet) {
         grid-template-columns: 1fr;
+        gap: $spacing-md;
       }
     }
 
@@ -261,6 +358,10 @@
       .location-details {
         font-size: 0.9rem;
         line-height: 1.6;
+        
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 0.875rem;
+        }
 
         p {
           margin-bottom: $spacing-sm;
@@ -287,9 +388,16 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 0.25rem 0; // Better touch target
+            margin: -0.25rem 0;
 
             &:hover {
               color: $primary-color;
+            }
+            
+            @media (max-width: $breakpoint-mobile) {
+              padding: 0.375rem 0; // Larger touch target
+              margin: -0.375rem 0;
             }
           }
         }
@@ -307,12 +415,17 @@
             padding: 0;
             margin: 0;
             font-size: 0.85rem;
+            
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 0.8125rem;
+            }
 
             li {
               display: flex;
               justify-content: space-between;
               padding: 0.25rem 0;
               border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+              gap: 0.5rem; // Prevent text overlap
 
               &:last-child {
                 border-bottom: none;
@@ -320,10 +433,12 @@
 
               .day {
                 font-weight: 500;
+                flex-shrink: 0;
               }
 
               .time {
                 color: $text-light;
+                text-align: right;
               }
             }
           }
@@ -346,9 +461,16 @@
           text-decoration: none;
           transition: color $transition-speed;
           display: inline-block;
+          padding: 0.25rem 0; // Better touch target
+          margin: -0.25rem 0;
 
           &:hover {
             color: $primary-color;
+          }
+          
+          @media (max-width: $breakpoint-mobile) {
+            padding: 0.375rem 0; // Larger touch target
+            margin: -0.375rem 0;
           }
         }
       }
@@ -369,9 +491,17 @@
         text-decoration: none;
         transition: color $transition-speed;
         font-size: 0.95rem;
+        padding: 0.25rem 0; // Better touch target
+        margin: -0.25rem 0;
 
         &:hover {
           color: $primary-color;
+        }
+        
+        @media (max-width: $breakpoint-mobile) {
+          padding: 0.375rem 0; // Larger touch target
+          margin: -0.375rem 0;
+          font-size: 0.9rem;
         }
 
         svg {
@@ -385,12 +515,21 @@
     border-top: 1px solid $border-color;
     padding-top: $spacing-md;
     margin-top: $spacing-lg;
+    
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: $spacing-sm;
+      margin-top: $spacing-md;
+    }
 
     .copyright {
       text-align: center;
       color: $text-light;
       font-size: 0.875rem;
       margin: 0;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 0.8125rem;
+      }
     }
   }
 }
