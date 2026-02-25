@@ -1,0 +1,17 @@
+<div class="service-card">
+  <div class="service-card-image">
+    <img src="{{ .Get "image" }}" alt="{{ .Get "title" }}" loading="lazy">
+  </div>
+  <div class="service-card-content">
+    <h3>{{ .Get "title" }}</h3>
+    <p>{{ .Get "description" }}</p>
+    <a href="{{ .Get "link" }}" class="service-card-link">
+      {{ if eq $.Page.Language.Lang "fr" }}
+        En savoir plus
+      {{ else }}
+        Learn more
+      {{ end }}
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
