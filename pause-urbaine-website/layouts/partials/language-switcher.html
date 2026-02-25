@@ -1,31 +1,27 @@
-{{- /* Language switcher partial */ -}}
+{{- /* Language switcher partial - flag icons only */ -}}
 <div class="language-switcher">
-  {{- $lastIndex := sub (len site.Languages) 1 -}}
   {{- range $index, $lang := site.Languages -}}
+    {{- $flagEmoji := cond (eq $lang.Lang "fr") "🇫🇷" "🇬🇧" -}}
     {{- if eq $lang $.Language -}}
       {{- /* Active language - display as span with .lang-active class */ -}}
-      <span class="lang-active" aria-current="page">{{ $lang.LanguageName }}</span>
+      <span class="lang-active" aria-current="page" aria-label="{{ $lang.LanguageName }}" title="{{ $lang.LanguageName }}">{{ $flagEmoji }}</span>
     {{- else -}}
       {{- /* Check if current page is translated */ -}}
       {{- if $.IsTranslated -}}
         {{- /* Link to translated version of current page */ -}}
         {{- range $.Translations -}}
           {{- if eq .Language $lang -}}
-            <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">
-              {{ .Language.LanguageName }}
+            <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}" aria-label="{{ .Language.LanguageName }}" title="{{ .Language.LanguageName }}">
+              {{ $flagEmoji }}
             </a>
           {{- end -}}
         {{- end -}}
       {{- else -}}
         {{- /* Page not translated - link to language home */ -}}
-        <a href="{{ $lang.Lang | relLangURL }}" lang="{{ $lang.Lang }}" hreflang="{{ $lang.Lang }}">
-          {{ $lang.LanguageName }}
+        <a href="{{ $lang.Lang | relLangURL }}" lang="{{ $lang.Lang }}" hreflang="{{ $lang.Lang }}" aria-label="{{ $lang.LanguageName }}" title="{{ $lang.LanguageName }}">
+          {{ $flagEmoji }}
         </a>
       {{- end -}}
-    {{- end -}}
-    {{- /* Add separator between languages (not after last one) */ -}}
-    {{- if ne $index $lastIndex -}}
-      <span class="lang-separator" aria-hidden="true">|</span>
     {{- end -}}
   {{- end -}}
 </div>
