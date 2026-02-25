@@ -41,7 +41,7 @@
              rel="noopener"
              aria-label="Instagram {{ index .name site.Language.Lang }}">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            {{ .instagram }}
+            {{ strings.TrimPrefix "@" .instagram }}
           </a>
         </div>
         {{ end }}

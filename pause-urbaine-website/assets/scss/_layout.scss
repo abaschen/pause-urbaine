@@ -147,7 +147,7 @@
     .instagram-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.375rem; // Better spacing between icon and text
       text-decoration: none;
       color: $text-color;
       transition: color $transition-speed;
@@ -162,11 +162,12 @@
         padding: 0.375rem 0.625rem; // Larger touch target on mobile
         margin: -0.375rem -0.625rem;
       }
-    }
-
-    svg {
-      width: 1em;
-      height: 1em;
+      
+      i, svg {
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0; // Prevent icon from shrinking
+      }
     }
   }
 }
@@ -389,6 +390,12 @@
               padding: 0.375rem 0; // Larger touch target
               margin: -0.375rem 0;
             }
+            
+            i, svg {
+              flex-shrink: 0; // Prevent icon from shrinking
+              width: 1em;
+              height: 1em;
+            }
           }
         }
 
@@ -494,8 +501,11 @@
           font-size: 0.9rem;
         }
 
-        svg {
+        i, svg {
           font-size: 1.25rem;
+          flex-shrink: 0; // Prevent icon from shrinking
+          width: 1.25rem;
+          height: 1.25rem;
         }
       }
     }
