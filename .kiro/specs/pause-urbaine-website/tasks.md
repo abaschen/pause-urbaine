@@ -3,7 +3,7 @@
 ## Phase 1: Project Setup and Infrastructure
 
 ### 1. Initialize Hugo Project
-- [-] 1.1 Install Hugo extended version (v0.120+)
+- [x] 1.1 Install Hugo extended version (v0.120+)
 - [ ] 1.2 Create new Hugo site structure
 - [ ] 1.3 Initialize Git repository
 - [ ] 1.4 Create .gitignore file
