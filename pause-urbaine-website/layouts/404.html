@@ -1,15 +1,15 @@
 {{ define "main" }}
 <div class="error-page text-center">
   <h1>404</h1>
-  <h2>{{ i18n "pageNotFound" }}</h2>
-  <p>{{ i18n "pageNotFoundMessage" }}</p>
+  <h2>{{ i18n "error.pageNotFound" }}</h2>
+  <p>{{ i18n "error.pageNotFoundMessage" }}</p>
   
   <div class="mt-4">
-    <a href="{{ .Site.Home.Permalink }}" class="btn">{{ i18n "backToHome" }}</a>
+    <a href="{{ .Site.Home.Permalink }}" class="btn">{{ i18n "error.backToHome" }}</a>
   </div>
   
   <div class="mt-4">
-    <h3>{{ i18n "quickLinks" }}</h3>
+    <h3>{{ i18n "error.quickLinks" }}</h3>
     <ul style="list-style: none; padding: 0;">
       {{ range .Site.Menus.main }}
       <li style="margin: 0.5rem 0;">
