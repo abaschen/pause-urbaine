@@ -1,57 +1,40 @@
-- id: plainpalais
-  name:
-    fr: "Pause Urbaine Plainpalais"
-    en: "Pause Urbaine Plainpalais"
-  address:
-    fr: "Quai des Moulins 12A, 1204 Genève"
-    en: "Quai des Moulins 12A, 1204 Geneva"
-  phone: "022 310 4081"
-  instagram: "https://www.instagram.com/pauseurbaine/"
-  hours:
-    - day:
-        fr: "Dimanche - Lundi"
-        en: "Sunday - Monday"
-      time:
-        fr: "Fermé"
-        en: "Closed"
-    - day:
-        fr: "Mardi - Vendredi"
-        en: "Tuesday - Friday"
-      time:
-        fr: "10h - 18h"
-        en: "10am - 6pm"
-    - day:
-        fr: "Samedi"
-        en: "Saturday"
-      time:
-        fr: "10h - 17h"
-        en: "10am - 5pm"
-  
-- id: eauxvives
-  name:
-    fr: "Pause Urbaine Eaux-Vives"
-    en: "Pause Urbaine Eaux-Vives"
-  address:
-    fr: "Rue de Montchoisy 40, 1207 Genève"
-    en: "Rue de Montchoisy 40, 1207 Geneva"
-  phone: "022 736 2030"
-  instagram: "https://www.instagram.com/pauseurbaine/"
-  hours:
-    - day:
-        fr: "Dimanche - Lundi"
-        en: "Sunday - Monday"
-      time:
-        fr: "Fermé"
-        en: "Closed"
-    - day:
-        fr: "Mardi - Vendredi"
-        en: "Tuesday - Friday"
-      time:
-        fr: "10h - 18h"
-        en: "10am - 6pm"
-    - day:
-        fr: "Samedi"
-        en: "Saturday"
-      time:
-        fr: "10h - 17h"
-        en: "10am - 5pm"
+locations:
+  - id: plainpalais
+    name:
+      fr: Plainpalais
+      en: Plainpalais
+    address:
+      street: Rue de Carouge 42
+      city: Genève
+      postal: 1205
+      country: Suisse
+    phone: "+41 22 XXX XX XX"
+    instagram: "@pauseurbaine_plainpalais"
+    hours:
+      monday: "Fermé"
+      tuesday: "9h00 - 19h00"
+      wednesday: "9h00 - 19h00"
+      thursday: "9h00 - 19h00"
+      friday: "9h00 - 19h00"
+      saturday: "9h00 - 18h00"
+      sunday: "Fermé"
+    
+  - id: eauxvives
+    name:
+      fr: Eaux-Vives
+      en: Eaux-Vives
+    address:
+      street: Rue du Lac 15
+      city: Genève
+      postal: 1207
+      country: Suisse
+    phone: "+41 22 YYY YY YY"
+    instagram: "@pauseurbaine_eauxvives"
+    hours:
+      monday: "Fermé"
+      tuesday: "9h00 - 19h00"
+      wednesday: "9h00 - 19h00"
+      thursday: "9h00 - 19h00"
+      friday: "9h00 - 19h00"
+      saturday: "9h00 - 18h00"
+      sunday: "Fermé"

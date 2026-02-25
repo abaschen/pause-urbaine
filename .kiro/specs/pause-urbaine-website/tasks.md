@@ -30,7 +30,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 3.6, 4.1_
 
 
-- [ ] 4. Create location data structure
+- [x] 4. Create location data structure
   - Create data/locations.yaml with array of location objects
   - Add Plainpalais location: address, phone (+41 22 XXX XX XX), Instagram handle, opening hours
   - Add Eaux-Vives location: address, phone (+41 22 YYY YY YY), Instagram handle, opening hours
@@ -38,7 +38,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Structure hours as key-value pairs (monday: "Fermé", tuesday: "9h00 - 19h00", etc.)
   - _Requirements: 3.5_
 
-- [ ] 5. Extract and structure pricing data
+- [~] 5. Extract and structure pricing data
   - Process tarifs-2026.jpeg (OCR or manual extraction)
   - Create data/pricing.yaml with categories array
   - Organize by service categories (Coupes, Colorations, Soins, etc.)
@@ -46,7 +46,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Validate all pricing data for accuracy
   - _Requirements: 3.4, 5.2_
 
-- [ ] 6. Migrate WordPress content to Markdown
+- [~] 6. Migrate WordPress content to Markdown
   - Parse WordPress.2026-02-20.xml export file
   - Extract posts and pages with metadata (title, date, author)
   - Convert HTML content to Markdown format
@@ -57,7 +57,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 5.1, 3.2_
 
 
-- [ ] 7. Create SCSS architecture and styling
+- [~] 7. Create SCSS architecture and styling
   - Create assets/scss/_variables.scss (colors, typography, breakpoints, spacing)
   - Define color palette (primary: #2c3e50, secondary: #e8b4b8, accent: #d4a5a5)
   - Set font families (base: Inter, heading: Playfair Display)
@@ -68,7 +68,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Implement mobile-first responsive design
   - _Requirements: 3.1, 4.3_
 
-- [ ] 8. Optimize and prepare images
+- [~] 8. Optimize and prepare images
   - Download Logo-Pause-Urbaine-2022 from WordPress
   - Convert logo to SVG format if needed, optimize for web
   - Save logo to static/images/logo.svg
@@ -79,7 +79,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 4.3, 5.1_
 
 
-- [ ] 9. Create base template with SEO and multilingual support
+- [~] 9. Create base template with SEO and multilingual support
   - Create layouts/_default/baseof.html
   - Add HTML5 doctype with dynamic lang attribute ({{ .Language.Lang }})
   - Add meta tags: charset UTF-8, viewport, description
@@ -92,7 +92,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include header and footer partials
   - _Requirements: 3.6, 4.4_
 
-- [ ] 10. Create header partial with location info and navigation
+- [~] 10. Create header partial with location info and navigation
   - Create layouts/partials/header.html
   - Add header-top section with locations bar
   - Loop through .Site.Data.locations.locations
@@ -106,7 +106,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Implement sticky header with box-shadow
   - _Requirements: 3.5, 3.7_
 
-- [ ] 11. Create language switcher partial
+- [~] 11. Create language switcher partial
   - Create layouts/partials/language-switcher.html
   - Loop through .Site.Languages
   - Highlight active language with .lang-active class
@@ -116,7 +116,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Style as inline list with separator
   - _Requirements: 3.6_
 
-- [ ] 12. Create footer partial
+- [~] 12. Create footer partial
   - Create layouts/partials/footer.html
   - Display both locations with contact information
   - Add social media links (Instagram for each location)
@@ -126,7 +126,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Ensure responsive layout (stack on mobile)
   - _Requirements: 3.7_
 
-- [ ] 13. Create location card partial
+- [~] 13. Create location card partial
   - Create layouts/partials/location-card.html
   - Accept location data as parameter
   - Display location name with fa-location-dot icon
@@ -139,7 +139,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 3.5_
 
 
-- [ ] 14. Create homepage template
+- [~] 14. Create homepage template
   - Create layouts/index.html extending baseof.html
   - Add hero section with background image and welcome text
   - Display site title and tagline
@@ -151,7 +151,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Ensure responsive layout (stack sections on mobile)
   - _Requirements: 3.1_
 
-- [ ] 15. Create services page template
+- [~] 15. Create services page template
   - Create content/fr/services/_index.md and content/en/services/_index.md
   - Use layouts/_default/single.html or create layouts/services/single.html
   - Display page title and description
@@ -161,7 +161,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include call-to-action for booking
   - _Requirements: 3.3_
 
-- [ ] 16. Create pricing page template
+- [~] 16. Create pricing page template
   - Create content/fr/tarifs/_index.md and content/en/pricing/_index.md
   - Create layouts/pricing/single.html or use _default/single.html
   - Loop through .Site.Data.pricing.categories
@@ -172,7 +172,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include contact information for bookings
   - _Requirements: 3.4_
 
-- [ ] 17. Create contact page template
+- [~] 17. Create contact page template
   - Create content/fr/contact/_index.md and content/en/contact/_index.md
   - Create layouts/contact/single.html or use _default/single.html
   - Display both locations using location-card partial
@@ -181,7 +181,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Display opening hours prominently
   - _Requirements: 3.5_
 
-- [ ] 18. Create news/blog templates
+- [~] 18. Create news/blog templates
   - Create layouts/actualites/list.html for blog listing page
   - Display list of articles with title, date, excerpt
   - Add pagination if more than 10 articles
@@ -192,7 +192,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Include social sharing buttons (optional)
   - _Requirements: 3.1, 3.2_
 
-- [ ] 19. Create 404 error page
+- [~] 19. Create 404 error page
   - Create layouts/404.html
   - Add friendly error message in both languages
   - Detect current language from URL path
@@ -202,7 +202,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 4.2_
 
 
-- [ ] 20. Implement mobile menu functionality
+- [~] 20. Implement mobile menu functionality
   - Create assets/js/main.js
   - Add DOMContentLoaded event listener
   - Select mobile menu toggle button and main nav elements
@@ -214,7 +214,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Add click-outside-to-close functionality
   - _Requirements: 3.7_
 
-- [ ] 21. Implement lazy loading for images
+- [~] 21. Implement lazy loading for images
   - In assets/js/main.js, add IntersectionObserver
   - Select all images with data-src attribute
   - Observe each image for viewport intersection
@@ -225,7 +225,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - _Requirements: 4.3_
 
 
-- [ ] 22. Create CloudFront Function for language detection
+- [~] 22. Create CloudFront Function for language detection
   - Create functions/language-redirect.js
   - Implement handler function that receives event with request object
   - Check if request.uri is root path ('/' or '')
@@ -347,7 +347,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Add Open Graph images for social sharing
   - _Requirements: 4.4_
 
-- [ ] 34. Optimize site performance
+- [~] 34. Optimize site performance
   - Enable Hugo minification with --minify flag in build
   - Fingerprint all assets for cache busting
   - Implement critical CSS inlining for above-the-fold content (optional)
@@ -365,7 +365,7 @@ This implementation plan covers the development of a bilingual (French/English) 
   - Monitor cache hit ratio in CloudWatch
   - _Requirements: 4.3_
 
-- [ ] 36. Implement accessibility features
+- [~] 36. Implement accessibility features
   - Add skip-to-content link at top of page
   - Verify all images have descriptive alt text
   - Ensure proper heading hierarchy (h1 → h2 → h3)
