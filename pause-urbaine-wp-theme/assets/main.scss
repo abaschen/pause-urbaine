@@ -1,9 +1,8 @@
-// Import variables first
-@import 'variables';
-
-// Import layout and components
-@import 'layout';
-@import 'components';
+// Use modern @use instead of @import
+@use 'sass:color';
+@use 'variables' as *;
+@use 'layout' as *;
+@use 'components' as *;
 
 // Base styles
 * {
@@ -36,7 +35,7 @@ a {
   transition: color $transition-speed;
 
   &:hover {
-    color: darken($primary-color, 10%);
+    color: color.adjust($primary-color, $lightness: -10%);
   }
 }
 
