@@ -58,43 +58,6 @@ get_header(); ?>
             <?php endif; ?>
         <?php endif; ?>
         
-        <div class="pricing-contact">
-            <h2><?php echo pause_urbaine_get_lang() === 'en' ? 'Ready to book?' : 'Prêt à réserver ?'; ?></h2>
-            <p><?php echo pause_urbaine_get_lang() === 'en' ? 'Contact us to schedule your appointment' : 'Contactez-nous pour prendre rendez-vous'; ?></p>
-            
-            <div class="pricing-locations">
-                <?php 
-                $locations = pause_urbaine_get_locations();
-                $lang = pause_urbaine_get_lang();
-                foreach ($locations as $location) : 
-                ?>
-                <div class="pricing-location-card">
-                    <h3>
-                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        <?php echo esc_html($location['name'][$lang]); ?>
-                    </h3>
-                    <p>
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
-                        <a href="tel:<?php echo esc_attr($location['phone']); ?>">
-                            <?php echo esc_html($location['phone']); ?>
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                        <a href="https://www.instagram.com/<?php echo esc_attr($location['instagram']); ?>" target="_blank" rel="noopener">
-                            <?php echo esc_html($location['instagram']); ?>
-                        </a>
-                    </p>
-                </div>
-                <?php endforeach; ?>
-            </div>
-            
-            <div class="pricing-contact-link">
-                <a href="<?php echo esc_url(home_url('/contact')); ?>" class="btn btn-primary">
-                    <?php echo pause_urbaine_get_lang() === 'en' ? 'Contact Us' : 'Nous Contacter'; ?>
-                </a>
-            </div>
-        </div>
     <?php endwhile; ?>
 </div>
 

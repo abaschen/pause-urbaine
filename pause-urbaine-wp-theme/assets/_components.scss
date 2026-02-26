@@ -134,6 +134,9 @@
 
   &__address,
   &__contact {
+    .btn.btn-primary {
+      
+    }
     p {
       margin: 0 0 $spacing-xs 0;
       display: flex;
@@ -144,11 +147,11 @@
         width: 1.2em;
         margin-top: 0.2em;
         flex-shrink: 0;
-        color: $primary-color;
+        color: white;
       }
 
       a {
-        color: $text-color;
+        color: white;
         text-decoration: none;
         transition: color $transition-speed;
 
