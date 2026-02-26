@@ -19,12 +19,23 @@
 
   &:hover {
     background: color.adjust($primary-color, $lightness: -10%);
+    color: $background;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
   &:active {
     transform: translateY(0);
+  }
+
+  &-primary {
+    background: $primary-color;
+    color: $background;
+
+    &:hover {
+      background: color.adjust($primary-color, $lightness: -10%);
+      color: $background;
+    }
   }
 
   &-secondary {
