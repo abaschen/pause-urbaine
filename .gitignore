@@ -15,3 +15,10 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Compiled CSS
+pause-urbaine-wp-theme/assets/css/main.css
+
+# Dependencies
+node_modules/
+pnpm-lock.yaml
