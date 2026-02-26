@@ -49,21 +49,14 @@ get_header(); ?>
                                 <?php echo esc_html($location['instagram']); ?>
                             </a>
                         </p>
-                    </div>
-                    
-                    <div class="location-card__hours">
-                        <p class="location-card__hours-title">
-                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
-                            <strong><?php echo $lang === 'en' ? 'Opening Hours' : 'Horaires d\'ouverture'; ?></strong>
+                        <?php if (!empty($location['booking_url'])) : ?>
+                        <p>
+                            <a href="<?php echo esc_url($location['booking_url']); ?>" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                                <?php echo $lang === 'en' ? 'Book online' : 'Réserver en ligne'; ?>
+                            </a>
                         </p>
-                        <table class="location-card__hours-table">
-                            <?php foreach ($location['hours'] as $hour) : ?>
-                            <tr>
-                                <td class="location-card__day"><?php echo esc_html($hour['day'][$lang]); ?></td>
-                                <td class="location-card__time"><?php echo esc_html($hour['time']); ?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </table>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
