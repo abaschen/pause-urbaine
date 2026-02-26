@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Pause Urbaine website and WordPress theme",
   "scripts": {
-    "wp": "zip -r pause-urbaine-theme.zip pause-urbaine-wp-theme -x '*.git*' -x '*.DS_Store' -x 'pause-urbaine-wp-theme/assets/scss/*' && echo 'WordPress theme archive created: pause-urbaine-theme.zip'"
+    "wp": "bash -c 'SHORT_SHA=$(git rev-parse --short HEAD) && sed -i.bak \"s/Version: .*/Version: 1.0.0-${SHORT_SHA}/\" pause-urbaine-wp-theme/style.css && zip -r pause-urbaine-theme.zip pause-urbaine-wp-theme -x \"*.git*\" -x \"*.DS_Store\" -x \"pause-urbaine-wp-theme/assets/scss/*\" && mv pause-urbaine-wp-theme/style.css.bak pause-urbaine-wp-theme/style.css && echo \"WordPress theme archive created: pause-urbaine-theme.zip (version: 1.0.0-${SHORT_SHA})\"'"
   },
   "keywords": [
     "hugo",
