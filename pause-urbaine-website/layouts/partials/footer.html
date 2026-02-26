@@ -36,53 +36,26 @@
                   {{ .instagram }}
                 </a>
               </p>
-              
-              <div class="hours-summary">
-                <p class="hours-title">
-                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
-                  <strong>{{ i18n "footer.opening_hours" }}</strong>
-                </p>
-                <ul class="hours-list">
-                  {{ range .hours }}
-                  <li>
-                    <span class="day">{{ index .day site.Language.Lang }}:</span>
-                    <span class="time">{{ .time }}</span>
-                  </li>
-                  {{ end }}
-                </ul>
-              </div>
             </div>
           </div>
           {{ end }}
         </div>
       </div>
       
-      {{- /* Quick links section */ -}}
-      <div class="footer-links">
-        <h3>{{ i18n "nav.main" }}</h3>
-        <nav aria-label="{{ i18n "nav.main" }}">
-          <ul>
-            <li><a href="{{ site.Home.Permalink }}">{{ i18n "nav.home" }}</a></li>
-            <li><a href="{{ "services" | relLangURL }}">{{ i18n "nav.services" }}</a></li>
-            <li><a href="{{ "tarifs" | relLangURL }}">{{ i18n "nav.pricing" }}</a></li>
-            <li><a href="{{ "contact" | relLangURL }}">{{ i18n "nav.contact" }}</a></li>
-          </ul>
-        </nav>
-      </div>
-      
-      {{- /* Social media section */ -}}
-      <div class="footer-social">
-        <h3>{{ i18n "footer.follow_us" }}</h3>
-        <div class="social-links">
-          <a href="https://www.instagram.com/pauseurbaine/" 
-             class="social-link-item"
-             target="_blank" 
-             rel="noopener"
-             aria-label="Instagram Pause Urbaine">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            <span>@pauseurbaine</span>
-          </a>
-        </div>
+      {{- /* Opening hours section */ -}}
+      <div class="footer-hours">
+        <h3>
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+          {{ i18n "footer.opening_hours" }}
+        </h3>
+        <ul class="hours-list">
+          {{ range (index site.Data.locations.locations 0).hours }}
+          <li>
+            <span class="day">{{ index .day site.Language.Lang }}:</span>
+            <span class="time">{{ .time }}</span>
+          </li>
+          {{ end }}
+        </ul>
       </div>
     </div>
     
