@@ -10,3 +10,8 @@
 *.mkv
 *.flv
 *.wmv
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
