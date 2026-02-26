@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'pause-urbaine-website/**'
+      - '.github/workflows/deploy.yml'
+      - '.github/scripts/setup-environments.sh'
   workflow_dispatch:
     inputs:
       environment:
