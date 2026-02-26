@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Pause Urbaine website and WordPress theme",
   "scripts": {
-    "wp": "bash -c 'SHORT_SHA=$(git rev-parse --short HEAD) && sed -i.bak \"s/Version: .*/Version: 1.0.0-${SHORT_SHA}/\" pause-urbaine-wp-theme/style.css && zip -r pause-urbaine-theme.zip pause-urbaine-wp-theme -x \"*.git*\" -x \"*.DS_Store\" -x \"pause-urbaine-wp-theme/assets/scss/*\" && mv pause-urbaine-wp-theme/style.css.bak pause-urbaine-wp-theme/style.css && echo \"WordPress theme archive created: pause-urbaine-theme.zip (version: 1.0.0-${SHORT_SHA})\"'"
+    "wp:build-css": "sass pause-urbaine-wp-theme/assets/main.scss pause-urbaine-wp-theme/assets/css/main.css --style=compressed --no-source-map",
+    "wp": "pnpm wp:build-css && bash -c 'SHORT_SHA=$(git rev-parse --short HEAD) && sed -i.bak \"s/Version: .*/Version: 1.0.0-${SHORT_SHA}/\" pause-urbaine-wp-theme/style.css && zip -r pause-urbaine-theme.zip pause-urbaine-wp-theme -x \"*.git*\" -x \"*.DS_Store\" -x \"pause-urbaine-wp-theme/assets/*.scss\" -x \"pause-urbaine-wp-theme/assets/_*.scss\" && mv pause-urbaine-wp-theme/style.css.bak pause-urbaine-wp-theme/style.css && echo \"WordPress theme archive created: pause-urbaine-theme.zip (version: 1.0.0-${SHORT_SHA})\"'"
   },
   "keywords": [
     "hugo",
@@ -11,5 +12,8 @@
     "theme"
   ],
   "author": "Pause Urbaine",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
 }
