@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (toggle && nav) {
     // Toggle menu on button click
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       nav.classList.toggle('is-open');
       toggle.classList.toggle('is-active');
       
@@ -20,6 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
           icon.classList.add('fa-bars');
         }
       }
+    });
+    
+    // Close menu when clicking on a link
+    const menuLinks = nav.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        const icon = toggle.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
     });
     
     // Close menu when clicking outside
