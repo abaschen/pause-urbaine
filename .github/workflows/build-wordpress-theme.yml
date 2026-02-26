@@ -27,8 +27,17 @@ jobs:
         id: git-sha
         run: |
           SHORT_SHA=$(git rev-parse --short HEAD)
+          FULL_SHA=$(git rev-parse HEAD)
           echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "full_sha=${FULL_SHA}" >> $GITHUB_OUTPUT
           echo "Git SHA: ${SHORT_SHA}"
+
+      - name: Update version in style.css
+        run: |
+          cd pause-urbaine-wp-theme
+          sed -i "s/Version: .*/Version: 1.0.0-${{ steps.git-sha.outputs.short_sha }}/" style.css
+          echo "Updated style.css version to: 1.0.0-${{ steps.git-sha.outputs.short_sha }}"
+          cd ..
 
       - name: Create theme archive
         run: |
