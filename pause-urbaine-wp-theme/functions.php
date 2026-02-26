@@ -54,10 +54,10 @@ add_action('widgets_init', 'pause_urbaine_widgets_init');
 function pause_urbaine_get_locations() {
     return array(
         array(
-            'id' => 'plainpalais',
+            'id' => 'belair',
             'name' => array(
-                'fr' => 'Pause Urbaine Plainpalais',
-                'en' => 'Pause Urbaine Plainpalais'
+                'fr' => 'Pause Urbaine Bel-Air',
+                'en' => 'Pause Urbaine Bel-Air'
             ),
             'address' => array(
                 'street' => 'Quai des Moulins 12A',

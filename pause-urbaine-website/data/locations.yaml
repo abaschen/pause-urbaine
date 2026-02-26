@@ -1,8 +1,8 @@
 locations:
-  - id: plainpalais
+  - id: belair
     name:
-      fr: "Pause Urbaine Plainpalais"
-      en: "Pause Urbaine Plainpalais"
+      fr: "Pause Urbaine Bel-Air"
+      en: "Pause Urbaine Bel-Air"
     address:
       street: "Quai des Moulins 12A"
       city: "Genève"
