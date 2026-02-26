@@ -53,24 +53,26 @@
                                 </a>
                             </p>
                             <?php endif; ?>
-                            
-                            <div class="hours-summary">
-                                <div class="hours-title">
-                                    <i class="fa-solid fa-clock" aria-hidden="true"></i>
-                                    <strong><?php echo $lang === 'en' ? 'Opening Hours' : 'Horaires'; ?></strong>
-                                </div>
-                                <ul class="hours-list">
-                                    <?php foreach ($location['hours'] as $hour) : ?>
-                                    <li>
-                                        <span class="day"><?php echo esc_html($hour['day'][$lang]); ?>:</span>
-                                        <span class="time"><?php echo esc_html($hour['time']); ?></span>
-                                    </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
+                </div>
+            </div>
+            
+            <div class="footer-hours">
+                <div class="hours-summary">
+                    <div class="hours-title">
+                        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                        <strong><?php echo $lang === 'en' ? 'Opening Hours' : 'Horaires'; ?></strong>
+                    </div>
+                    <ul class="hours-list">
+                        <?php foreach ($locations[0]['hours'] as $hour) : ?>
+                        <li>
+                            <span class="day"><?php echo esc_html($hour['day'][$lang]); ?>:</span>
+                            <span class="time"><?php echo esc_html($hour['time']); ?></span>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
         </div>
