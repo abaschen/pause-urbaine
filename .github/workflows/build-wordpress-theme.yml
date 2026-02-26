@@ -23,6 +23,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Get git SHA
+        id: git-sha
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "Git SHA: ${SHORT_SHA}"
+
       - name: Create theme archive
         run: |
           cd pause-urbaine-wp-theme
@@ -32,18 +39,11 @@ jobs:
             -x "assets/scss/*" \
             -x "*.md"
           cd ..
-          
-      - name: Get version from style.css
-        id: version
-        run: |
-          VERSION=$(grep "Version:" pause-urbaine-wp-theme/style.css | awk '{print $2}')
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "Theme version: ${VERSION}"
 
       - name: Upload theme artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pause-urbaine-theme-v${{ steps.version.outputs.version }}
+          name: pause-urbaine-theme-${{ steps.git-sha.outputs.short_sha }}
           path: pause-urbaine-theme.zip
           retention-days: 90
           
