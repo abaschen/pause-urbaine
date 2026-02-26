@@ -14,7 +14,6 @@
                     ?>
                     <div class="footer-location">
                         <h4>
-                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                             Pause Urbaine<br>
                             <?php 
                             // Extract just the location name (Bel-Air or Eaux-Vives)

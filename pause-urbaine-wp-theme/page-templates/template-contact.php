@@ -27,7 +27,6 @@ get_header(); ?>
                 <div class="location-card__info">
                     <div class="location-card__address">
                         <p>
-                            <i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i>
                             <a href="<?php echo esc_url($location['maps_url']); ?>" target="_blank" rel="noopener" class="address-link">
                                 <?php echo esc_html($location['address']['street']); ?><br>
                                 <?php echo esc_html($location['address']['postal'] . ' ' . $location['address']['city']); ?><br>
