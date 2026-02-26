@@ -38,6 +38,21 @@
           {{ $location.instagram }}
         </a>
       </p>
+      {{- if $location.booking_url -}}
+      <p>
+        <a href="{{ $location.booking_url }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="btn btn-primary">
+          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+          {{ if eq $lang "fr" }}
+          Réserver en ligne
+          {{ else }}
+          Book online
+          {{ end }}
+        </a>
+      </p>
+      {{- end -}}
     </div>
     
     {{- /* Opening hours section */ -}}

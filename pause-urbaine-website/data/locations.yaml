@@ -10,6 +10,7 @@ locations:
       country: "Suisse"
     phone: "022 310 4081"
     instagram: "pauseurbaine"
+    booking_url: "https://book.heygoldie.com/PauseUrbaine"
     maps_url: "https://www.google.com/maps/search/?api=1&query=Quai+des+Moulins+12A,+1204+Genève"
     hours:
       - day:
@@ -52,6 +53,7 @@ locations:
       country: "Suisse"
     phone: "022 736 2030"
     instagram: "pauseurbaine_eauxvives"
+    booking_url: "https://book.heygoldie.com/PauseUrbaineEAUX-VIVES"
     maps_url: "https://www.google.com/maps/search/?api=1&query=Rue+de+Montchoisy+40,+1207+Genève"
     hours:
       - day:
