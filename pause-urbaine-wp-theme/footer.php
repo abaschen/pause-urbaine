@@ -15,7 +15,12 @@
                     <div class="footer-location">
                         <h4>
                             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                            <?php echo esc_html($location['name'][$lang]); ?>
+                            Pause Urbaine<br>
+                            <?php 
+                            // Extract just the location name (Bel-Air or Eaux-Vives)
+                            $location_name = str_replace('Pause Urbaine ', '', $location['name'][$lang]);
+                            echo esc_html($location_name);
+                            ?>
                         </h4>
                         
                         <div class="location-details">
