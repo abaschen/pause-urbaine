@@ -228,6 +228,7 @@ function pause_urbaine_get_locations() {
             ),
             'phone' => get_theme_mod('pause_urbaine_location1_phone', '022 310 4081'),
             'instagram' => get_theme_mod('pause_urbaine_location1_instagram', 'pauseurbaine'),
+            'booking_url' => 'https://book.heygoldie.com/PauseUrbaine',
             'maps_url' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode(get_theme_mod('pause_urbaine_location1_address', 'Quai des Moulins 12A') . ', ' . get_theme_mod('pause_urbaine_location1_city', '1204 Genève')),
             'hours' => array(
                 array('day' => array('fr' => 'Lundi', 'en' => 'Monday'), 'time' => 'Fermé'),
@@ -253,6 +254,7 @@ function pause_urbaine_get_locations() {
             ),
             'phone' => get_theme_mod('pause_urbaine_location2_phone', '022 736 2030'),
             'instagram' => get_theme_mod('pause_urbaine_location2_instagram', 'pauseurbaine_eauxvives'),
+            'booking_url' => 'https://book.heygoldie.com/PauseUrbaineEAUX-VIVES',
             'maps_url' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode(get_theme_mod('pause_urbaine_location2_address', 'Rue de Montchoisy 40') . ', ' . get_theme_mod('pause_urbaine_location2_city', '1207 Genève')),
             'hours' => array(
                 array('day' => array('fr' => 'Lundi', 'en' => 'Monday'), 'time' => 'Fermé'),

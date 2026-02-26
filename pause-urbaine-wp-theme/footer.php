@@ -39,6 +39,15 @@
                                     <?php echo esc_html($location['instagram']); ?>
                                 </a>
                             </p>
+                            
+                            <?php if (!empty($location['booking_url'])) : ?>
+                            <p class="booking-link">
+                                <a href="<?php echo esc_url($location['booking_url']); ?>" target="_blank" rel="noopener" class="btn btn-primary">
+                                    <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                                    <?php echo $lang === 'en' ? 'Book online' : 'Réserver en ligne'; ?>
+                                </a>
+                            </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php endforeach; ?>
