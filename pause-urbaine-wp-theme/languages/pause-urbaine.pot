@@ -1,0 +1,305 @@
+# Copyright (C) 2026 Pause Urbaine
+# This file is distributed under the same license as the Pause Urbaine Theme package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pause Urbaine Theme 1.0.0\n"
+"Report-Msgid-Bugs-To: https://pauseurbaine.com\n"
+"POT-Creation-Date: 2026-02-26 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Manual\n"
+"X-Domain: pause-urbaine\n"
+
+#: functions.php:11
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:12
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:35
+msgid "Footer Sidebar"
+msgstr ""
+
+#: functions.php:36
+msgid "Add widgets here to appear in your footer."
+msgstr ""
+
+#: functions.php:46
+msgid "Pricing Settings"
+msgstr ""
+
+#: functions.php:56
+msgid "Display Pricing"
+msgstr ""
+
+#: functions.php:65
+msgid "Pricing Note"
+msgstr ""
+
+#: functions.php:66
+msgid "Additional note to display on pricing page"
+msgstr ""
+
+#: functions.php:73
+msgid "Locations"
+msgstr ""
+
+#: functions.php:81
+msgid "Location 1 Name"
+msgstr ""
+
+#: functions.php:90
+msgid "Location 1 Address"
+msgstr ""
+
+#: functions.php:99
+msgid "Location 1 City"
+msgstr ""
+
+#: functions.php:108
+msgid "Location 1 Phone"
+msgstr ""
+
+#: functions.php:117
+msgid "Location 1 Instagram"
+msgstr ""
+
+#: functions.php:126
+msgid "Location 2 Name"
+msgstr ""
+
+#: functions.php:135
+msgid "Location 2 Address"
+msgstr ""
+
+#: functions.php:144
+msgid "Location 2 City"
+msgstr ""
+
+#: functions.php:153
+msgid "Location 2 Phone"
+msgstr ""
+
+#: functions.php:162
+msgid "Location 2 Instagram"
+msgstr ""
+
+#: header.php:13
+msgid "Main Navigation"
+msgstr ""
+
+#: header.php:30
+msgid "Menu"
+msgstr ""
+
+#: inc/pricing-post-type.php:9
+msgctxt "Post Type General Name"
+msgid "Pricing"
+msgstr ""
+
+#: inc/pricing-post-type.php:10
+msgctxt "Post Type Singular Name"
+msgid "Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:11
+msgid "Pricing"
+msgstr ""
+
+#: inc/pricing-post-type.php:12
+msgid "Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:13
+msgid "Price Archives"
+msgstr ""
+
+#: inc/pricing-post-type.php:14
+msgid "Price Attributes"
+msgstr ""
+
+#: inc/pricing-post-type.php:15
+msgid "Parent Price:"
+msgstr ""
+
+#: inc/pricing-post-type.php:16
+msgid "All Prices"
+msgstr ""
+
+#: inc/pricing-post-type.php:17
+msgid "Add New Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:18
+msgid "Add New"
+msgstr ""
+
+#: inc/pricing-post-type.php:19
+msgid "New Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:20
+msgid "Edit Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:21
+msgid "Update Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:22
+msgid "View Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:23
+msgid "View Prices"
+msgstr ""
+
+#: inc/pricing-post-type.php:24
+msgid "Search Price"
+msgstr ""
+
+#: inc/pricing-post-type.php:25
+msgid "Not found"
+msgstr ""
+
+#: inc/pricing-post-type.php:26
+msgid "Not found in Trash"
+msgstr ""
+
+#: inc/pricing-post-type.php:30
+msgid "Service pricing"
+msgstr ""
+
+#: inc/pricing-post-type.php:52
+msgctxt "Taxonomy General Name"
+msgid "Categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:53
+msgctxt "Taxonomy Singular Name"
+msgid "Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:54
+msgid "Categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:55
+msgid "All Categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:56
+msgid "Parent Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:57
+msgid "Parent Category:"
+msgstr ""
+
+#: inc/pricing-post-type.php:58
+msgid "New Category Name"
+msgstr ""
+
+#: inc/pricing-post-type.php:59
+msgid "Add New Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:60
+msgid "Edit Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:61
+msgid "Update Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:62
+msgid "View Category"
+msgstr ""
+
+#: inc/pricing-post-type.php:63
+msgid "Separate categories with commas"
+msgstr ""
+
+#: inc/pricing-post-type.php:64
+msgid "Add or remove categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:65
+msgid "Choose from the most used"
+msgstr ""
+
+#: inc/pricing-post-type.php:66
+msgid "Popular Categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:67
+msgid "Search Categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:68
+msgid "Not Found"
+msgstr ""
+
+#: inc/pricing-post-type.php:69
+msgid "No categories"
+msgstr ""
+
+#: inc/pricing-post-type.php:70
+msgid "Categories list"
+msgstr ""
+
+#: inc/pricing-post-type.php:71
+msgid "Categories list navigation"
+msgstr ""
+
+#: inc/pricing-post-type.php:91
+msgid "Pricing Details"
+msgstr ""
+
+#: inc/pricing-post-type.php:105
+msgid "Price (CHF)"
+msgstr ""
+
+#: inc/pricing-post-type.php:107
+msgid "e.g., \"70 CHF\" or \"70-90 CHF\""
+msgstr ""
+
+#: inc/pricing-post-type.php:111
+msgid "Duration"
+msgstr ""
+
+#: inc/pricing-post-type.php:113
+msgid "e.g., \"45 min\" or \"1h 30min\""
+msgstr ""
+
+#: page-templates/template-contact.php:42
+#: page-templates/template-pricing.php:67
+msgid "Opening Hours"
+msgstr ""
+
+#: page-templates/template-services.php:22
+msgid "Ready to book?"
+msgstr ""
+
+#: page-templates/template-services.php:23
+msgid "Contact us to schedule your appointment"
+msgstr ""
+
+#: page-templates/template-services.php:25
+msgid "Contact Us"
+msgstr ""
+
+#: page-templates/template-services.php:28
+msgid "View Pricing"
+msgstr ""
+
+#: page-templates/template-pricing.php:40
+msgid "No pricing information available."
+msgstr ""
