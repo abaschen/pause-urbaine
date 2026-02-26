@@ -54,23 +54,5 @@
       </p>
       {{- end -}}
     </div>
-    
-    {{- /* Opening hours section */ -}}
-    <div class="location-card__hours">
-      <p class="location-card__hours-title">
-        <i class="fa-solid fa-clock" aria-hidden="true"></i>
-        <strong>{{ i18n "footer.opening_hours" }}</strong>
-      </p>
-      <table class="location-card__hours-table">
-        <tbody>
-          {{ range $location.hours }}
-          <tr>
-            <td class="location-card__day">{{ index .day $lang }}:</td>
-            <td class="location-card__time">{{ .time }}</td>
-          </tr>
-          {{ end }}
-        </tbody>
-      </table>
-    </div>
   </div>
 </div>
