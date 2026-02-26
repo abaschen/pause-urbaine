@@ -1,0 +1,17 @@
+/*
+Theme Name: Pause Urbaine
+Theme URI: https://pauseurbaine.ch
+Author: Pause Urbaine
+Author URI: https://pauseurbaine.ch
+Description: Custom WordPress theme for Pause Urbaine hair salon with bilingual support (French/English)
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pause-urbaine
+Tags: salon, hair, bilingual, responsive, custom
+*/
+
+/* Main styles are enqueued via functions.php */
