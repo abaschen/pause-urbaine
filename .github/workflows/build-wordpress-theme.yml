@@ -1,0 +1,56 @@
+name: Build WordPress Theme
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pause-urbaine-wp-theme/**'
+      - '.github/workflows/build-wordpress-theme.yml'
+  pull_request:
+    paths:
+      - 'pause-urbaine-wp-theme/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Create theme archive
+        run: |
+          cd pause-urbaine-wp-theme
+          zip -r ../pause-urbaine-theme.zip . \
+            -x "*.git*" \
+            -x "*.DS_Store" \
+            -x "assets/scss/*" \
+            -x "*.md"
+          cd ..
+          
+      - name: Get version from style.css
+        id: version
+        run: |
+          VERSION=$(grep "Version:" pause-urbaine-wp-theme/style.css | awk '{print $2}')
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "Theme version: ${VERSION}"
+
+      - name: Upload theme artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pause-urbaine-theme-v${{ steps.version.outputs.version }}
+          path: pause-urbaine-theme.zip
+          retention-days: 90
+          
+      - name: Create release artifact (on main branch)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pause-urbaine-theme-latest
+          path: pause-urbaine-theme.zip
+          retention-days: 365
