@@ -17,20 +17,7 @@ get_header(); ?>
             </div>
         </div>
         
-        <div class="services-cta">
-            <div class="cta-card">
-                <h2><?php echo pause_urbaine_get_lang() === 'en' ? 'Ready to book?' : 'Prêt à réserver ?'; ?></h2>
-                <p><?php echo pause_urbaine_get_lang() === 'en' ? 'Contact us to schedule your appointment' : 'Contactez-nous pour prendre rendez-vous'; ?></p>
-                <div class="cta-buttons">
-                    <a href="<?php echo esc_url(home_url('/contact')); ?>" class="btn btn-primary">
-                        <?php echo pause_urbaine_get_lang() === 'en' ? 'Contact Us' : 'Nous Contacter'; ?>
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/tarifs')); ?>" class="btn btn-outline">
-                        <?php echo pause_urbaine_get_lang() === 'en' ? 'View Pricing' : 'Voir les Tarifs'; ?>
-                    </a>
-                </div>
-            </div>
-        </div>
+    
     <?php endwhile; ?>
 </div>
 
