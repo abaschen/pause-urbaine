@@ -1,0 +1,24 @@
+{
+  "name": "Sage Theme Development",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "shufo.vscode-blade-formatter",
+        "open-southeners.laravel-pint"
+      ]
+    }
+  },
+
+  "forwardPorts": [5173],
+
+  "postCreateCommand": "composer --version && php --version && node --version"
+}
