@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: pause_urbaine
+      MARIADB_USER: pause
+      MARIADB_PASSWORD: pause
+      MARIADB_ROOT_PASSWORD: pause_root
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:6.5-php8.2-apache
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: pause_urbaine
+      WORDPRESS_DB_USER: pause
+      WORDPRESS_DB_PASSWORD: pause
+      WORDPRESS_DEBUG: "1"
+    volumes:
+      - wp_data:/var/www/html
+      - ./theme/pause-urbaine-single:/var/www/html/wp-content/themes/pause-urbaine-single
+
+  wpcli:
+    image: wordpress:cli-2.11
+    depends_on:
+      - db
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: pause_urbaine
+      WORDPRESS_DB_USER: pause
+      WORDPRESS_DB_PASSWORD: pause
+    volumes:
+      - wp_data:/var/www/html
+      - ./theme/pause-urbaine-single:/var/www/html/wp-content/themes/pause-urbaine-single
+    profiles:
+      - tools
+
+volumes:
+  db_data:
+  wp_data:

@@ -5,20 +5,23 @@ on:
     branches:
       - main
     paths:
-      - 'pause-urbaine-wp-theme/**'
+      - 'pause-urbaine-wordpress/theme/pause-urbaine-single/**'
+      - 'pause-urbaine-wordpress/docker-compose.yml'
       - '.github/workflows/build-wordpress-theme.yml'
   pull_request:
     paths:
-      - 'pause-urbaine-wp-theme/**'
+      - 'pause-urbaine-wordpress/theme/pause-urbaine-single/**'
+      - 'pause-urbaine-wordpress/docker-compose.yml'
+      - '.github/workflows/build-wordpress-theme.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  package:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -27,39 +30,35 @@ jobs:
         id: git-sha
         run: |
           SHORT_SHA=$(git rev-parse --short HEAD)
-          FULL_SHA=$(git rev-parse HEAD)
-          echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
-          echo "full_sha=${FULL_SHA}" >> $GITHUB_OUTPUT
+          echo "short_sha=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
           echo "Git SHA: ${SHORT_SHA}"
 
-      - name: Update version in style.css
+      - name: Lint PHP
         run: |
-          cd pause-urbaine-wp-theme
-          sed -i "s/Version: .*/Version: 1.0.0-${{ steps.git-sha.outputs.short_sha }}/" style.css
-          echo "Updated style.css version to: 1.0.0-${{ steps.git-sha.outputs.short_sha }}"
-          cd ..
+          find pause-urbaine-wordpress/theme/pause-urbaine-single -name '*.php' -print0 | xargs -0 -n1 php -l
 
-      - name: Create theme archive
+      - name: Stamp theme version
         run: |
-          cd pause-urbaine-wp-theme
-          zip -r ../pause-urbaine-theme.zip . \
+          sed -i "s/Version: .*/Version: 1.0.0-${{ steps.git-sha.outputs.short_sha }}/" pause-urbaine-wordpress/theme/pause-urbaine-single/style.css
+
+      - name: Package theme
+        run: |
+          cd pause-urbaine-wordpress/theme
+          zip -r ../../pause-urbaine-single.zip pause-urbaine-single \
             -x "*.git*" \
-            -x "*.DS_Store" \
-            -x "assets/scss/*" \
-            -x "*.md"
-          cd ..
+            -x "*.DS_Store"
 
       - name: Upload theme artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pause-urbaine-theme-${{ steps.git-sha.outputs.short_sha }}
-          path: pause-urbaine-theme.zip
+          name: pause-urbaine-single-${{ steps.git-sha.outputs.short_sha }}
+          path: pause-urbaine-wordpress/pause-urbaine-single.zip
           retention-days: 90
-          
-      - name: Create release artifact (on main branch)
+
+      - name: Upload latest theme artifact
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
-          name: pause-urbaine-theme-latest
-          path: pause-urbaine-theme.zip
+          name: pause-urbaine-single-latest
+          path: pause-urbaine-wordpress/pause-urbaine-single.zip
           retention-days: 365
