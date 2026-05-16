@@ -49,7 +49,7 @@ jobs:
             -x "*.DS_Store"
 
       - name: Upload theme artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pause-urbaine-single-${{ steps.git-sha.outputs.short_sha }}
           path: pause-urbaine-wordpress/pause-urbaine-single.zip
@@ -57,7 +57,7 @@ jobs:
 
       - name: Upload latest theme artifact
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pause-urbaine-single-latest
           path: pause-urbaine-wordpress/pause-urbaine-single.zip
