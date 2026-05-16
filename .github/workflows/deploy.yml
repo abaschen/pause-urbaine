@@ -116,7 +116,7 @@ jobs:
 
       - name: Upload artifact (GitHub Pages)
         if: steps.env.outputs.target == 'gh'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./pause-urbaine-website/public
 
