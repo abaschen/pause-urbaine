@@ -34,9 +34,9 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
         <p><?php echo esc_html(pu_option('hero_text', 'Deux salons à Genève pour une pause simple, soignée et chaleureuse.')); ?></p>
         <div class="hero__actions">
             <?php if (!empty($first_location['booking_url'])) : ?>
-                <a class="button button--primary" href="<?php echo esc_url($first_location['booking_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_text('Reserver', 'Book now')); ?></a>
+                <a class="button button--primary" href="<?php echo esc_url($first_location['booking_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_translate('Réserver')); ?></a>
             <?php endif; ?>
-            <a class="button button--ghost" href="#tarifs"><?php echo esc_html(pu_text('Voir les tarifs', 'View pricing')); ?></a>
+            <a class="button button--ghost" href="#tarifs"><?php echo esc_html(pu_translate('Voir les tarifs')); ?></a>
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
 <section class="section section--intro">
     <div class="section-inner intro-grid">
         <div>
-            <p class="eyebrow"><?php echo esc_html(pu_text('Bienvenue', 'Welcome')); ?></p>
+            <p class="eyebrow"><?php echo esc_html(pu_translate('Bienvenue')); ?></p>
             <h2><?php echo esc_html(pu_option('intro_title', 'Une pause au cœur de la ville')); ?></h2>
         </div>
         <div class="rich-text">
@@ -59,8 +59,8 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
 <section class="section" id="salons">
     <div class="section-inner">
         <div class="section-heading">
-            <p class="eyebrow"><?php echo esc_html(pu_text('Deux adresses', 'Two locations')); ?></p>
-            <h2><?php echo esc_html(pu_text('Nos salons à Genève', 'Our Geneva salons')); ?></h2>
+            <p class="eyebrow"><?php echo esc_html(pu_translate('Deux adresses')); ?></p>
+            <h2><?php echo esc_html(pu_translate('Nos salons à Genève')); ?></h2>
         </div>
         <div class="location-grid">
             <?php foreach ($locations as $location) : ?>
@@ -76,8 +76,8 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
                         </address>
                         <?php if (!empty($location['hours'])) : ?><p class="location-hours"><?php echo nl2br(esc_html($location['hours'])); ?></p><?php endif; ?>
                         <div class="card-actions">
-                            <?php if (!empty($location['booking_url'])) : ?><a class="button button--primary" href="<?php echo esc_url($location['booking_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_text('Reserver', 'Book')); ?></a><?php endif; ?>
-                            <?php if (!empty($location['maps_url'])) : ?><a class="button button--light" href="<?php echo esc_url($location['maps_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_text('Itinéraire', 'Directions')); ?></a><?php endif; ?>
+                            <?php if (!empty($location['booking_url'])) : ?><a class="button button--primary" href="<?php echo esc_url($location['booking_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_translate('Réserver')); ?></a><?php endif; ?>
+                            <?php if (!empty($location['maps_url'])) : ?><a class="button button--light" href="<?php echo esc_url($location['maps_url']); ?>" target="_blank" rel="noopener"><?php echo esc_html(pu_translate('Itinéraire')); ?></a><?php endif; ?>
                             <?php if (!empty($location['instagram'])) : ?><a class="text-link" href="https://www.instagram.com/<?php echo esc_attr(ltrim($location['instagram'], '@')); ?>" target="_blank" rel="noopener">@<?php echo esc_html(ltrim($location['instagram'], '@')); ?></a><?php endif; ?>
                         </div>
                     </div>
@@ -90,8 +90,8 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
 <section class="section section--pricing" id="tarifs">
     <div class="section-inner">
         <div class="section-heading">
-            <p class="eyebrow"><?php echo esc_html(pu_text('Prestations', 'Services')); ?></p>
-            <h2><?php echo esc_html(pu_text('Tarifs', 'Pricing')); ?></h2>
+            <p class="eyebrow"><?php echo esc_html(pu_translate('Prestations')); ?></p>
+            <h2><?php echo esc_html(pu_translate('Tarifs')); ?></h2>
             <p><?php echo esc_html(pu_option('pricing_note', "Les prix peuvent varier selon la longueur et l'épaisseur des cheveux.")); ?></p>
         </div>
         <div class="pricing-list">
@@ -117,8 +117,8 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
 <section class="section" id="articles">
     <div class="section-inner">
         <div class="section-heading">
-            <p class="eyebrow"><?php echo esc_html(pu_text('Actualites', 'Journal')); ?></p>
-            <h2><?php echo esc_html(pu_text('Articles', 'Articles')); ?></h2>
+            <p class="eyebrow"><?php echo esc_html(pu_translate('Actualités')); ?></p>
+            <h2><?php echo esc_html(pu_translate('Articles')); ?></h2>
         </div>
         <?php if ($articles->have_posts()) : ?>
             <div class="article-grid">
@@ -134,7 +134,7 @@ $hero_image = !empty($first_location['image']) ? $first_location['image'] : get_
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
         <?php else : ?>
-            <p class="empty-note"><?php echo esc_html(pu_text('Les prochains articles apparaitront ici.', 'New articles will appear here.')); ?></p>
+            <p class="empty-note"><?php echo esc_html(pu_translate('Les prochains articles apparaîtront ici.')); ?></p>
         <?php endif; ?>
     </div>
 </section>

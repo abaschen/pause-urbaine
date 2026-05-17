@@ -3,7 +3,7 @@
 <footer class="site-footer" id="contact">
     <div class="section-inner footer-grid">
         <div>
-            <p class="eyebrow"><?php echo esc_html(pu_text('Contact', 'Contact')); ?></p>
+            <p class="eyebrow"><?php echo esc_html(pu_translate('Contact')); ?></p>
             <h2>Pause Urbaine</h2>
             <p><?php echo esc_html(pu_option('hero_text', 'Deux salons à Genève pour une pause simple, soignée et chaleureuse.')); ?></p>
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="footer-bottom">
         <span>&copy; <?php echo esc_html(date('Y')); ?> Pause Urbaine</span>
-        <a href="#content"><?php echo esc_html(pu_text('Retour en haut', 'Back to top')); ?></a>
+        <a href="#content"><?php echo esc_html(pu_translate('Retour en haut')); ?></a>
     </div>
 </footer>
 

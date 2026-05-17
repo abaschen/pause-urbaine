@@ -150,6 +150,69 @@ img {
   color: var(--accent-dark);
 }
 
+.language-switcher {
+  margin-left: 0.55rem;
+  position: relative;
+}
+
+.language-switcher__toggle {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  gap: 0.35rem;
+  min-height: 34px;
+  padding: 0.35rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.language-switcher__toggle:after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  content: "";
+  display: inline-block;
+}
+
+.language-switcher__menu {
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 36px rgba(37, 31, 28, 0.14);
+  display: none;
+  list-style: none;
+  margin: 0;
+  min-width: 100%;
+  padding: 0.25rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  z-index: 30;
+}
+
+.language-switcher.is-open .language-switcher__menu {
+  display: block;
+}
+
+.language-switcher__menu a {
+  color: var(--muted);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.45rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.language-switcher__menu a:hover {
+  background: var(--soft);
+  color: var(--accent-dark);
+}
+
 .nav-toggle {
   background: transparent;
   border: 0;
@@ -168,8 +231,10 @@ img {
 }
 
 .hero {
+  background: var(--ink);
   display: grid;
   min-height: calc(100vh - 76px);
+  overflow: hidden;
   place-items: end start;
   position: relative;
 }
@@ -192,9 +257,11 @@ img {
 
 .hero__content {
   color: var(--white);
-  max-width: 780px;
-  padding: 8rem max(1.25rem, calc((100vw - var(--max)) / 2)) 7rem;
+  margin: 0 auto;
+  max-width: var(--max);
+  padding: 8rem 1.25rem 7rem;
   position: relative;
+  width: 100%;
   z-index: 2;
 }
 
@@ -222,6 +289,10 @@ h3 {
 h1 {
   font-size: clamp(3.25rem, 10vw, 7.5rem);
   max-width: 9ch;
+}
+
+.hero h1 {
+  max-width: 14ch;
 }
 
 h2 {
@@ -522,6 +593,21 @@ address a {
 
   .site-nav a {
     width: 100%;
+  }
+
+  .language-switcher {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .language-switcher__toggle {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .language-switcher__menu {
+    left: 0;
+    right: auto;
   }
 
   .hero {

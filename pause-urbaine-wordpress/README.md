@@ -40,6 +40,21 @@ If your Podman installation uses the standalone Compose wrapper, replace `podman
 
 The front page is a single scrollable page. It automatically reads Locations, Pricing, Posts, and Customizer text. If no content exists yet, the theme shows starter defaults so the site is usable immediately.
 
+## Multiple languages
+
+The theme is prepared for Polylang.
+
+1. Install and activate the `Polylang` plugin.
+2. Add the site languages, for example French and English.
+3. In `Languages -> Settings -> Custom post types and Taxonomies`, enable translations for:
+   - `Locations`
+   - `Pricing`
+   - `Pricing Categories`
+4. Translate article posts, locations, pricing services and pricing categories from the WordPress admin.
+5. Translate fixed theme labels and Customizer text in `Languages -> Translations`.
+
+The theme displays a language switcher in the header when Polylang is active. Technical fields such as phone, Instagram, booking URL, map URL, price and duration are copied when a translated Location or Pricing item is created, then can still be edited per language if needed.
+
 ## Importable theme
 
 The theme folder is:

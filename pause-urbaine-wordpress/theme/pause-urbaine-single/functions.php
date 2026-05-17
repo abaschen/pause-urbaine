@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('PU_SINGLE_VERSION', '1.0.0');
+define('PU_SINGLE_VERSION', '1.0.2');
 
 function pu_setup() {
     load_theme_textdomain('pause-urbaine', get_template_directory() . '/languages');
@@ -32,11 +32,12 @@ function pu_assets() {
 }
 add_action('wp_enqueue_scripts', 'pu_assets');
 
-function pu_text($fr, $en) {
-    if (function_exists('pll_current_language') && pll_current_language() === 'en') {
-        return $en;
+function pu_translate($text) {
+    if (function_exists('pll__')) {
+        return pll__($text);
     }
-    return $fr;
+
+    return $text;
 }
 
 function pu_customize_register($wp_customize) {
@@ -69,7 +70,7 @@ function pu_customize_register($wp_customize) {
 add_action('customize_register', 'pu_customize_register');
 
 function pu_option($key, $default = '') {
-    return get_theme_mod('pu_' . $key, $default);
+    return pu_translate(get_theme_mod('pu_' . $key, $default));
 }
 
 function pu_register_content_types() {
@@ -120,6 +121,309 @@ function pu_register_content_types() {
 }
 add_action('init', 'pu_register_content_types');
 add_action('init', 'pu_seed_starter_content', 20);
+add_action('init', 'pu_register_polylang_strings', 30);
+add_action('init', 'pu_seed_polylang_translations', 40);
+
+function pu_polylang_post_types($post_types, $is_settings) {
+    $post_types['pu_location'] = 'pu_location';
+    $post_types['pu_price'] = 'pu_price';
+
+    return $post_types;
+}
+add_filter('pll_get_post_types', 'pu_polylang_post_types', 10, 2);
+
+function pu_polylang_taxonomies($taxonomies, $is_settings) {
+    $taxonomies['pu_price_category'] = 'pu_price_category';
+
+    return $taxonomies;
+}
+add_filter('pll_get_taxonomies', 'pu_polylang_taxonomies', 10, 2);
+
+function pu_polylang_copy_meta($metas) {
+    $shared_meta = array(
+        '_pu_street',
+        '_pu_postal_city',
+        '_pu_country',
+        '_pu_phone',
+        '_pu_instagram',
+        '_pu_booking_url',
+        '_pu_maps_url',
+        '_pu_hours',
+        '_pu_price',
+        '_pu_duration',
+    );
+
+    return array_values(array_unique(array_merge($metas, $shared_meta)));
+}
+add_filter('pll_copy_post_metas', 'pu_polylang_copy_meta');
+
+function pu_register_polylang_strings() {
+    if (!function_exists('pll_register_string')) {
+        return;
+    }
+
+    $group = 'Pause Urbaine';
+
+    $strings = array(
+        'Salons',
+        'Tarifs',
+        'Articles',
+        'Contact',
+        'Réserver',
+        'Voir les tarifs',
+        'Bienvenue',
+        'Deux adresses',
+        'Nos salons à Genève',
+        'Prestations',
+        'Itinéraire',
+        'Actualités',
+        'Les prochains articles apparaîtront ici.',
+        'Retour en haut',
+        'Coiffure, couleur et soins à Genève',
+        'Pause Urbaine',
+        'Deux salons à Genève pour une pause simple, soignée et chaleureuse.',
+        'Une pause au cœur de la ville',
+        'Coupes, brushings, colorations, soins capillaires, ongles et esthétique dans une ambiance de quartier attentive.',
+        "Les prix peuvent varier selon la longueur et l'épaisseur des cheveux.",
+    );
+
+    foreach ($strings as $string) {
+        pll_register_string($string, $string, $group);
+    }
+
+    foreach (array('hero_eyebrow', 'hero_title', 'hero_text', 'intro_title', 'intro_text', 'pricing_note') as $key) {
+        $value = get_theme_mod('pu_' . $key);
+        if ($value) {
+            pll_register_string('Customizer: ' . $key, $value, $group);
+        }
+    }
+}
+
+function pu_string_translations() {
+    return array(
+        'Salons' => array('en' => 'Locations', 'fr' => 'Salons'),
+        'Tarifs' => array('en' => 'Pricing', 'fr' => 'Tarifs'),
+        'Articles' => array('en' => 'Articles', 'fr' => 'Articles'),
+        'Contact' => array('en' => 'Contact', 'fr' => 'Contact'),
+        'Réserver' => array('en' => 'Book', 'fr' => 'Réserver'),
+        'Voir les tarifs' => array('en' => 'View pricing', 'fr' => 'Voir les tarifs'),
+        'Bienvenue' => array('en' => 'Welcome', 'fr' => 'Bienvenue'),
+        'Deux adresses' => array('en' => 'Two locations', 'fr' => 'Deux adresses'),
+        'Nos salons à Genève' => array('en' => 'Our Geneva salons', 'fr' => 'Nos salons à Genève'),
+        'Prestations' => array('en' => 'Services', 'fr' => 'Prestations'),
+        'Itinéraire' => array('en' => 'Directions', 'fr' => 'Itinéraire'),
+        'Actualités' => array('en' => 'Journal', 'fr' => 'Actualités'),
+        'Les prochains articles apparaîtront ici.' => array('en' => 'New articles will appear here.', 'fr' => 'Les prochains articles apparaîtront ici.'),
+        'Retour en haut' => array('en' => 'Back to top', 'fr' => 'Retour en haut'),
+        'Coiffure, couleur et soins à Genève' => array('en' => 'Haircuts, color and treatments in Geneva', 'fr' => 'Coiffure, couleur et soins à Genève'),
+        'Pause Urbaine' => array('en' => 'Pause Urbaine', 'fr' => 'Pause Urbaine'),
+        'Deux salons à Genève pour une pause simple, soignée et chaleureuse.' => array('en' => 'Two Geneva salons for a simple, polished and warm pause.', 'fr' => 'Deux salons à Genève pour une pause simple, soignée et chaleureuse.'),
+        'Une pause au cœur de la ville' => array('en' => 'A pause in the heart of the city', 'fr' => 'Une pause au cœur de la ville'),
+        'Coupes, brushings, colorations, soins capillaires, ongles et esthétique dans une ambiance de quartier attentive.' => array('en' => 'Cuts, blow-dries, color, hair treatments, nails and beauty services in a caring neighborhood atmosphere.', 'fr' => 'Coupes, brushings, colorations, soins capillaires, ongles et esthétique dans une ambiance de quartier attentive.'),
+        "Les prix peuvent varier selon la longueur et l'épaisseur des cheveux." => array('en' => 'Prices may vary depending on hair length and thickness.', 'fr' => "Les prix peuvent varier selon la longueur et l'épaisseur des cheveux."),
+    );
+}
+
+function pu_seed_polylang_translations() {
+    if (!function_exists('pll_set_post_language') || !function_exists('pll_save_post_translations')) {
+        return;
+    }
+
+    if (!function_exists('PLL') || !PLL()->model->get_language('fr') || !PLL()->model->get_language('en')) {
+        return;
+    }
+
+    if (get_option('pu_polylang_translations_seeded') !== '3') {
+        pu_seed_polylang_string_translations();
+        pu_seed_location_translations();
+        pu_seed_pricing_translations();
+        update_option('pu_polylang_translations_seeded', '3', false);
+    }
+}
+
+function pu_seed_polylang_string_translations() {
+    if (!class_exists('PLL_MO') || !function_exists('PLL')) {
+        return;
+    }
+
+    foreach (array('fr', 'en') as $slug) {
+        $language = PLL()->model->get_language($slug);
+        if (!$language) {
+            continue;
+        }
+
+        $mo = new PLL_MO();
+        $mo->import_from_db($language);
+
+        foreach (pu_string_translations() as $original => $translations) {
+            if (empty($translations[$slug])) {
+                continue;
+            }
+
+            $mo->add_entry($mo->make_entry($original, $translations[$slug]));
+        }
+
+        $mo->export_to_db($language);
+    }
+}
+
+function pu_seed_location_translations() {
+    $locations = array(
+        'Pause Urbaine Bel-Air' => array(
+            'title' => 'Pause Urbaine Bel-Air',
+            'content' => 'A central salon for haircuts, color, brushing and treatments near Bel-Air.',
+            'country' => 'Switzerland',
+            'hours' => "Tuesday - Friday: 10:00 - 18:00\nSaturday: 10:00 - 17:00\nSunday - Monday: Closed",
+        ),
+        'Pause Urbaine Eaux-Vives' => array(
+            'title' => 'Pause Urbaine Eaux-Vives',
+            'content' => 'A neighborhood salon for hair, nails and beauty services in Eaux-Vives.',
+            'country' => 'Switzerland',
+            'hours' => "Tuesday - Friday: 10:00 - 18:00\nSaturday: 10:00 - 17:00\nSunday - Monday: Closed",
+        ),
+    );
+
+    foreach ($locations as $fr_title => $en_data) {
+        $fr_post = get_page_by_title($fr_title, OBJECT, 'pu_location');
+        if (!$fr_post) {
+            continue;
+        }
+
+        pll_set_post_language($fr_post->ID, 'fr');
+        $translations = pll_get_post_translations($fr_post->ID);
+
+        if (!empty($translations['en'])) {
+            continue;
+        }
+
+        $en_id = wp_insert_post(array(
+            'post_type' => 'pu_location',
+            'post_status' => 'publish',
+            'post_title' => $en_data['title'],
+            'post_content' => $en_data['content'],
+            'menu_order' => $fr_post->menu_order,
+        ));
+
+        if (is_wp_error($en_id)) {
+            continue;
+        }
+
+        foreach (array_keys(pu_location_fields()) as $key) {
+            update_post_meta($en_id, '_pu_' . $key, get_post_meta($fr_post->ID, '_pu_' . $key, true));
+        }
+
+        update_post_meta($en_id, '_pu_country', $en_data['country']);
+        update_post_meta($en_id, '_pu_hours', $en_data['hours']);
+
+        pll_set_post_language($en_id, 'en');
+        pll_save_post_translations(array('fr' => $fr_post->ID, 'en' => $en_id));
+    }
+}
+
+function pu_pricing_translation_data() {
+    return array(
+        'Coupes / Brushing' => array(
+            'term' => 'Haircuts / Blow-dry',
+            'items' => array(
+                'Shampoing + massage crânien + coupe garçon + séchage' => array('title' => 'Shampoo + head massage + short haircut + drying', 'description' => ''),
+                'Shampoing + coupe + brushing cheveux courts' => array('title' => 'Shampoo + cut + blow-dry, short hair', 'description' => ''),
+                'Shampoing + coupe + brushing cheveux mi-longs' => array('title' => 'Shampoo + cut + blow-dry, medium hair', 'description' => ''),
+                'Shampoing + coupe + brushing cheveux longs' => array('title' => 'Shampoo + cut + blow-dry, long hair', 'description' => ''),
+                'Brushing, shampoing inclus' => array('title' => 'Blow-dry, shampoo included', 'description' => 'Short, medium or long hair.'),
+            ),
+        ),
+        'Colorations / Mèches' => array(
+            'term' => 'Color / Highlights',
+            'items' => array(
+                'Couleur racine' => array('title' => 'Root color', 'description' => 'Shampoo + treatment included.'),
+                'Coloration complète' => array('title' => 'Full color', 'description' => 'With or without blow-dry depending on hair length.'),
+                'Patine' => array('title' => 'Toner', 'description' => 'Shampoo + treatment included.'),
+                'Mèches' => array('title' => 'Highlights', 'description' => 'Full head or half head.'),
+            ),
+        ),
+        'Lissages / Soins' => array(
+            'term' => 'Smoothing / Treatments',
+            'items' => array(
+                'Botox capillaire + coupe + brushing' => array('title' => 'Hair botox + cut + blow-dry', 'description' => ''),
+                'Lissage bio à la kératine' => array('title' => 'Organic keratin smoothing', 'description' => 'Formaldehyde-free.'),
+                'Hydratation à la kératine' => array('title' => 'Keratin hydration treatment', 'description' => 'Blow-dry included.'),
+            ),
+        ),
+    );
+}
+
+function pu_seed_pricing_translations() {
+    foreach (pu_pricing_translation_data() as $fr_term_name => $data) {
+        $fr_term = pu_get_price_category_by_name($fr_term_name);
+        if (!$fr_term) {
+            continue;
+        }
+
+        pll_set_term_language($fr_term->term_id, 'fr');
+        $term_translations = pll_get_term_translations($fr_term->term_id);
+
+        if (!empty($term_translations['en'])) {
+            $en_term_id = (int) $term_translations['en'];
+        } else {
+            $created_term = wp_insert_term($data['term'], 'pu_price_category');
+            if (is_wp_error($created_term)) {
+                continue;
+            }
+
+            $en_term_id = (int) $created_term['term_id'];
+            pll_set_term_language($en_term_id, 'en');
+            pll_save_term_translations(array('fr' => $fr_term->term_id, 'en' => $en_term_id));
+        }
+
+        foreach ($data['items'] as $fr_title => $en_item) {
+            $fr_post = get_page_by_title($fr_title, OBJECT, 'pu_price');
+            if (!$fr_post) {
+                continue;
+            }
+
+            pll_set_post_language($fr_post->ID, 'fr');
+            $post_translations = pll_get_post_translations($fr_post->ID);
+
+            if (!empty($post_translations['en'])) {
+                continue;
+            }
+
+            $en_id = wp_insert_post(array(
+                'post_type' => 'pu_price',
+                'post_status' => 'publish',
+                'post_title' => $en_item['title'],
+                'post_content' => $en_item['description'],
+                'menu_order' => $fr_post->menu_order,
+            ));
+
+            if (is_wp_error($en_id)) {
+                continue;
+            }
+
+            update_post_meta($en_id, '_pu_price', get_post_meta($fr_post->ID, '_pu_price', true));
+            update_post_meta($en_id, '_pu_duration', get_post_meta($fr_post->ID, '_pu_duration', true));
+            wp_set_object_terms($en_id, array($en_term_id), 'pu_price_category');
+
+            pll_set_post_language($en_id, 'en');
+            pll_save_post_translations(array('fr' => $fr_post->ID, 'en' => $en_id));
+        }
+    }
+}
+
+function pu_get_price_category_by_name($name) {
+    $terms = get_terms(array(
+        'taxonomy' => 'pu_price_category',
+        'hide_empty' => false,
+        'name' => $name,
+        'lang' => '',
+    ));
+
+    if (is_wp_error($terms) || empty($terms)) {
+        return false;
+    }
+
+    return $terms[0];
+}
 
 function pu_location_fields() {
     return array(
